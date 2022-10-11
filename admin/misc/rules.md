@@ -8,16 +8,16 @@
 - Group Name: Powell's Goons
 
 ## Team member Info
-- Teammate 1
-- Teammate 2
-- Teammate 3
-- Teammate 4
-- Teammate 5
-- Teammate 6
-- Teammate 7
-- Teammate 8
-- Teammate 9
-- Teammate 10
+- Satvik Singh              sas007@ucsd.edu     A16419811
+- 
+- Alan Sun                  yus028@ucsd.edu     A16456107
+- Eustacia Sukarto          esukarto@ucsd.edu   A17190702
+- James Cole                jmcole@ucsd.edu     A17199786
+- Jingxin Shi               jis037@ucsd.edu     A17170054
+- Jungwoon Ko               j3ko@ucsd.edu       A17237350
+- Lauren Chen               lmchen@ucsd.edu     A16283828
+- Pethaperumal Natarajan    pnataraj@ucsd.edu   A16242691
+- Sofie Gmerek              sgmerek@ucsd.edu    A16536363
 
 ## Primary Means Of Communications and Expectation
 - Primary Means of Communication: Slack
