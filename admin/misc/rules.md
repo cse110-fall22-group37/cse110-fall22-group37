@@ -9,7 +9,7 @@
 
 ## Team member Info
 - Satvik Singh              sas007@ucsd.edu     A16419811
-- 
+- Raiaan Mortuja            rmmortuj@ucsd.edu   A15968149
 - Alan Sun                  yus028@ucsd.edu     A16456107
 - Eustacia Sukarto          esukarto@ucsd.edu   A17190702
 - James Cole                jmcole@ucsd.edu     A17199786
