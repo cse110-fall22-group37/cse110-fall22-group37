@@ -1,0 +1,1 @@
+Here is brand info"
