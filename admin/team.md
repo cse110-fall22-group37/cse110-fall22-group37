@@ -1,5 +1,6 @@
 # Powell's Goons
 ![](branding/teamIcon.jpg)
+
 Our content is rated PG37. 
 
 
