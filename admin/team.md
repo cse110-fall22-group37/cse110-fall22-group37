@@ -6,34 +6,34 @@ Our content is rated PG37.
 
 ## Who are we
 [Satvik Singh](https://link-to-github-page)
-![](img-link)
+![img](img-link)
 
 [Raiaan Mortuja](https://link-to-github-page)
-![](img-link)
+![img](photos/raiaan.jpg)
 
 [Alan Sun](https://link-to-github-page)
-![](img-link)
+![img](photos/alan.jpg)
 
 [Eustacia Sukarto](https://link-to-github-page)
-![](img-link)
+![img](photos/eustacia.jpeg)
 
 [James Cole](https://link-to-github-page)
-![](img-link)
+![img](img-link)
 
 [Finch (Jingxin) Shi](https://finchshi.github.io/)
-![](img-link)
+![img](photos/finch.jpg)
 
 [Jungwoon Ko](https://link-to-github-page)
-![](img-link)
+![img](photos/jungwoon.jpeg)
 
 [Lauren Chen](https://laurennchen.github.io/CSE-110/)
-![](img-link)
+![img](photos/lauren.jpg)
 
 [Pethaperumal Natarajan](https://link-to-github-page)
-![](img-link)
+![img](photos/petha.jpg)
 
 [Sofie Gmerek](https://www.sofiegmerek.com/)
-![](img-link)
+![img](photos/sofie.jpg)
 
 
 ## Internal documentation
