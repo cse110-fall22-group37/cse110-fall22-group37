@@ -20,19 +20,19 @@ Our content is rated PG37.
 [James Cole](https://link-to-github-page)
 ![](img-link)
 
-[Jingxin Shi](https://link-to-github-page)
+[Finch (Jingxin) Shi](https://finchshi.github.io/)
 ![](img-link)
 
 [Jungwoon Ko](https://link-to-github-page)
 ![](img-link)
 
-[Lauren Chen](https://link-to-github-page)
+[Lauren Chen](https://laurennchen.github.io/CSE-110/)
 ![](img-link)
 
 [Pethaperumal Natarajan](https://link-to-github-page)
 ![](img-link)
 
-[Sofie Gmerek](https://link-to-github-page)
+[Sofie Gmerek](https://www.sofiegmerek.com/)
 ![](img-link)
 
 
