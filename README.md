@@ -1,5 +1,6 @@
 # cse110-fall22-group37
 This is a group repo for group 37, Powell's Goons
+[Group 37 github pages](https://cse110-fall22-group37.github.io/cse110-fall22-group37/)
 
 [Link to team page](/admin/team.md)
 
