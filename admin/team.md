@@ -5,7 +5,7 @@ Our content is rated PG37.
 
 
 ## Who are we
-[Satvik Singh]((https://007satvik.github.io/lab0_1/))
+[Satvik Singh](https://007satvik.github.io/lab0_1/)
 ![img](photos/satvik.jpeg)
 
 [Raiaan Mortuja](https://raiaanm.github.io/Rlab1/)
