@@ -18,6 +18,7 @@ Our content is rated PG37.
 ![img](photos/eustacia.jpeg)
 
 [James Cole](https://jmcole9.github.io/Github-Pages/)
+
 ![img](photos/james.png)
 
 [Finch (Jingxin) Shi](https://finchshi.github.io/)
