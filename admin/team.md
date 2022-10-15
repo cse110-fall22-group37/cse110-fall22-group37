@@ -12,7 +12,7 @@ Our content is rated PG37.
 ![img](photos/raiaan.jpg)
 
 [Alan Sun](https://alanine42.github.io/CSE110-Lab-0n1/)
-![img](photos/alan.jpg)
+![img](photos/alan.jpeg)
 
 [Eustacia Sukarto](https://eustaciasukarto.github.io/cse110-lab01/)
 ![img](photos/eustacia.jpeg)
