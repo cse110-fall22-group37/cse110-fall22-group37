@@ -17,8 +17,8 @@ Our content is rated PG37.
 [Eustacia Sukarto](https://eustaciasukarto.github.io/cse110-lab01/)
 ![img](photos/eustacia.jpeg)
 
-[James Cole](https://link-to-github-page)
-![img](img-link)
+[James Cole](https://jmcole9.github.io/Github-Pages/)
+![img](photos/james.png)
 
 [Finch (Jingxin) Shi](https://finchshi.github.io/)
 ![img](photos/finch.jpg)
