@@ -24,7 +24,7 @@ Our content is rated PG37.
 [Finch (Jingxin) Shi](https://finchshi.github.io/)
 ![img](photos/finch.jpg)
 
-[Jungwoon Ko](https://jungwoonko.github.io/CSE110/)
+[Jungwoon Ko](https://jungwoonko.github.io/Jungwoon-userpage/)
 ![img](photos/jungwoon.jpeg)
 
 [Lauren Chen](https://laurennchen.github.io/CSE-110/)
