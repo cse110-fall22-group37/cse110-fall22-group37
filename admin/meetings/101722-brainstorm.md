@@ -11,29 +11,29 @@
  ## notes:
 
  First ideas
-    - Idea: something with social good
-    - Idea: messaging app
-    - Discussing time each person has
-    - Idea: journaling
-    - Idea: bullet journal
-    - Discussing the constraints
-    - Create, read, update delete
-    - local first
-    - user based content 
-    - Satvik joined
-    - Idea: reminder app, goal oriented app
-    - Idea: a bot
-    - Idea: Navigation
-    - Idea: a trip planner
+- Idea: something with social good 
+- Idea: messaging app
+- Discussing time each person has
+- Idea: journaling
+- Idea: bullet journal
+- Discussing the constraints
+- Create, read, update delete
+- local first
+- user based content 
+- Satvik joined
+- Idea: reminder app, goal oriented app
+- Idea: a bot
+- Idea: Navigation
+- Idea: a trip planner
 
 Discussing the problem
-    - Idea : knock up slack bot
+- Idea : knock up slack bot
 
 CRUD for trip planner
-    - Finchi left
-    - Where to meet
+- Finchi left
+- Where to meet
 
 Problem with where to meet
-    - Overwhelming majority in why it’s best
-    - final name: where to eat
-    - recap of idea: trip planner but for food
+- Overwhelming majority in why it’s best
+- final name: where to eat
+- recap of idea: trip planner but for food
