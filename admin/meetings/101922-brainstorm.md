@@ -16,7 +16,7 @@
 - User does not know where to eat
 
 ## Review of the general app idea
-APP NAME: Where to Eat (Food Journal)
+APP NAME: Where to Eat (Food Journal)\
 LOCALLY:
 - Places they've eaten -> user notes their experience
     - notes
