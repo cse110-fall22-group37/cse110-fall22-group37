@@ -21,7 +21,7 @@ LOCALLY:
 - Places they've eaten -> user notes their experience
     - notes
     - pictures of food
-    - rating emoji
+    - rating
     - future priority
     - price
 - Where they want to eat
@@ -35,3 +35,4 @@ LOCALLY:
 
 Features:
 - Random button
+- Slider for restaurant rating
