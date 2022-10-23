@@ -5,25 +5,26 @@ Our content is rated PG37.
 
 
 ## Who are we
-[Satvik Singh](https://link-to-github-page)
+[Satvik Singh](https://007satvik.github.io/lab0_1/)
 ![img](photos/satvik.jpeg)
 
 [Raiaan Mortuja](https://raiaanm.github.io/Rlab1/)
 ![img](photos/raiaan.jpg)
 
 [Alan Sun](https://alanine42.github.io/CSE110-Lab-0n1/)
-![img](photos/alan.jpg)
+![img](photos/alan.jpeg)
 
 [Eustacia Sukarto](https://eustaciasukarto.github.io/cse110-lab01/)
 ![img](photos/eustacia.jpeg)
 
-[James Cole](https://link-to-github-page)
-![img](img-link)
+[James Cole](https://jmcole9.github.io/Github-Pages/)
+
+![img](photos/james.png)
 
 [Finch (Jingxin) Shi](https://finchshi.github.io/)
 ![img](photos/finch.jpg)
 
-[Jungwoon Ko](https://jungwoonko.github.io/CSE110/)
+[Jungwoon Ko](https://jungwoonko.github.io/Jungwoon-userpage/)
 ![img](photos/jungwoon.jpeg)
 
 [Lauren Chen](https://laurennchen.github.io/CSE-110/)
