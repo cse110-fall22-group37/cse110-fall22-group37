@@ -55,6 +55,7 @@ only bet one cycle at a time
 do research and development
 producgtion mode
 cleanup mode
+
 questions to ask: does the problme matter, is the solution attractivr, 
 is the appetite right
 
