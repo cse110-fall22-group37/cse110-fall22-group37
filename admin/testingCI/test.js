@@ -1,4 +1,6 @@
 
+window.addEventListener('DOMContentLoaded', init);
+
 function init(){
     const hello = document.querySelector("p");
     console.log(hello);
