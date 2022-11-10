@@ -77,44 +77,21 @@ function initFormHandler() {
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
-  document.querySelector('button[type="submit"]').addEventListener('click', function() {
+  document.querySelector('button[type="add"]').addEventListener('click', function() {
   // Steps B4-B9 will occur inside the event listener from step B3
   // B4. TODO - Create a new FormData object from the <form> element reference above
     if (!form.checkValidity()) return;
-    
-    let FormData = {
-                      imgSrc: form[1].value,
-                      imgAlt: form[2].value,
-                      titleTxt: form[4].value,
-                      titleLnk: form[5].value,
-                      rating: 0,
-                      numRatings: form[13].value,
-                      organization: form[15].value,
-                      lengthTime: form[16].value,
-                      ingredients: form[17].value,
-                    };
-    for (let i = 1; i < 6; i++) {
-      if (form[i + 7].checked) {
-        FormData.rating = i;
-        break;
-      }
-    }
+
+    let newForm = new FormData(form);
   
   // B5. TODO - Create an empty object (I'll refer to this object as entryObject to
   //            make this easier to read), and then extract the keys and corresponding
   //            values from the FormData object and insert them into entryObject
-    let entryObject = {
-                          "imgSrc": FormData.imgSrc,
-                          "imgAlt": FormData.imgAlt,
-                          "titleLnk": FormData.titleLnk,
-                          "titleTxt": FormData.titleTxt,
-                          "organization": FormData.organization,
-                          "rating": FormData.rating,
-                          "numRatings": FormData.numRatings - 0,
-                          "lengthTime": FormData.lengthTime,
-                          "ingredients": FormData.ingredients
-                        };
-                        
+  let entryObject = new Object();
+    for(let [name, value] of newForm) {
+      entryObject[name] = value;
+    }
+    
   // B6. TODO - Create a new <restaurant-entry> element
     let restaurantEntry = document.createElement('restaurant-entry');
 
@@ -136,7 +113,7 @@ function initFormHandler() {
   });
 
   // B10. TODO - Get a reference to the "Clear Local Storage" button
-  let clearLocalStorage = document.querySelector('button[class="danger"]');
+  let clearLocalStorage = document.querySelector('button[type="deleteAll"]');
 
   // B11. TODO - Add a click event listener to clear local storage button
   clearLocalStorage.addEventListener('click', function() {
