@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Home Page</title>
 
-  <!-- Recipe Card Custom Element -->
   <script src="homePage.js" type="module"></script>
 
   <!-- Main Stylesheets & Scripts -->
@@ -18,23 +17,18 @@
         <div class='row'>
           <div class='column' id='left'>
             <div class='left-column'>
-              Our list of old restaurants and posts
-            
-              <!-- Call the getSavedPosts() -->
-              <saved-posts>  </saved-posts>
-             <!-- Call the displayPosts() -->
 
-            
-              getSearchBar();
-              displaySearchBar();
+            <!-- search bar to search through posts -->
+              <iframe id="searchBar" src="../search-bar/search-bar.html"></iframe>
+
             </div>
           </div>
           <div class='column'>
             <div class='right-column'>
-              Current form to edit and such 
-              <form>  </form>
-              getForm();
-              displayForm();
+
+              <!-- Current form to edit and submit new posts -->
+              <iframe id="form" src="../restaurantEntry/restaurantEntry.html"></iframe>
+
             </div>
           </div>
       </div>

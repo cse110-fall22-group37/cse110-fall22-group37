@@ -1,6 +1,9 @@
 /*homePage.css */
 
 
+body {
+    background-color: #ef8354;
+  }
 
 .row {
     display: flex;
@@ -14,16 +17,26 @@
     flex-direction: column;
     flex-basis: 100%;
     flex: 1;
+    height:100%;
+    border: black solid 5px;
   }
 
   .left-column {
-    background-color: blue;
-    height: 100px;
+    height: 100vw;
+
   }
   
   .right-column {
-    background-color: green;
-    height: 100px;
-  }
+    height: 100vw;
+    background-color: yellow;
+
+}
+
+#form{
+    height: 100%;
+    width: 100%;
+
+}
+
 
  
