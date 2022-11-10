@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page</title>
+
+  <!-- Recipe Card Custom Element -->
+  <script src="homePage.js" type="module"></script>
+
+  <!-- Main Stylesheets & Scripts -->
+  <link rel="stylesheet" href="homePage.css" />
+
+</head>
+<body>
+
+        <div class='row'>
+          <div class='column' id='left'>
+            <div class='left-column'>
+              Our list of old restaurants and posts
+            
+              <!-- Call the getSavedPosts() -->
+              <saved-posts>  </saved-posts>
+             <!-- Call the displayPosts() -->
+
+            
+              getSearchBar();
+              displaySearchBar();
+            </div>
+          </div>
+          <div class='column'>
+            <div class='right-column'>
+              Current form to edit and such 
+              <form>  </form>
+              getForm();
+              displayForm();
+            </div>
+          </div>
+      </div>
+
+    
+</body>
+

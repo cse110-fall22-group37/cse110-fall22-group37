@@ -1,0 +1,29 @@
+/*homePage.css */
+
+
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .column {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+    flex: 1;
+  }
+
+  .left-column {
+    background-color: blue;
+    height: 100px;
+  }
+  
+  .right-column {
+    background-color: green;
+    height: 100px;
+  }
+
+ 
