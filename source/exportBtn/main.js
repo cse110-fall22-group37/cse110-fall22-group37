@@ -23,6 +23,7 @@ function exportToPDF() {
 function initFormHandler() {
   let button = document.createElement('export-button');
   document.body.appendChild(button);
+  // let button = document.querySelector('export-button');
   console.log(button);
   button.addEventListener('click', (event) =>{
     exportToPDF();

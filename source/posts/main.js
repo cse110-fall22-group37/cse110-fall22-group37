@@ -77,6 +77,7 @@ function initFormHandler() {
     let card= document.createElement('entry-card');
 
     card.data = entryObject;
+    console.log(card.data);
   
     let main = document.querySelector('main');
     let entrys = JSON.parse(localStorage.getItem('entrys'));
