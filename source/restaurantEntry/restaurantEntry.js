@@ -144,7 +144,9 @@ class RestaurantEntry extends HTMLElement {
                           <time>${data.lengthTime} min</time>
                           <p class="ingredients">
                             ${data.ingredients}
-                          </p>`;
+                          </p>
+                          <button type="edit">Edit</button>
+                          <button type="delete">Delete</button>`;
     }
   }
   
