@@ -1,7 +1,7 @@
-// RecipeCard.js
+// RestaurantEntry.js
 
-class RecipeCard extends HTMLElement {
-    // Called once when document.createElement('recipe-card') is called, or
+class RestaurantEntry extends HTMLElement {
+    // Called once when document.createElement('restaurant-entry') is called, or
     // the element is written into the DOM directly as <recipe-card>
     constructor() {
       super(); // Inheret everything from HTMLElement
@@ -149,5 +149,5 @@ class RecipeCard extends HTMLElement {
   }
   
   // A8. TODO - Define the Class as a customElement so that you can create
-  //           'recipe-card' elements
-  customElements.define('recipe-card', RecipeCard);
+  //           'restaurant-entry' elements
+  customElements.define('restaurant-entry', RestaurantEntry);
