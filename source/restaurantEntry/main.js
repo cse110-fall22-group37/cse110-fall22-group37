@@ -10,7 +10,7 @@ function init() {
   // Add each entry to the <main> element
   addEntriesToDocument(entries);
   // Add the event listeners to the form elements
-  initFormHandler(); 
+  initFormHandler();
 }
 
 /**
@@ -73,7 +73,7 @@ function initFormHandler() {
 
   // B2. TODO - Get a reference to the <form> element
   // let form = document.querySelector('form');
-  let form = document.getElementById('new-entry');
+  let form = document.getElementById('restaurant-entry');
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked

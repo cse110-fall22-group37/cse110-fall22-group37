@@ -7,18 +7,18 @@
   <title>Restaurant Entry</title>
 
   <!-- Restaurant Entry Custom Element -->
-  <script src="RestaurantEntry.js" type="module"></script>
-
+  <script src="./restaurantEntry.js" type="module"></script>
+  
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet" href="main.css" />
-  <script src="main.js" type="module"></script>
+  <script src="./main.js" type="module"></script>
 </head>
 <body>
   <main>
     <!-- Add Restaurant Entries Here -->
   </main>
 
-  <form id="new-entry">
+  <form id="restaurant-entry">
     <fieldset>
       <legend>Image:</legend>
       <label for="image-src">
@@ -80,7 +80,7 @@
           required></textarea>
       </label>
     </fieldset>
-    <button type="add">Add Restaurant</button>
+    <button type="add">Save Restaurant</button>
     <button type="deleteAll" class="danger">Delete all restaurants</button>
   </form>
 </body>
