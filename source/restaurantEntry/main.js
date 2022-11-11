@@ -11,6 +11,8 @@ function init() {
   addEntriesToDocument(entries);
   // Add the event listeners to the form elements
   initFormHandler();
+
+  deletePostHandler();
 }
 
 /**
@@ -46,6 +48,7 @@ function addEntriesToDocument(entries) {
   if (entries != null) {
     for (let i = 0; i < entries.length; i++) {
       let restaurantEntry = document.createElement('restaurant-entry');
+      restaurantEntry.id = entries[i].titleTxt;
       restaurantEntry.data = entries[i];
       main.appendChild(restaurantEntry);
     }
@@ -104,7 +107,17 @@ function initFormHandler() {
   // B9. TODO - Get the entries array from localStorage, add this new entry to it, and
   //            then save the entries array back to localStorage
     let allEntries = JSON.parse(window.localStorage.getItem('entries'));
-    if (allEntries != null) allEntries[allEntries.length] = entryObject;
+    if (allEntries != null) {
+      let exists = false;
+      for (let i = 0; i < allEntries.length; i++) {
+        if (allEntries[i].titleTxt == entryObject.titleTxt) {
+          alert('Failed to add new entry. An entry with the same title already exists.');
+          exists = true;
+          break;
+        }
+      } 
+      if (!exists) allEntries[allEntries.length] = entryObject;
+    }
     else {
       allEntries = [];
       allEntries[0] = entryObject;
@@ -124,4 +137,33 @@ function initFormHandler() {
   // B13. TODO - Delete the contents of <main>
     document.querySelector('main').innerHTML = '';
   });
+}
+
+function removeEntryFromLocalStorage(idx) {
+  let entries = getEntriesFromStorage();
+  let updatedEntries = [];
+  let j = 0;
+  for (let i = 0; i < entries.length; i++) {
+    if (i != idx) {
+      updatedEntries[j] = entries[i];
+      j++;
+    }
+  }
+  saveEntriesToStorage(updatedEntries);
+}
+
+function deletePostHandler(e) {
+  let entries = getEntriesFromStorage();
+  let buttons = [];
+  for (let i = 0; i < entries.length; i++) {
+    buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="delete"]');
+    console.log(buttons[i]);
+  }
+
+  for (let i = 0; i < entries.length; i++) {
+    buttons[i].addEventListener('click', function() {
+      removeEntryFromLocalStorage(i);
+      document.querySelector('#' + entries[i].titleTxt).remove();
+    });
+  }
 }
