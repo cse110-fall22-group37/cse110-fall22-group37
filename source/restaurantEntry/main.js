@@ -128,6 +128,7 @@ function initFormHandler() {
 
 function deletePostHandler(e) {
   let entries = getEntriesFromStorage();
+  if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
     buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="delete"]');
@@ -143,6 +144,7 @@ function deletePostHandler(e) {
 
 function editPostHandler() {
   let entries = getEntriesFromStorage();
+  if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
     buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="edit"]');
