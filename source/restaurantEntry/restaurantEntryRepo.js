@@ -22,16 +22,6 @@ export function saveEntriesToStorage(entries) {
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
-  // Default sort by rating, descending order
-  for (let i = 0; i < entries.length; i++) {
-    for (let j = 0; j < entries.length; j++) {
-      if (entries[j].rating > entries[i].rating) {
-        let temp = entries[i];
-        entries[i] = entries[j];
-        entries[j] = temp;
-      }
-    }
-  }
   window.localStorage.setItem('entries', JSON.stringify(entries));
 }
 
@@ -40,10 +30,13 @@ export function removeEntryFromLocalStorage(idx) {
   let updatedEntries = [];
   let j = 0;
   for (let i = 0; i < entries.length; i++) {
-    if (i != idx) {
+    if (i == idx) {
+      var deletedEntry = entries[i];
+    } else {
       updatedEntries[j] = entries[i];
       j++;
     }
   }
   saveEntriesToStorage(updatedEntries);
+  return deletedEntry;
 }

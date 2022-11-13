@@ -11,8 +11,8 @@ function init() {
   addEntriesToDocument(entries);
   // Add the event listeners to the form elements
   initFormHandler();
-
   deletePostHandler();
+  editPostHandler();
 }
 
 /**
@@ -80,7 +80,7 @@ function initFormHandler() {
   // B9. TODO - Get the entries array from localStorage, add this new entry to it, and
   //            then save the entries array back to localStorage
     let allEntries = JSON.parse(window.localStorage.getItem('entries'));
-    if (allEntries != null) {
+    if (allEntries != null && allEntries.length > 0) {
       let exists = false;
       for (let i = 0; i < allEntries.length; i++) {
         if (allEntries[i].titleTxt == entryObject.titleTxt) {
@@ -89,9 +89,23 @@ function initFormHandler() {
           break;
         }
       } 
-      if (!exists) allEntries[allEntries.length] = entryObject;
-    }
-    else {
+      if (!exists) {
+        let entryCount = allEntries.length + 1;
+        // Default sort by rating, descending order
+        for (let j = 0; j < allEntries.length; j++) {
+          if (allEntries[j].rating < entryObject.rating) {
+            for (let k = allEntries.length; k > j; k--) {
+              allEntries[k] = allEntries[k - 1];
+            }
+            allEntries[j] = entryObject;
+            break;
+          }
+        }
+        if (allEntries.length < entryCount) {
+          allEntries[allEntries.length] = entryObject;
+        }
+      }
+    } else {
       allEntries = [];
       allEntries[0] = entryObject;
     };
@@ -117,13 +131,94 @@ function deletePostHandler(e) {
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
     buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="delete"]');
-    console.log(buttons[i]);
   }
 
   for (let i = 0; i < entries.length; i++) {
     buttons[i].addEventListener('click', function() {
       removeEntryFromLocalStorage(i);
       document.querySelector('#' + entries[i].titleTxt).remove();
+    });
+  }
+}
+
+function editPostHandler() {
+  let entries = getEntriesFromStorage();
+  let buttons = [];
+  for (let i = 0; i < entries.length; i++) {
+    buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="edit"]');
+  }
+
+  for (let i = 0; i < entries.length; i++) {
+    buttons[i].addEventListener('click', function() {
+      let entry = removeEntryFromLocalStorage(i);
+      document.querySelector('#' + entries[i].titleTxt).remove();
+      let form = document.getElementById('restaurant-entry');
+      console.log(form);
+      form.innerHTML = `<fieldset>
+                        <legend>Image:</legend>
+                        <label for="image-src">
+                          Source:
+                          <input type="text" id="imgSrc" name="imgSrc" value="${entry.imgSrc}" required>
+                        </label>
+                        <label for="image-alt">
+                          Alt Text:
+                          <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}" required>
+                        </label>
+                      </fieldset>
+                      <fieldset>
+                        <legend>Title:</legend>
+                        <label for="title-txt">Text:
+                          <input type="text" id="titleTxt" name="titleTxt" value="${entry.titleTxt}" required>
+                        </label>
+                        <label for="title-lnk">Link:
+                          <input type="url" id="titleLnk" name="titleLnk" value="${entry.titleLnk}" required>
+                        </label>
+                      </fieldset>
+                      <fieldset>
+                        <legend>Rating</legend>
+                        <label for="rating-0">
+                          0<input type="radio" id="rating-0" value="0" name="rating">
+                        </label>
+                        <label for="rating-1">
+                          1<input type="radio" id="rating-1" value="1" name="rating">
+                        </label>
+                        <label for="rating-2">
+                          2<input type="radio" id="rating-2" value="2" name="rating">
+                        </label>
+                        <label for="rating-3">
+                          3<input type="radio" id="rating-3" value="3" name="rating">
+                        </label>
+                        <label for="rating-4">
+                          4<input type="radio" id="rating-4" value="4" name="rating">
+                        </label>
+                        <label for="rating-5">
+                          5<input type="radio" id="rating-5" value="5" name="rating">
+                        </label>
+                        <label for="numRatings">
+                          Num Ratings:
+                          <input type="number" id="numRatings" name="numRatings" value="${entry.numRatings}">
+                        </label>
+                      </fieldset>
+                      <fieldset>
+                        <legend>Other Info:</legend>
+                        <label for="organization">
+                          Organization:
+                          <input type="text" id="organization" name="organization" value="${entry.organization}" required>
+                        </label>
+                        <label for="lengthTime">
+                          Length (time):
+                          <input type="text" id="lengthTime" name="lengthTime" value="${entry.lengthTime}" required>
+                        </label>
+                        <label for="ingredients">
+                          <p>Ingredients:</p>
+                          <textarea name="ingredients" id="ingredients" cols="38" rows="5" 
+                            required>${entry.ingredients}</textarea>
+                        </label>
+                      </fieldset>
+                      <button type="add">Save Restaurant</button>
+                      <button type="deleteAll" class="danger">Delete all restaurants</button>`;
+      document.getElementById('rating-'+entry.rating).checked = true;
+      initFormHandler();
     });
   }
 }
