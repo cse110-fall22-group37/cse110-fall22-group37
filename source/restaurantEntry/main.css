@@ -27,8 +27,7 @@ body {
   .right-column {
     height: 100vw;
     background-color: yellow;
-
-}
+  }
 
 #form{
     height: 100%;
@@ -40,4 +39,6 @@ body {
     height: 100%;
 }
 
- 
+#restaurant-entry {
+  color: black;
+}
