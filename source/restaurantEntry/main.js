@@ -10,7 +10,7 @@ function init() {
   // Add each entry to the <main> element
   addEntriesToDocument(entries);
   // Add the event listeners to the form elements
-  initFormHandler();
+  initFormHandler(null);
   deletePostHandler();
   editPostHandler();
 }
@@ -35,7 +35,7 @@ function addEntriesToDocument(entries) {
   if (entries != null) {
     for (let i = 0; i < entries.length; i++) {
       let restaurantEntry = document.createElement('restaurant-entry');
-      restaurantEntry.id = entries[i].titleTxt;
+      restaurantEntry.id = entries[i].name;
       restaurantEntry.data = entries[i];
       main.appendChild(restaurantEntry);
     }
@@ -46,11 +46,87 @@ function addEntriesToDocument(entries) {
  * Adds the necesarry event handlers to <form> and the clear storage
  * <button>.
  */
-function initFormHandler() {
+function initFormHandler(entry) {
 
   // B2. TODO - Get a reference to the <form> element
   // let form = document.querySelector('form');
   let form = document.getElementById('restaurant-entry');
+  if (entry == null) {
+    let nullEntry = {
+      name: "",
+      rating: "",
+      price: "",
+      description: "",
+      tags: "",
+      img: "",
+      imgAlt: ""
+    };
+    entry = nullEntry;
+  }
+    form.innerHTML = `
+    <label for="restaurant-name">Name:
+      <input type="text" id="name" name="name" value="${entry.name}" required>
+    </label>
+    <br>
+    <legend>Rating</legend>
+    <label for="rating-0">
+      0<input type="radio" id="rating-0" value="0" name="rating">
+    </label>
+    <label for="rating-1">
+      1<input type="radio" id="rating-1" value="1" name="rating">
+    </label>
+    <label for="rating-2">
+      2<input type="radio" id="rating-2" value="2" name="rating">
+    </label>
+    <label for="rating-3">
+      3<input type="radio" id="rating-3" value="3" name="rating">
+    </label>
+    <label for="rating-4">
+      4<input type="radio" id="rating-4" value="4" name="rating">
+    </label>
+    <label for="rating-5">
+      5<input type="radio" id="rating-5" value="5" name="rating">
+    </label>
+    <br>
+    <legend>Price</legend>
+    <label for="price-0">
+      0<input type="radio" id="price-0" value="0" name="price">
+    </label>
+    <label for="price-1">
+      $<input type="radio" id="price-1" value="1" name="price">
+    </label>
+    <label for="price-2">
+      $$<input type="radio" id="price-2" value="2" name="price">
+    </label>
+    <label for="price-3">
+      $$$<input type="radio" id="price-3" value="3" name="price">
+    </label>
+    <br>
+    <label for="description">
+      Description:
+      <br>
+      <textarea name="description" id="description" cols="38" rows="5">${entry.description}</textarea>
+    </label>
+    <br>
+    <label for="tag">
+      Tags:
+      <input type="text" id="tags" name="tags" value="${entry.tags}" required>
+    </label>
+    <br>
+    <label for="img">Select image:</label>
+    <input type="file" id="img" name="img" accept="image/*" value="${entry.img}">
+    <br>
+    <label for="image-alt">
+      Alt Text:
+      <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}">
+    </label>
+    <br>
+  <button type="add">Save Restaurant</button>
+  <button type="deleteAll" class="danger">Delete all restaurants</button>`;
+    if (entry.rating != "" && entry.price != "") {
+      document.getElementById('rating-'+entry.rating).checked = true;
+      document.getElementById('price-'+entry.price).checked = true;
+    }
   
   // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   //            submit button is clicked
@@ -84,7 +160,7 @@ function initFormHandler() {
     if (allEntries != null && allEntries.length > 0) {
       let exists = false;
       for (let i = 0; i < allEntries.length; i++) {
-        if (allEntries[i].titleTxt == entryObject.titleTxt) {
+        if (allEntries[i].name == entryObject.name) {
           alert('Failed to add new entry. An entry with the same title already exists.');
           exists = true;
           break;
@@ -132,13 +208,13 @@ function deletePostHandler(e) {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="delete"]');
+    buttons[i] = document.querySelector('#' + entries[i].name).shadowRoot.querySelector('button[type="delete"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
     buttons[i].addEventListener('click', function() {
       removeEntryFromLocalStorage(i);
-      document.querySelector('#' + entries[i].titleTxt).remove();
+      document.querySelector('#' + entries[i].name).remove();
     });
   }
 }
@@ -148,80 +224,14 @@ function editPostHandler() {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].titleTxt).shadowRoot.querySelector('button[type="edit"]');
+    buttons[i] = document.querySelector('#' + entries[i].name).shadowRoot.querySelector('button[type="edit"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
     buttons[i].addEventListener('click', function() {
       let entry = removeEntryFromLocalStorage(i);
-      document.querySelector('#' + entries[i].titleTxt).remove();
-      let form = document.getElementById('restaurant-entry');
-      console.log(form);
-      form.innerHTML = `<fieldset>
-                        <legend>Image:</legend>
-                        <label for="image-src">
-                          Source:
-                          <input type="text" id="imgSrc" name="imgSrc" value="${entry.imgSrc}" required>
-                        </label>
-                        <label for="image-alt">
-                          Alt Text:
-                          <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}" required>
-                        </label>
-                      </fieldset>
-                      <fieldset>
-                        <legend>Title:</legend>
-                        <label for="title-txt">Text:
-                          <input type="text" id="titleTxt" name="titleTxt" value="${entry.titleTxt}" required>
-                        </label>
-                        <label for="title-lnk">Link:
-                          <input type="url" id="titleLnk" name="titleLnk" value="${entry.titleLnk}" required>
-                        </label>
-                      </fieldset>
-                      <fieldset>
-                        <legend>Rating</legend>
-                        <label for="rating-0">
-                          0<input type="radio" id="rating-0" value="0" name="rating">
-                        </label>
-                        <label for="rating-1">
-                          1<input type="radio" id="rating-1" value="1" name="rating">
-                        </label>
-                        <label for="rating-2">
-                          2<input type="radio" id="rating-2" value="2" name="rating">
-                        </label>
-                        <label for="rating-3">
-                          3<input type="radio" id="rating-3" value="3" name="rating">
-                        </label>
-                        <label for="rating-4">
-                          4<input type="radio" id="rating-4" value="4" name="rating">
-                        </label>
-                        <label for="rating-5">
-                          5<input type="radio" id="rating-5" value="5" name="rating">
-                        </label>
-                        <label for="numRatings">
-                          Num Ratings:
-                          <input type="number" id="numRatings" name="numRatings" value="${entry.numRatings}">
-                        </label>
-                      </fieldset>
-                      <fieldset>
-                        <legend>Other Info:</legend>
-                        <label for="organization">
-                          Organization:
-                          <input type="text" id="organization" name="organization" value="${entry.organization}" required>
-                        </label>
-                        <label for="lengthTime">
-                          Length (time):
-                          <input type="text" id="lengthTime" name="lengthTime" value="${entry.lengthTime}" required>
-                        </label>
-                        <label for="ingredients">
-                          <p>Ingredients:</p>
-                          <textarea name="ingredients" id="ingredients" cols="38" rows="5" 
-                            required>${entry.ingredients}</textarea>
-                        </label>
-                      </fieldset>
-                      <button type="add">Save Restaurant</button>
-                      <button type="deleteAll" class="danger">Delete all restaurants</button>`;
-      document.getElementById('rating-'+entry.rating).checked = true;
-      initFormHandler();
+      document.querySelector('#' + entries[i].name).remove();
+      initFormHandler(entry);
     });
   }
 }

@@ -134,20 +134,24 @@ class RestaurantEntry extends HTMLElement {
       //           cardTemplate.html and the data passed in (You should only have one <article>,
       //           do not nest an <article> inside another <article>). You should use Template
       //           literals (tempalte strings) and element.innerHTML for this.
-      elementArticle.innerHTML = `<img src= "${data.imgSrc}"
+      elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.imgAlt}">
-                          <p class="title">
-                            <a href="${data.titleLnk}">${data.titleTxt}</a>
+                          <p class="name">
+                            <a href="${data.name}">${data.name}</a>
                           </p>
-                          <p class="organization">${data.organization}</p>
                           <div class="rating">
-                            <span>${data.rating}</span>
+                            <span>Rating: </span>
                             <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
-                            <span>(${data.numRatings})</span>
                           </div>
-                          <time>${data.lengthTime} min</time>
+                          <div class="price">
+                            <span>Price: </span>
+                            <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.price}-star.svg" alt="${data.rating} stars">
+                          </div>
+                          <p class="tags">Tags: ${data.tags}</p>
                           <p class="ingredients">
-                            ${data.ingredients}
+                            Description:
+                            <br>
+                            ${data.description}
                           </p>
                           <button type="edit">Edit</button>
                           <button type="delete">Delete</button>`;
