@@ -5,7 +5,7 @@
      - Semicolons
      - Colons
      - Line breaks
-     - Also tests uxix or windows to check if we are working on browser or not. 
+     - Also tests Unix or Windows to check if we are working on browser or not. 
 
 
 
