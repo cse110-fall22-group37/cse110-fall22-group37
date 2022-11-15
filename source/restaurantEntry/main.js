@@ -25,6 +25,7 @@ function init() {
 function addEntriesToDocument(entries) {
   // A10. TODO - Get a reference to the <main> element
   let main = document.querySelector('main');
+  console.log(main);
 
   // A11. TODO - Loop through each of the entries in the passed in array,
   //            create a <restaurant-entry> element for each one, and populate

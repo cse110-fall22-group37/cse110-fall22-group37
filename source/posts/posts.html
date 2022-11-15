@@ -4,104 +4,18 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Where2Eat</title>
 
   <!-- Recipe Card Custom Element -->
   <script src="posts.js" type="module"></script>
 
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet" href="posts.css" />
-  <script src="main.js" type="module"></script>
+  <script src="./restaurantEntry/main.js" type="module"></script>
 </head>
 <body>
   <main>
     <!-- Add Recipes Here -->
   </main>
   <!-- For the Explore section - Remove "hidden" class before beginning -->
-  <form id="new-recipe" >
-  
-    <fieldset>
-      <legend>Image:</legend>
-      <label for="img">Select image:</label>
-      <input type="file" id="img" name="img" accept="image/*">
-      <input type="submit">
-
-      <label for="image-alt">
-        Alt Text:
-        <input type="text" id="imgAlt" name="imgAlt" >
-      </label>
-    </fieldset>
-    <fieldset>
-      <legend>Title:</legend>
-      <label for="title-txt">Text:
-        <input type="text" id="titleTxt" name="titleTxt" required>
-      </label>
-      <label for="title-lnk">Link:
-        <input type="url" id="titleLnk" name="titleLnk" >
-      </label>
-    </fieldset>
-    <fieldset>
-      <legend>Rating</legend>
-      <label for="rating-1">
-        1<input type="radio" id="rating-1" value="1" name="rating">
-      </label>
-      <label for="rating-2">
-        2<input type="radio" id="rating-2" value="2" name="rating">
-      </label>
-      <label for="rating-3">
-        3<input type="radio" id="rating-3" value="3" name="rating">
-      </label>
-      <label for="rating-4">
-        4<input type="radio" id="rating-4" value="4" name="rating">
-      </label>
-      <label for="rating-5">
-        5<input type="radio" id="rating-5" value="5" name="rating">
-      </label>
-    </fieldset>
-    <fieldset>
-      <legend>Cost</legend>
-      <label for="cost-1">
-        $<input type="radio" id="rating-1" value="1" name="rating">
-      </label>
-      <label for="cost-2">
-        $$<input type="radio" id="rating-2" value="2" name="rating">
-      </label>
-      <label for="cost-3">
-        $$$<input type="radio" id="rating-3" value="3" name="rating">
-      </label>
-      <label for="cost-4">
-        $$$$<input type="radio" id="rating-4" value="4" name="rating">
-      </label>
-    </fieldset>
-    <fieldset>
-      <legend>Tags</legend>
-      <label for="tag-1">
-        American<input type="checkbox" id="tag-1" value="1" name="tags">
-      </label>
-      <label for="tag-2">
-        Chinese<input type="checkbox" id="tag-2" value="2" name="tags">
-      </label>
-      <label for="tag-3">
-        Fast Food<input type="checkbox" id="tag-3" value="3" name="tags">
-      </label>
-      <label for="tag-4">
-        Vegan<input type="checkbox" id="tag-4" value="4" name="tags">
-      </label>
-      <label for="tag-other">
-        Other <input type="text" id="tag-other"  name="tags">
-      </label>
-    </fieldset>
-    <fieldset>
-      <label for="description">
-        My Experience:
-        <br>
-        <textarea name="description" id="description" cols="38" rows="5"
-        required></textarea>
-      </label>
-      
-    </fieldset>
-    <button type="submit">Add Restaurant</button>
-    <button type="button" class="danger">Clear Local Storage</button>
-  </form>
 </body>
 </html>
