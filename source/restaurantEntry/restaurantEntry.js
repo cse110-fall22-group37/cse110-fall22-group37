@@ -55,6 +55,19 @@ class RestaurantEntry extends HTMLElement {
                                       object-fit: scale-down;
                                       width: 78px;
                                     }
+
+                                    div.price {
+                                      align-items: center;
+                                      column-gap: 5px;
+                                      display: flex;
+                                    }
+                                  
+                                    div.price>img {
+                                      height: auto;
+                                      display: inline-block;
+                                      object-fit: scale-down;
+                                      width: 78px;
+                                    }
                                   
                                     article>img {
                                       border-top-left-radius: 8px;
@@ -65,18 +78,18 @@ class RestaurantEntry extends HTMLElement {
                                       width: calc(100% + 32px);
                                     }
                                   
-                                    p.ingredients {
+                                    p.description {
                                       height: 32px;
                                       line-height: 16px;
                                       padding-top: 4px;
                                       overflow: hidden;
                                     }
                                   
-                                    p.organization {
+                                    p.tags {
                                       color: black !important;
                                     }
                                   
-                                    p.title {
+                                    p.name {
                                       display: -webkit-box;
                                       font-size: 16px;
                                       height: 36px;
@@ -86,7 +99,7 @@ class RestaurantEntry extends HTMLElement {
                                       -webkit-box-orient: vertical;
                                     }
                                   
-                                    p:not(.title),
+                                    p:not(.name),
                                     span,
                                     time {
                                       color: #70757A;
@@ -130,20 +143,24 @@ class RestaurantEntry extends HTMLElement {
       //           cardTemplate.html and the data passed in (You should only have one <article>,
       //           do not nest an <article> inside another <article>). You should use Template
       //           literals (tempalte strings) and element.innerHTML for this.
-      elementArticle.innerHTML = `<img src= "${data.imgSrc}"
+      elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.imgAlt}">
-                          <p class="title">
-                            <a href="${data.titleLnk}">${data.titleTxt}</a>
+                          <p class="name">
+                            <a href="${data.name}">${data.name}</a>
                           </p>
-                          <p class="organization">${data.organization}</p>
                           <div class="rating">
-                            <span>${data.rating}</span>
+                            <span>Rating: </span>
                             <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
-                            <span>(${data.numRatings})</span>
                           </div>
-                          <time>${data.lengthTime} min</time>
+                          <div class="price">
+                            <span>Price: </span>
+                            <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.price}-star.svg" alt="${data.rating} stars">
+                          </div>
+                          <p class="tags">Tags: ${data.tags}</p>
                           <p class="ingredients">
-                            ${data.ingredients}
+                            Description:
+                            <br>
+                            ${data.description}
                           </p>
                           <button type="edit">Edit</button>
                           <button type="delete">Delete</button>`;

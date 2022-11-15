@@ -40,4 +40,29 @@ body {
     height: 100%;
 }
 
+* {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+article {
+  align-items: center;
+  border: 1px solid rgb(223, 225, 229);
+  border-radius: 8px;
+  display: grid;
+  grid-template-rows: 118px 56px 14px 18px 15px 36px;
+  height: auto;
+  row-gap: 5px;
+  padding: 0 16px 16px 16px;
+  width: 178px;
+}
  
