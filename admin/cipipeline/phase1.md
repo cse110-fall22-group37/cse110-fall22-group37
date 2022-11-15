@@ -1,5 +1,5 @@
 # Linting
- - Functional pipeline for linitng. 
+ - Functional pipeline for linting. 
    ## Styles checked by Linting
      - Indentation
      - Semicolons
@@ -23,13 +23,13 @@
 
 
 # Code quality via tool
- - Finished and genereated a working model
+ - Finished and generated a working model
  - Used Codacy to test code quality
    ## Tests run by Codacy
      - Issues
      - Duplication
      - Complexity 
-     - Generates a readable file contiang all comments by the tool while running the abov tests to flag any errors or warnigngs.
+     - Generates a readable file containing all comments by the tool while running the above tests to flag any errors or warnigngs.
 
 
 
