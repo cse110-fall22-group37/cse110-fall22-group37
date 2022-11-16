@@ -23,34 +23,61 @@ class RestaurantEntry extends HTMLElement {
         margin: auto;
         padding: 0;
       }
-                                  
+
       a {
-        text-decoration: none;
-      }
-                                  
-      a:hover {
-        text-decoration: underline;
+        display: -webkit-box;
+        font-size: 36px;
+        height: 50px;
+        position:relative; 
+        left:-190px; 
+        top:-60px;
+        line-height: 0;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
                                   
       article {
-        align-items: center;
-        border: 1px solid rgb(223, 225, 229);
+        margin-top: 10px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
         border-radius: 100px;
         display: grid;
         row-gap: 10px;
         grid-template-rows: 118px 56px 14px 18px 15px 36px;
         height: auto;
         padding: 16px 16px 16px 16px;
-        width: 600px;
+        width: 650px;
+        outline: solid;
+        outline-width: 4px; 
+        background: #ffff
       }
                                   
       div.rating {
         align-items: center;
         column-gap: 5px;
         display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-50px;
       }
                                   
       div.rating>img {
+        height: auto;
+        display: inline-block;
+        object-fit: scale-down;
+        width: 78px;
+      }
+
+      div.price {
+        align-items: center;
+        column-gap: 5px;
+        display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-100px;
+      }
+
+      div.price>img {
         height: auto;
         display: inline-block;
         object-fit: scale-down;
@@ -74,20 +101,23 @@ class RestaurantEntry extends HTMLElement {
         line-height: 16px;
         padding-top: 4px;
         overflow: hidden;
+        position:relative; 
+        left:-260px; 
+        top:-80px;
+      }
+
+      p.tags {
+        height: 32px;
+        line-height: 16px;
+        padding-top: 4px;
+        overflow: hidden;
+        position:relative; 
+        left:-240px; 
+        top:60px;
       }
                                   
       p.organization {
         color: black !important;
-      }
-                                  
-      p.title {
-        display: -webkit-box;
-        font-size: 16px;
-        height: 36px;
-        position: absolute;
-        line-height: 0;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
       }
                                   
       p:not(.title),
