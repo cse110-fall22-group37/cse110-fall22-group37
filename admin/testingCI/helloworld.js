@@ -9,4 +9,13 @@ function init(){
        alert("Hello world");
 });
 
+
+/**
+ * Function that says hello.
+ * @param {string} name input string
+ */
+function sayHello(name) {
+    console.log(`Hello ${name}`);
+}
+
 }
