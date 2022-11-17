@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Restaurant Entry</title>
 
+  <!-- Export Button Custom Element -->
+  <script src=
+"https://cdn.jsdelivr.net/npm/html2canvas@1.0.0-rc.5/dist/html2canvas.min.js">
+</script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+  <script src="exportBtn/exportBtn.js" type="module"></script>
+  <script src="exportBtn/main.js" type="module"></script>
+  <link rel="stylesheet" href="exportBtn/main.css" />
+
   <!-- Restaurant Entry Custom Element -->
   <script src="restaurantEntry/restaurantEntry.js" type="module"></script>
   
@@ -15,20 +25,20 @@
   <script src="restaurantEntry/main.js" type="module"></script>
 </head>
 <body>
-    <!-- Add Restaurant Entries Here -->
-<!--  <main>
+    <main>
+      <div id="output"></div>
   
-  </main> -->
   <div class='row'>
     <div class='column' id='left'>
       <div class='left-column'>
 
-        <iframe id="searchBar" src="./search-bar/search-bar.html"></iframe>
-
-  <main>
-    <!-- Add Restaurant Entries Here -->
-  </main>
-  </div>
+        <!-- <iframe id="searchBar" src="./search-bar/search-bar.html"></iframe> -->
+  
+        <div id="list">
+          <!-- Add Restaurant Entries Here -->
+        </div>
+        
+        </div>
     </div>
     <div class='column'>
       <div class='right-column'>
@@ -36,6 +46,8 @@
   <form id="restaurant-entry"></form>
       </div>
     </div>
+    </div>
+  </main>
 
 </body>
 </html>

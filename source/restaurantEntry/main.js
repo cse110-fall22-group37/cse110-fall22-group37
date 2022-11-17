@@ -24,8 +24,7 @@ function init() {
  */
 function addEntriesToDocument(entries) {
   // A10. TODO - Get a reference to the <main> element
-  let main = document.querySelector('main');
-  console.log(main);
+  let list = document.querySelector('#list');
 
   // A11. TODO - Loop through each of the entries in the passed in array,
   //            create a <restaurant-entry> element for each one, and populate
@@ -37,7 +36,7 @@ function addEntriesToDocument(entries) {
       let restaurantEntry = document.createElement('restaurant-entry');
       restaurantEntry.id = entries[i].name;
       restaurantEntry.data = entries[i];
-      main.appendChild(restaurantEntry);
+      list.appendChild(restaurantEntry);
     }
   }
 }
@@ -152,7 +151,7 @@ function initFormHandler(entry) {
     restaurantEntry.data = entryObject;
 
   // B8. TODO - Append this new <restaurant-entry> to <main>
-    document.querySelector('main').appendChild(restaurantEntry);
+    document.querySelector('#list').appendChild(restaurantEntry);
 
   // B9. TODO - Get the entries array from localStorage, add this new entry to it, and
   //            then save the entries array back to localStorage
@@ -199,7 +198,7 @@ function initFormHandler(entry) {
     window.localStorage.clear();
 
   // B13. TODO - Delete the contents of <main>
-    document.querySelector('main').innerHTML = '';
+    document.querySelector('#list').innerHTML = '';
   });
 }
 
