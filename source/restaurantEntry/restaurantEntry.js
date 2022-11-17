@@ -51,6 +51,22 @@ class RestaurantEntry extends HTMLElement {
         outline-width: 4px; 
         background: #ffff
       }
+
+      button:first-of-type {
+        position:relative; 
+        left:208px; 
+        top:1px;
+        width:85px;
+        height:25px;
+      }
+      
+      button:last-of-type {
+        position:relative; 
+        left:110px; 
+        top:-34px;
+        width:85px;
+        height:25px;
+      }
                                   
       div.rating {
         align-items: center;
