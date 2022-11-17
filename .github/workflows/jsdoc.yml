@@ -1,21 +1,21 @@
-name: JSDOC
+name: GitHub pages
 
 on: [pull_request, push]
 
 jobs:
-  tests:
+  deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-vesion }}
-        uses: actions/setup-node@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        uses: andstor/jsdoc-action@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          source_dir: ./admin/testingCI/
+          output_dir: ./admin/testingCI/documentations/
+          config_file: jsdoc.json
+
       - name: Installation
         run: npm install
       - name: JSDOC
