@@ -69,7 +69,7 @@ class RestaurantEntry extends HTMLElement {
         height: 200px
       }
                                   
-      p.ingredients {
+      p.description {
         height: 32px;
         line-height: 16px;
         padding-top: 4px;
@@ -148,7 +148,7 @@ class RestaurantEntry extends HTMLElement {
                             <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.price}-star.svg" alt="${data.rating} stars">
                           </div>
                           <p class="tags">Tags: ${data.tags}</p>
-                          <p class="ingredients">
+                          <p class="description">
                             Description:
                             <br>
                             ${data.description}
