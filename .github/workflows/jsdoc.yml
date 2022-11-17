@@ -1,4 +1,4 @@
-name: GitHub pages
+name: JSDOC
 
 on: [pull_request, push]
 
@@ -16,7 +16,13 @@ jobs:
           output_dir: ./admin/testingCI/documentations/
           config_file: jsdoc.json
 
-      - name: Installation
-        run: npm install
-      - name: JSDOC
-        run: npm run doc
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./admin/testingCI/documentations/
+
+      # - name: Installation
+      #   run: npm install
+      # - name: JSDOC
+      #   run: npm run doc
