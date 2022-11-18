@@ -1,4 +1,5 @@
 // RestaurantEntry.js
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "dessert"];
 
 class RestaurantEntry extends HTMLElement {
     // Called once when document.createElement('restaurant-entry') is called, or
@@ -84,7 +85,7 @@ class RestaurantEntry extends HTMLElement {
         width: 78px;
       }
 
-      div.price {
+      .price {
         align-items: center;
         column-gap: 5px;
         display: flex;
@@ -93,7 +94,7 @@ class RestaurantEntry extends HTMLElement {
         top:-100px;
       }
 
-      div.price>img {
+      .price>img {
         height: auto;
         display: inline-block;
         object-fit: scale-down;
@@ -130,10 +131,6 @@ class RestaurantEntry extends HTMLElement {
         position:relative; 
         left:-240px; 
         top:60px;
-      }
-                                  
-      p.organization {
-        color: black !important;
       }
                                   
       p:not(.title),
@@ -180,6 +177,12 @@ class RestaurantEntry extends HTMLElement {
       //           cardTemplate.html and the data passed in (You should only have one <article>,
       //           do not nest an <article> inside another <article>). You should use Template
       //           literals (tempalte strings) and element.innerHTML for this.
+      // console.log(data)
+      let $ = '';
+      for (let i = 0; i < data.price; i++) {
+        $ += '$';
+      }
+
       elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.imgAlt}">
                           <p class="name">
@@ -189,10 +192,7 @@ class RestaurantEntry extends HTMLElement {
                             <span>Rating: </span>
                             <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
                           </div>
-                          <div class="price">
-                            <span>Price: </span>
-                            <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.price}-star.svg" alt="${data.rating} stars">
-                          </div>
+                          <p class="price">Price: ${$}</p>
                           <p class="tags">Tags: ${data.tags}</p>
                           <p class="description">
                             Description:

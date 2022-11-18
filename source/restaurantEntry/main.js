@@ -1,6 +1,7 @@
 // main.js
 import {getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage} from "./restaurantEntryRepo.js";
 // Run the init() function when the page has loaded
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "dessert"];
 window.addEventListener('DOMContentLoaded', init);
 
 // Starts the program, all function calls trace back here
@@ -67,10 +68,7 @@ function initFormHandler(entry) {
       <input type="text" id="name" name="name" value="${entry.name}" required>
     </label>
     <br>
-    <legend>Rating</legend>
-    <label for="rating-0">
-      0<input type="radio" id="rating-0" value="0" name="rating">
-    </label>
+    <legend>Rating:</legend>
     <label for="rating-1">
       1<input type="radio" id="rating-1" value="1" name="rating">
     </label>
@@ -87,10 +85,7 @@ function initFormHandler(entry) {
       5<input type="radio" id="rating-5" value="5" name="rating">
     </label>
     <br>
-    <legend>Price</legend>
-    <label for="price-0">
-      0<input type="radio" id="price-0" value="0" name="price">
-    </label>
+    <legend>Price:</legend>
     <label for="price-1">
       $<input type="radio" id="price-1" value="1" name="price">
     </label>
@@ -107,9 +102,24 @@ function initFormHandler(entry) {
       <textarea name="description" id="description" cols="38" rows="5">${entry.description}</textarea>
     </label>
     <br>
-    <label for="tag">
-      Tags:
-      <input type="text" id="tags" name="tags" value="${entry.tags}" required>
+    <legend>Tags:</legend>
+    <label for="${TAGS[0]}">
+      ${TAGS[0]}<input type="checkbox" id="${TAGS[0]}" value="yes" name="${TAGS[0]}">
+    </label>
+    <label for="${TAGS[1]}">
+      ${TAGS[1]}<input type="checkbox" id="${TAGS[1]}" value="yes" name="${TAGS[1]}">
+    </label>
+    <label for="${TAGS[2]}">
+      ${TAGS[2]}<input type="checkbox" id="${TAGS[2]}" value="yes" name="${TAGS[2]}">
+    </label>
+    <label for="${TAGS[3]}">
+      ${TAGS[3]}<input type="checkbox" id="${TAGS[3]}" value="yes" name="${TAGS[3]}">
+    </label>
+    <label for="${TAGS[4]}">
+      ${TAGS[4]}<input type="checkbox" id="${TAGS[4]}" value="yes" name="${TAGS[4]}">
+    </label>
+    <label for="${TAGS[5]}">
+      ${TAGS[5]}<input type="checkbox" id="${TAGS[5]}" value="yes" name="${TAGS[5]}">
     </label>
     <br>
     <label for="img">Select image:</label>
@@ -139,10 +149,20 @@ function initFormHandler(entry) {
   // B5. TODO - Create an empty object (I'll refer to this object as entryObject to
   //            make this easier to read), and then extract the keys and corresponding
   //            values from the FormData object and insert them into entryObject
-  let entryObject = new Object();
+    let entryObject = new Object();
+    entryObject.tags = [];
+    let tagCount = 0;
     for(let [name, value] of newForm) {
+      for (let i = 0; i < TAGS.length; i++) {
+        if (name == TAGS[i]) {
+          entryObject.tags[tagCount] = ' ' + TAGS[i];
+          tagCount++;
+          continue;
+        }
+      }
       entryObject[name] = value;
     }
+    console.log(entryObject.tags);
     
   // B6. TODO - Create a new <restaurant-entry> element
     let restaurantEntry = document.createElement('restaurant-entry');
