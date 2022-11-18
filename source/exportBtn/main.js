@@ -8,7 +8,7 @@ function init() {
   initExportBtnHandler();
 }
 
-function exportToPDF() {
+/*function exportToPDF() {
   let output = document.querySelector('#output');
   output.innerHTML = '<h1> MY LIST </h1>';
   let allEntries = getEntriesFromStorage();
@@ -39,6 +39,33 @@ function exportToPDF() {
   html2pdf().set(settings).from(output).save();
   setTimeout(() => {
     output.innerHTML = '';
+  }, 0.0000000001)
+}*/
+function exportToPDF() {
+// TODO: fix css
+/////////////////////////////////////////////////////////////////////////   
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// 
+///////////////////////////////////////////////////////////////////////// 
+/////////////////////////////////////////////////////////////////////////   
+  let css = '@page { size: 790px 940px; margin: 10px;}';
+  let head = document.head || document.getElementsByTagName('head')[0];
+  let style = document.createElement('style');
+
+  style.type = 'text/css';
+  style.media = 'print';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  head.appendChild(style);
+
+  document.getElementById('right').style.display = "none";
+
+  window.print();
+  setTimeout(() => {
+    document.getElementById('right').style.display = "block";
   }, 0.0000000001)
 }
 
