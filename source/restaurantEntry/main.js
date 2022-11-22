@@ -1,10 +1,17 @@
 // main.js
 import {getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage} from "./restaurantEntryRepo.js";
-// Run the init() function when the page has loaded
-const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "dessert"];
+
+//current preset tags which entries can be given
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
+
+//run the init function once the page has loaded
 window.addEventListener('DOMContentLoaded', init);
 
-// Starts the program, all function calls trace back here
+/**
+ * Starts the program, all function calls trace back to init()
+ * Gets the entries from storage, adds them to document, run the form handler, 
+ * run the delete handler, run the edit post handler
+ */
 function init() {
   // Get the entries from localStorage
   let entries = getEntriesFromStorage();
@@ -24,15 +31,11 @@ function init() {
  * @param {Array<Object>} entries An array of entries
  */
 function addEntriesToDocument(entries) {
-  // A10. TODO - Get a reference to the <main> element
+  //get the list from the document to add elements to in main
   let list = document.querySelector('#list');
-
-  // A11. TODO - Loop through each of the entries in the passed in array,
-  //            create a <restaurant-entry> element for each one, and populate
-  //            each <restaurant-entry> with that entry data using element.data = ...
-  //            Append each element to <main>
-  
+  //if there are entries so it is not null
   if (entries != null) {
+    //for each entry, create a restaurant entry and add to the document
     for (let i = 0; i < entries.length; i++) {
       let restaurantEntry = document.createElement('restaurant-entry');
       restaurantEntry.id = entries[i].name;
@@ -45,13 +48,12 @@ function addEntriesToDocument(entries) {
 /**
  * Adds the necesarry event handlers to <form> and the clear storage
  * <button>.
+ * @param entry, an entry to the form
  */
 function initFormHandler(entry) {
-
-  // B2. TODO - Get a reference to the <form> element
-  // let form = document.querySelector('form');
   let form = document.getElementById('restaurant-entry');
-  if (entry == null) {
+  //handle an empty entry to the work
+   if (entry == null) {
     let nullEntry = {
       name: "",
       rating: "",
@@ -63,6 +65,7 @@ function initFormHandler(entry) {
     };
     entry = nullEntry;
   }
+  //initialize the form content replace with current entry data
     form.innerHTML = `
     <h2 class="form-title">Add/Edit a Restaurant</h2>
     <label for="restaurant-name">Name:
@@ -133,23 +136,23 @@ function initFormHandler(entry) {
     <br>
   <button type="add">Save Restaurant</button>
   <button type="deleteAll" class="danger">Delete all restaurants</button>`;
+
+  //check the rating and price of the entry if not empty mark as checked
     if (entry.rating != "" && entry.price != "") {
       document.getElementById('rating-'+entry.rating).checked = true;
       document.getElementById('price-'+entry.price).checked = true;
     }
   
-  // B3. TODO - Add an event listener for the 'submit' event, which fires when the
-  //            submit button is clicked
+  // Add an event listener for the 'click' event, which fires when the 
+  // add button is clicked
   document.querySelector('button[type="add"]').addEventListener('click', function() {
-  // Steps B4-B9 will occur inside the event listener from step B3
-  // B4. TODO - Create a new FormData object from the <form> element reference above
+    //if the form is not valid return
     if (!form.checkValidity()) return;
 
+    //create a new form for the data
     let newForm = new FormData(form);
   
-  // B5. TODO - Create an empty object (I'll refer to this object as entryObject to
-  //            make this easier to read), and then extract the keys and corresponding
-  //            values from the FormData object and insert them into entryObject
+    //create a new object to extract the tags from
     let entryObject = new Object();
     entryObject.tags = [];
     let tagCount = 0;
@@ -165,16 +168,16 @@ function initFormHandler(entry) {
     }
     console.log(entryObject.tags);
     
-  // B6. TODO - Create a new <restaurant-entry> element
+  // Create a new <restaurant-entry> element
     let restaurantEntry = document.createElement('restaurant-entry');
 
-  // B7. TODO - Add the entryObject data to <restaurant-entry> using element.data
+  // Add the entryObject data to <restaurant-entry> using element.data
     restaurantEntry.data = entryObject;
 
-  // B8. TODO - Append this new <restaurant-entry> to <main>
+  //  Add this new <restaurant-entry> to <main>
     document.querySelector('#list').appendChild(restaurantEntry);
 
-  // B9. TODO - Get the entries array from localStorage, add this new entry to it, and
+  // Get the entries array from localStorage, add this new entry to it, and
   //            then save the entries array back to localStorage
     let allEntries = JSON.parse(window.localStorage.getItem('entries'));
     if (allEntries != null && allEntries.length > 0) {
@@ -209,20 +212,24 @@ function initFormHandler(entry) {
     saveEntriesToStorage(allEntries);
   });
 
-  // B10. TODO - Get a reference to the "Clear Local Storage" button
+  // Get a reference to the "Clear Local Storage" button
   let clearLocalStorage = document.querySelector('button[type="deleteAll"]');
 
-  // B11. TODO - Add a click event listener to clear local storage button
+  // Add a click event listener to clear local storage button
   clearLocalStorage.addEventListener('click', function() {
-  // Steps B12 & B13 will occur inside the event listener from step B11
-  // B12. TODO - Clear the local storage
+  //Clear the local storage
     window.localStorage.clear();
-
-  // B13. TODO - Delete the contents of <main>
+   //Delete the contents of <main>
     document.querySelector('#list').innerHTML = '';
   });
 }
 
+/**
+ * 
+ * @param {*} e the event, delete is clicked 
+ * Gets the buttons from the entries, find the element who's delete button was clicked,
+ * then delete the element if the button is clicked
+ */
 function deletePostHandler(e) {
   let entries = getEntriesFromStorage();
   if (entries == null || entries.length == 0) return;
@@ -239,6 +246,10 @@ function deletePostHandler(e) {
   }
 }
 
+/**
+ * Gets the button of every element, when one edit button is clicked, bring the entry to the form, 
+ * remove the entry, add it to the form, call init form handler
+ */
 function editPostHandler() {
   let entries = getEntriesFromStorage();
   if (entries == null || entries.length == 0) return;

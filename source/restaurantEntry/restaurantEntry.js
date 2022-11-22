@@ -1,23 +1,28 @@
 // RestaurantEntry.js
-const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "dessert"];
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
 
+/**
+ * Class restuarantEntry creates the restaurant entry objects and attaches the shadowDOM
+ * @extends HTMLElement
+ */
 class RestaurantEntry extends HTMLElement {
-    // Called once when document.createElement('restaurant-entry') is called, or
-    // the element is written into the DOM directly as <recipe-card>
+    /**
+     * @constructor Creates the restaurant entry element, attaches the shadowDOM
+     * Called once when document.createElement('restaurant-entry') is called or
+     * the element is written into the DOM directly as <restaurant-entry>
+     */
     constructor() {
-      super(); // Inheret everything from HTMLElement
-  
-      // EXPOSE - START (All expose numbers start with A)
-      // A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
+      super(); // Inheirit everything from HTMLElement
+      //Attach the shadow DOM to this Web Component (leave the mode open)
       this.shadowRC = this.attachShadow({mode: 'open'});
-  
-      // A2. TODO - Create an <article> element - This will hold our markup once our data is set
+
+     //Create an <article> element to hold our data
       this.elementArticle = document.createElement('article');
   
-      // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
+      //Create a style element to style our restaurant entry
       this.elementStyle = document.createElement('style');
   
-      // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
+      //Insert all of the styles into the <style> element you just made
       this.elementStyle.textContent = 
       `* {
         font-family: sans-serif;
@@ -147,7 +152,7 @@ class RestaurantEntry extends HTMLElement {
         font-size: 18px;
       }`;
   
-      // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
+      //Append the <style> and <article> elements to the Shadow DOM
       this.shadowRC.appendChild(this.elementStyle);
       this.shadowRC.appendChild(this.elementArticle);
     }
@@ -162,29 +167,25 @@ class RestaurantEntry extends HTMLElement {
      * @param {Object} data - The data to pass into the <recipe-card>, must be of the
      *                        following format:
      *                        {
-     *                          "imgSrc": "string",
+     *                          "img": "image upload",
      *                          "imgAlt": "string",
-     *                          "titleLnk": "string",
-     *                          "titleTxt": "string",
-     *                          "organization": "string",
+     *                          "name": "string",
      *                          "rating": number,
-     *                          "numRatings": number,
-     *                          "lengthTime": "string",
-     *                          "ingredients": "string"
+     *                          "price": number,
+     *                          "tags": "strings",
+     *                          "description": "string"
      *                        }
      */
     set data(data) {
       // If nothing was passed in, return
       if (!data) return;
   
-      // A6. TODO - Select the <article> we added to the Shadow DOM in the constructor
+      // Select the <article> we added to the Shadow DOM in the constructor
       let elementArticle = this.elementArticle;
   
-      // A7. TODO - Set the contents of the <article> with the <article> template given in
-      //           cardTemplate.html and the data passed in (You should only have one <article>,
-      //           do not nest an <article> inside another <article>). You should use Template
-      //           literals (tempalte strings) and element.innerHTML for this.
-      // console.log(data)
+      /**
+       * Set the contents of the <article> with the data given 
+       */
       let $ = '';
       for (let i = 0; i < data.price; i++) {
         $ += '$';
@@ -211,6 +212,6 @@ class RestaurantEntry extends HTMLElement {
     }
   }
   
-  // A8. TODO - Define the Class as a customElement so that you can create
+  // Define the Class as a customElement so that you can create
   //           'restaurant-entry' elements
   customElements.define('restaurant-entry', RestaurantEntry);
