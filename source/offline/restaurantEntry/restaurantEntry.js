@@ -1,4 +1,5 @@
 // RestaurantEntry.js
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
 
 class RestaurantEntry extends HTMLElement {
     // Called once when document.createElement('restaurant-entry') is called, or
@@ -23,34 +24,77 @@ class RestaurantEntry extends HTMLElement {
         margin: auto;
         padding: 0;
       }
-                                  
+
       a {
-        text-decoration: none;
-      }
-                                  
-      a:hover {
-        text-decoration: underline;
+        display: -webkit-box;
+        font-size: 36px;
+        height: 50px;
+        position:relative; 
+        left:-190px; 
+        top:-60px;
+        line-height: 0;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
       }
                                   
       article {
-        align-items: center;
-        border: 1px solid rgb(223, 225, 229);
+        margin-top: 10px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
         border-radius: 100px;
         display: grid;
         row-gap: 10px;
         grid-template-rows: 118px 56px 14px 18px 15px 36px;
         height: auto;
         padding: 16px 16px 16px 16px;
-        width: 600px;
+        width: 650px;
+        outline: solid;
+        outline-width: 4px; 
+        background: #ffff
+      }
+
+      button:first-of-type {
+        position:relative; 
+        left:208px; 
+        top:1px;
+        width:85px;
+        height:25px;
+      }
+      
+      button:last-of-type {
+        position:relative; 
+        left:110px; 
+        top:-34px;
+        width:85px;
+        height:25px;
       }
                                   
       div.rating {
         align-items: center;
         column-gap: 5px;
         display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-50px;
       }
                                   
       div.rating>img {
+        height: auto;
+        display: inline-block;
+        object-fit: scale-down;
+        width: 78px;
+      }
+
+      .price {
+        align-items: center;
+        column-gap: 5px;
+        display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-100px;
+      }
+
+      .price>img {
         height: auto;
         display: inline-block;
         object-fit: scale-down;
@@ -74,20 +118,19 @@ class RestaurantEntry extends HTMLElement {
         line-height: 16px;
         padding-top: 4px;
         overflow: hidden;
+        position:relative; 
+        left:-260px; 
+        top:-80px;
       }
-                                  
-      p.organization {
-        color: black !important;
-      }
-                                  
-      p.title {
-        display: -webkit-box;
-        font-size: 16px;
-        height: 36px;
-        position: absolute;
-        line-height: 0;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+
+      p.tags {
+        height: 32px;
+        line-height: 16px;
+        padding-top: 4px;
+        overflow: hidden;
+        position:relative; 
+        left:-240px; 
+        top:60px;
       }
                                   
       p:not(.title),
@@ -134,6 +177,12 @@ class RestaurantEntry extends HTMLElement {
       //           cardTemplate.html and the data passed in (You should only have one <article>,
       //           do not nest an <article> inside another <article>). You should use Template
       //           literals (tempalte strings) and element.innerHTML for this.
+      // console.log(data)
+      let $ = '';
+      for (let i = 0; i < data.price; i++) {
+        $ += '$';
+      }
+
       elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.imgAlt}">
                           <p class="name">
@@ -143,10 +192,7 @@ class RestaurantEntry extends HTMLElement {
                             <span>Rating: </span>
                             <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
                           </div>
-                          <div class="price">
-                            <span>Price: </span>
-                            <img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.price}-star.svg" alt="${data.rating} stars">
-                          </div>
+                          <p class="price">Price: ${$}</p>
                           <p class="tags">Tags: ${data.tags}</p>
                           <p class="description">
                             Description:
