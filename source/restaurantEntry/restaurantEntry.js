@@ -27,14 +27,15 @@ class RestaurantEntry extends HTMLElement {
 
       a {
         display: -webkit-box;
-        font-size: 36px;
-        height: 50px;
+        font-size: 50px;
+        height: 70px;
+        width: 300px;
         position:relative; 
-        left:-190px; 
-        top:-60px;
-        line-height: 0;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
+        left:-130px; 
+        top:-90px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
                                   
       article {
@@ -75,7 +76,7 @@ class RestaurantEntry extends HTMLElement {
         display: flex;
         position:relative; 
         left:-190px; 
-        top:-50px;
+        top:-45px;
       }
                                   
       div.rating>img {
@@ -114,30 +115,36 @@ class RestaurantEntry extends HTMLElement {
       }
                                   
       p.description {
-        height: 32px;
-        line-height: 16px;
+        height: 100px;
+        width:500px;
+        line-height: 26px;
         padding-top: 4px;
-        overflow: hidden;
         position:relative; 
-        left:-260px; 
+        left:-30px; 
         top:-80px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
 
       p.tags {
-        height: 32px;
-        line-height: 16px;
-        padding-top: 4px;
-        overflow: hidden;
+        display: -webkit-box;
+        font-size: 50px;
+        height: 50px;
+        width: 300px;
         position:relative; 
-        left:-240px; 
-        top:60px;
+        left:-100px; 
+        top:75px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
       }
                                   
       p:not(.title),
       span,
       time {
         color: black;
-        font-size: 12px;
+        font-size: 18px;
       }`;
   
       // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
@@ -186,7 +193,7 @@ class RestaurantEntry extends HTMLElement {
       elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.imgAlt}">
                           <p class="name">
-                            <a href="${data.name}">${data.name}</a>
+                            <a>${data.name}</a>
                           </p>
                           <div class="rating">
                             <span>Rating: </span>

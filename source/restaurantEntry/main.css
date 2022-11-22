@@ -28,32 +28,21 @@ body {
 }
 
 .form-style {
-  height: 370px;
-  width: 100%;
-  max-width: 450px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  height: 450px;
+  width: 450px;
+  font-family: Arial, Helvetica, sans-serif;
   border-style: solid;
   border-width: 3px;
   border-radius: 100px;
   position:relative; 
   left:120px; 
   top:150px;
-  padding-top: 60px;
+  padding-top: 20px;
   padding-left: 40px;
   padding-bottom: 10px;
   background-color: #ffff;
+  line-height: 18pt;
 }
-
-.form-style-3 label > span{
-	float: left;
-	width: 100px;
-	color: orange;
-	font-weight: bold;
-	font-size: 13px;
-	text-shadow: 1px 1px 1px #fff;
-}
-
-
 
 .form-style input[type=text],
 .form-style input[type=date],
@@ -64,7 +53,7 @@ body {
 .form-style input[type=url],
 .form-style input[type=email],
 .form-style select, 
-.form-style textarea{
+.form-style textarea {
 	border-radius: 3px;
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
