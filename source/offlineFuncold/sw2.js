@@ -51,7 +51,7 @@ if('serviceWorker' in navigator) {
 self.addEventListener('install', function (event) {
     event.waitUntil(
       caches.open(CACHE_NAME).then((cache)=>{
-        const empty = [
+        const empty = [ 
   ];
         return cache.addAll(empty);
       }));

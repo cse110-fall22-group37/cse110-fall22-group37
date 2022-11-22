@@ -6,6 +6,9 @@
  * @returns {Array<Object>} An array of entries found in localStorage
  */
 export function getEntriesFromStorage() {
+  // A9. TODO - Complete the functionality as described in this function
+  //           header. It is possible in only a single line, but should
+  //           be no more than a few lines.
   return JSON.parse(window.localStorage.getItem('entries'));
 }
 
@@ -15,15 +18,13 @@ export function getEntriesFromStorage() {
  * @param {Array<Object>} entries An array of entries
  */
 export function saveEntriesToStorage(entries) {
+  // EXPLORE - START (All explore numbers start with B)
+  // B1. TODO - Complete the functionality as described in this function
+  //            header. It is possible in only a single line, but should
+  //            be no more than a few lines.
   window.localStorage.setItem('entries', JSON.stringify(entries));
 }
 
-/**
- * 
- * @param {*} idx The entry to remove from storage
- * Remove the given entry idx from the storage and update the array
- * @returns the deleted entry from storage
- */
 export function removeEntryFromLocalStorage(idx) {
   let entries = getEntriesFromStorage();
   let updatedEntries = [];
