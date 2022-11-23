@@ -20,11 +20,12 @@ body {
 
 .left-column {
   height: 100vw;
+  background-color: #ffbc74;
 }
   
 .right-column {
   height: 100vw;
-  background-color: yellow;
+  background-color: #ffe194;
 }
 
 .form-style {
@@ -40,18 +41,14 @@ body {
   padding-top: 20px;
   padding-left: 40px;
   padding-bottom: 10px;
-  background-color: #ffff;
+  background-color: #fbfffe;
   line-height: 18pt;
 }
 
 .form-style input[type=text],
 .form-style input[type=date],
-.form-style input[type=datetime],
 .form-style input[type=number],
-.form-style input[type=search],
-.form-style input[type=time],
 .form-style input[type=url],
-.form-style input[type=email],
 .form-style select, 
 .form-style textarea {
 	border-radius: 3px;
@@ -61,7 +58,7 @@ body {
 	outline: none;
 	color: gray;
 	padding: 5px 8px 5px 8px;
-	background: white;
+	background: #fbfffe;
 	width:50%;
 }
 
@@ -71,9 +68,32 @@ body {
 }
 
 #restaurant-entry {
-  color: black;
+  color: #001514;
 }
 
 label {
-  color: black;
+  color: #001514;
+}
+
+iframe {
+  width: 500px;
+  height: 70px;
+}
+
+.footer { 
+  position: fixed;     
+  text-align: right; 
+  right: 40px;
+  bottom: 0px; 
+  padding-right: 50px;
+  width: 350px;
+  background-color:#fbfffe;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
 }
