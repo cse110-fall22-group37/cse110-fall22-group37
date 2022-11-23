@@ -119,6 +119,13 @@ function initFormHandler(entry) {
       document.getElementById('rating-'+entry.rating).checked = true;
       document.getElementById('price-'+entry.price).checked = true;
     }
+  //check the tags of the entry if not empty check selected tags
+    if (entry.tags != "") {
+      for (let i = 0; i < entry.tags.length; i++) {
+        let id = entry.tags[i].split(' ').join('');
+        document.getElementById(id).checked = true;
+      }
+    }
   
   // Add an event listener for the 'click' event, which fires when the 
   // add button is clicked
@@ -201,12 +208,10 @@ function initFormHandler(entry) {
 }
 
 /**
- * 
- * @param {*} e the event, delete is clicked 
- * Gets the buttons from the entries, find the element who's delete button was clicked,
- * then delete the element if the button is clicked
+ * Gets the button of every element, when one delete button is clicked, find the element 
+ * whose delete button was clicked, then delete that element
  */
-function deletePostHandler(e) {
+function deletePostHandler() {
   let entries = getEntriesFromStorage();
   if (entries == null || entries.length == 0) return;
   let buttons = [];
