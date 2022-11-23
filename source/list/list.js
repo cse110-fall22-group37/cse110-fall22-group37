@@ -28,7 +28,7 @@ export function addEntriesToDocument(entries) {
         //for each entry, create a restaurant entry and add to the document
         for (let i = 0; i < entries.length; i++) {
             let restaurantEntry = document.createElement('restaurant-entry');
-            restaurantEntry.id = entries[i].name;
+            restaurantEntry.id = entries[i].name.replace(/[^a-zA-Z0-9]/g, '');
             restaurantEntry.data = entries[i];
             list.appendChild(restaurantEntry);
         }

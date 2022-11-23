@@ -104,15 +104,15 @@ function initFormHandler(entry) {
     </label>
     <br>
     <label for="img">Select image:</label>
-    <input type="file" id="img" name="img" accept="image/*" value="${entry.img}">
+      <input type="file" id="img" name="img" accept="image/*" value="${entry.img}">
     <br>
-    <label for="image-alt">
-      Alt Text:
-      <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}">
-    </label>
-    <br>
-  <button type="add">Save Restaurant</button>
-  <button type="deleteAll" class="danger">Delete all restaurants</button>`;
+  <label for="image-alt">
+    Alt Text:
+    <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}">
+  </label>
+  <br>
+<button type="add">Save Restaurant</button>
+<button type="deleteAll" class="danger">Delete all restaurants</button>`;
 
   //check the rating and price of the entry if not empty mark as checked
     if (entry.rating != "" && entry.price != "") {
@@ -150,6 +150,7 @@ function initFormHandler(entry) {
       }
       entryObject[name] = value;
     }
+
     
   // Create a new <restaurant-entry> element
     let restaurantEntry = document.createElement('restaurant-entry');
@@ -216,14 +217,16 @@ function deletePostHandler() {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].name);
+    buttons[i] = document.querySelector('#' + entries[i].name.replace(/[^a-zA-Z0-9]/g, ''));
+      // if (buttons[i] != null)
       buttons[i] = buttons[i].shadowRoot.querySelector('button[type="delete"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
+    // if (buttons[i] != null)
       buttons[i].addEventListener('click', function() {
         removeEntryFromLocalStorage(i);
-        document.querySelector('#' + entries[i].name).remove();
+        document.querySelector('#' + entries[i].name.replace(/[^a-zA-Z0-9]/g, '')).remove();
       });
   }
 }
@@ -237,14 +240,16 @@ function editPostHandler() {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].name);
+    buttons[i] = document.querySelector('#' + entries[i].name.replace(/[^a-zA-Z0-9]/g, ''));
+    // if (buttons[i] != null)
       buttons[i] = buttons[i].shadowRoot.querySelector('button[type="edit"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
+    // if (buttons[i] != null)
       buttons[i].addEventListener('click', function() {
         let entry = removeEntryFromLocalStorage(i);
-        document.querySelector('#' + entries[i].name).remove();
+        document.querySelector('#' + entries[i].name.replace(/[^a-zA-Z0-9]/g, '')).remove();
         initFormHandler(entry);
       });
   }
