@@ -243,6 +243,7 @@ console.log("urkl^");
       allEntries = [];
       allEntries[0] = entryObject;
     };
+  });
 
   // B10. TODO - Get a reference to the "Clear Local Storage" button
   let clearLocalStorage = document.querySelector('button[type="deleteAll"]');

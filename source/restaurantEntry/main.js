@@ -16,33 +16,10 @@ function init() {
   // Get the entries from localStorage
   let entries = getEntriesFromStorage();
   // Add each entry to the <main> element
-  addEntriesToDocument(entries);
   // Add the event listeners to the form elements
   initFormHandler(null);
   deletePostHandler();
   editPostHandler();
-}
-
-/**
- * Takes in an array of entries and for each entry creates a
- * new <restaurant-entry> element, adds the entry data to that card
- * using element.data = {...}, and then appends that new entry
- * to <main>
- * @param {Array<Object>} entries An array of entries
- */
-function addEntriesToDocument(entries) {
-  //get the list from the document to add elements to in main
-  let list = document.querySelector('#list');
-  //if there are entries so it is not null
-  if (entries != null) {
-    //for each entry, create a restaurant entry and add to the document
-    for (let i = 0; i < entries.length; i++) {
-      let restaurantEntry = document.createElement('restaurant-entry');
-      restaurantEntry.id = entries[i].name;
-      restaurantEntry.data = entries[i];
-      list.appendChild(restaurantEntry);
-    }
-  }
 }
 
 /**
@@ -161,12 +138,11 @@ function initFormHandler(entry) {
         if (name == TAGS[i]) {
           entryObject.tags[tagCount] = ' ' + TAGS[i];
           tagCount++;
-          continue;
+          break;
         }
       }
       entryObject[name] = value;
     }
-    console.log(entryObject.tags);
     
   // Create a new <restaurant-entry> element
     let restaurantEntry = document.createElement('restaurant-entry');
@@ -235,14 +211,15 @@ function deletePostHandler(e) {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].name).shadowRoot.querySelector('button[type="delete"]');
+    buttons[i] = document.querySelector('#' + entries[i].name);
+      buttons[i] = buttons[i].shadowRoot.querySelector('button[type="delete"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
-    buttons[i].addEventListener('click', function() {
-      removeEntryFromLocalStorage(i);
-      document.querySelector('#' + entries[i].name).remove();
-    });
+      buttons[i].addEventListener('click', function() {
+        removeEntryFromLocalStorage(i);
+        document.querySelector('#' + entries[i].name).remove();
+      });
   }
 }
 
@@ -255,14 +232,15 @@ function editPostHandler() {
   if (entries == null || entries.length == 0) return;
   let buttons = [];
   for (let i = 0; i < entries.length; i++) {
-    buttons[i] = document.querySelector('#' + entries[i].name).shadowRoot.querySelector('button[type="edit"]');
+    buttons[i] = document.querySelector('#' + entries[i].name);
+      buttons[i] = buttons[i].shadowRoot.querySelector('button[type="edit"]');
   }
 
   for (let i = 0; i < entries.length; i++) {
-    buttons[i].addEventListener('click', function() {
-      let entry = removeEntryFromLocalStorage(i);
-      document.querySelector('#' + entries[i].name).remove();
-      initFormHandler(entry);
-    });
+      buttons[i].addEventListener('click', function() {
+        let entry = removeEntryFromLocalStorage(i);
+        document.querySelector('#' + entries[i].name).remove();
+        initFormHandler(entry);
+      });
   }
 }
