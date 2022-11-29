@@ -1,6 +1,6 @@
 - name: JSDoc Action
   uses: andstor/jsdoc-action@v1.2.1
-  with:
+    with:
     # Source directory to build documentation from
     source_dir: ./admin/testingCI/
     # Output folder for the generated documentation
