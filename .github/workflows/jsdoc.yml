@@ -16,4 +16,3 @@ jobs:
         with:
           source_dir: ./admin/testingCI
           output_dir: ./admin/testingCI/documentation
-          config_file: conf.json
