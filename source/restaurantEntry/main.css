@@ -1,6 +1,6 @@
 .form-style {
   height: 450px;
-  width: 450px;
+  width: 470px;
   font-family: Arial, Helvetica, sans-serif;
   border-style: solid;
   border-width: 3px;
@@ -12,26 +12,51 @@
   padding-left: 40px;
   padding-bottom: 10px;
   background-color: #fbfffe;
-  line-height: 18pt;
-}
-
-.form-style input[type=text],
-.form-style input[type=date],
-.form-style input[type=number],
-.form-style input[type=url],
-.form-style select, 
-.form-style textarea {
-	border-radius: 3px;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border: 1px solid gray;
-	outline: none;
-	color: gray;
-	padding: 5px 8px 5px 8px;
-	background: #fbfffe;
-	width:50%;
+  line-height: 20pt;
 }
 
 label {
   color: #001514;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+textarea#description {
+  width: 410px;
+}
+
+button[type="add"] {
+  color: black;
+  background-color: #59b953;
+  border-radius: 100px;
+  border-style: solid;
+  border-color: black;
+  height: 35px;
+  width: 130px;
+  position:relative; 
+  left:10px; 
+  top:-20px;
+}
+
+button[type="deleteAll"] {
+  color: black;
+  height: 35px;
+  width: 130px;
+  background-color: #ff4a53;
+  border-radius: 100px;
+  border-style: solid;
+  border-color: black;
+  position:relative; 
+  left:12px; 
+  top:-26px;
+}
+
+legend,
+label[for="img"],
+label[for="restaurant-name"],
+label[for="description"] {
+  font-weight: bold;
 }

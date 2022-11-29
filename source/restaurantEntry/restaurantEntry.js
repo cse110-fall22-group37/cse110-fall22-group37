@@ -74,7 +74,32 @@ class RestaurantEntry extends HTMLElement {
         width:85px;
         height:25px;
       }
-                                  
+
+      button[type="delete"] {
+        color: black;
+        height: 35px;
+        width: 80px;
+        background-color: #ff4a53;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: black;
+        font-size: 20px;
+      }
+       
+      button[type="edit"] {
+        color: black;
+        height: 35px;
+        width: 80px;
+        background-color: #ef8354;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: black;
+        font-size: 20px;
+        position: relative;
+        top: 11px;
+        left: 200px;
+      }
+
       div.rating {
         align-items: center;
         column-gap: 5px;
@@ -114,9 +139,10 @@ class RestaurantEntry extends HTMLElement {
         border-bottom-right-radius: 80px;
         height: 150px;
         object-fit: cover;
-        margin-right: 10px;
+        margin-right: 15px;
+        margin-top: 15px;
         width: 340px;
-        height: 200px
+        height: 200px;
       }
                                   
       p.description {
@@ -192,7 +218,7 @@ class RestaurantEntry extends HTMLElement {
       }
 
       elementArticle.innerHTML = `<img src= "${data.img}"
-                            alt="${data.imgAlt}">
+                            alt="${data.name} image">
                           <p class="name">
                             <a>${data.name}</a>
                           </p>

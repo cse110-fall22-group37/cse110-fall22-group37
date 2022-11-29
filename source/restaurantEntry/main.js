@@ -45,7 +45,7 @@ function initFormHandler(entry) {
   //initialize the form content replace with current entry data
     form.innerHTML = `
     <h2 class="form-title">Add/Edit a Restaurant</h2>
-    <label for="restaurant-name">Name:
+    <label for="restaurant-name"> Name:
       <input type="text" id="name" name="name" value="${entry.name}" required>
     </label>
     <br>
@@ -78,7 +78,7 @@ function initFormHandler(entry) {
     </label>
     <br>
     <label for="description">
-      Description:
+      Describe your experience (favorite dishes, wait times, etc):
       <br>
       <textarea name="description" id="description" cols="38" rows="5">${entry.description}</textarea>
     </label>
@@ -103,13 +103,9 @@ function initFormHandler(entry) {
       ${TAGS[5]}<input type="checkbox" id="${TAGS[5]}" value="yes" name="${TAGS[5]}">
     </label>
     <br>
-    <label for="img">Select image:</label>
+    <label for="img">Add an image:</label>
       <input type="file" id="img" name="img" accept="image/*">
     <br>
-  <label for="image-alt">
-    Alt Text:
-    <input type="text" id="imgAlt" name="imgAlt" value="${entry.imgAlt}">
-  </label>
   <br>
 <button type="add">Save Restaurant</button>
 <button type="deleteAll" class="danger">Delete all restaurants</button>`;
