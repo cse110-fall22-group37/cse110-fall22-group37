@@ -10,6 +10,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          node-version: '16' 
         
       - name: Setup Node
         uses: actions/setup-node@v1
@@ -25,6 +27,7 @@ jobs:
         uses: andstor/jsdoc-action@v1.2.1
         with:
           source_dir: ./admin/testingCI/
+          node-version: '16' 
         
       #- name: Deploy
       #  uses: peaceiris/actions-gh-pages@v3
