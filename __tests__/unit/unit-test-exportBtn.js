@@ -5,6 +5,9 @@
 const { ConsoleMessage } = require('puppeteer');
 const functions = require('../../source/exportBtn/exportBtn.js');
 
+/**
+* This test tests for if the initExportBtnHandler creates the export button and sets the html for the document
+*/
 test('test initExportBtnHandler ', () => {
     document.body.innerHTML =
     ` <!DOCTYPE html>
@@ -61,7 +64,10 @@ test('test initExportBtnHandler ', () => {
     expect(document.querySelector('export-button')).not.toBeNull();    
   });
 
-  test('test exportToPDF ', () => {
+  /**
+   * This test tests for if the exportToPDF changes the style of the right side correctly
+   */
+  test('test exportToPDF changes right side style', () => {
     functions.exportToPDF();
     expect(document.getElementById('right').style.display).toBe("none");
     setTimeout(() => {
@@ -69,6 +75,9 @@ test('test initExportBtnHandler ', () => {
       }, 0.0000000001);
   });
 
+  /**
+   * This test tests for if the ExportToPDF() function calls window.print()
+   */
   jest.spyOn(window, 'alert').mockReturnValue();
   jest.spyOn(window, 'print').mockReturnValue();
     describe("", () => {
@@ -77,41 +86,3 @@ test('test initExportBtnHandler ', () => {
     expect(window.print).toHaveBeenCalled();
     });
  });
-
-
-
-  
-
-
-/*
-test('initExportButtonHandler',()=>{
-    functions.initExportBtnHandler();
-    expect(true).toBe(false);
-});
-*/ 
-/*
-let head = document.head || document.getElementsByTagName('head')[0];
-let style = document.createElement('style');
-
-
-test('exportToPDF()',()=>{
-    exportToPDF();
-    
-    
-      style.type = 'text/css';
-      style.media = 'print';
-      if (style.styleSheet){
-        style.styleSheet.cssText = css;
-      } else {
-        style.appendChild(document.createTextNode(css));
-      }
-      head.appendChild(style);
-    
-      document.getElementById('right').style.display = "none";
-    
-      window.print();
-      setTimeout(() => {
-        document.getElementById('right').style.display = "block";
-      }, 0.0000000001)
-    }
-});*/
