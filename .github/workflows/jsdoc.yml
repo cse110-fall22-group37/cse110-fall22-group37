@@ -11,15 +11,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - uses: actions/setup-node@v3
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
-            node-version: 16
-            
+          node-version: '16' 
+          
+      - name: Install Dependencies
+        run: |
+          npm install jsdoc
+          jsdoc ./admin/testingCI/ ./admin/testingCI/documents 
+        
       - name: Build
-        uses: andstor/jsdoc-action@v1
+        uses: andstor/jsdoc-action@v1.2.1
         with:
           source_dir: ./admin/testingCI/
-          
+        
       #- name: Deploy
       #  uses: peaceiris/actions-gh-pages@v3
       #  with:
