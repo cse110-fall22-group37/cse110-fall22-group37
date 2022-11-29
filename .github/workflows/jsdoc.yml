@@ -15,4 +15,4 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./admin/testingCI
-          output_dir: ./admin/testingCI/documentation
+          output_dir: ./admin/testingCI/documentation/
