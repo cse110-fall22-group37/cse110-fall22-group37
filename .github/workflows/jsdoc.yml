@@ -14,4 +14,4 @@ jobs:
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
-          source_dir: ~/admin/testingCI
+          source_dir: ./admin/testingCI
