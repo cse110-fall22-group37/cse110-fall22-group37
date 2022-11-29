@@ -4,11 +4,6 @@
 
 const { ConsoleMessage } = require('puppeteer');
 const functions = require('../../source/exportBtn/exportBtn.js');
-//import {initExportButtonHandler} from "./source/exportBtn.js";
-
- // This prints "My First JSDOM!"
-
-//jest.mock('../../source/exportBtn/exportBtn.js');
 
 test('test initExportBtnHandler ', () => {
     document.body.innerHTML =
@@ -62,43 +57,26 @@ test('test initExportBtnHandler ', () => {
   </body>
   </html>
   `    
-  console.log(document.querySelector('body').innerHTML);
-
-
     functions.initExportBtnHandler();
-    console.log(document.querySelector('export-button'));
     expect(document.querySelector('export-button')).not.toBeNull();    
-    //const element = document.createElement('div');
-    //expect(element).not.toBeNull();
-    //console.log(document.querySelector('body').innerHTML);
   });
 
   test('test exportToPDF ', () => {
-    console.log("Test2");
-    console.log(document.querySelector('body').innerHTML);
     functions.exportToPDF();
-
     expect(document.getElementById('right').style.display).toBe("none");
-    console.log(document.getElementById('right').style.display);
     setTimeout(() => {
-        console.log(document.getElementById('right').style.display);
-
         expect(document.getElementById('right').style.display).toBe("block");
       }, 0.0000000001);
-    
-
-    console.log("test 2 end");
-
   });
 
   jest.spyOn(window, 'alert').mockReturnValue();
   jest.spyOn(window, 'print').mockReturnValue();
-    describe("test that print is called", () => {
+    describe("", () => {
     it('test that print is called', function () {
     functions.exportToPDF();
     expect(window.print).toHaveBeenCalled();
     });
-    });
+ });
 
 
 
