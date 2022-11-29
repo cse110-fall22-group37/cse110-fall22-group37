@@ -19,7 +19,7 @@ jobs:
       - name: Install Dependencies
         run: |
           npm install -g jsdoc
-          jsdoc ./admin/testingCI/ ./out
+          jsdoc ./admin/testingCI/
         
       - name: Build
         uses: andstor/jsdoc-action@v1.2.1
