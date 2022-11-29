@@ -8,11 +8,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # - name: Checkout code
-      #  uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Build
-        uses: andstor/jsdoc-action@v1.2.1
+        uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./cse110-fall22-group37/admin/testingCI/
       
