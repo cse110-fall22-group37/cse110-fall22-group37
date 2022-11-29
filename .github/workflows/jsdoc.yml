@@ -20,8 +20,8 @@ jobs:
         with:
           source_dir: ./admin/testingCI/
           
-      - name: Deploy
-        uses: peaceiris/actions-jsdoc-testing@v3
-        with:
-          deploy_key: ${{secrets.S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}}
-          publish_dir: ./out
+      #- name: Deploy
+      #  uses: peaceiris/actions-gh-pages@v3
+      #  with:
+      #    deploy_key: ${{secrets.S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}}
+      #    publish_dir: ./out
