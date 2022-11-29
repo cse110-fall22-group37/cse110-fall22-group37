@@ -14,7 +14,7 @@ jobs:
       - name: Build
         uses: andstor/jsdoc-action@v1.2.1
         with:
-          source_dir: ./admin/testingCI/
+          source_dir: cse110-fall22-group37/admin/testingCI/
       
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
