@@ -15,10 +15,9 @@ jobs:
         uses: andstor/jsdoc-action@v1
         with:
           source_dir: ./admin/testingCI/
-          using: 'Node 16'
-      
+          
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: peaceiris/actions-jsdoc-testing@v3
         with:
-          deploy_key: ${S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}
+          deploy_key: ${{secrets.S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}}
           publish_dir: ./out
