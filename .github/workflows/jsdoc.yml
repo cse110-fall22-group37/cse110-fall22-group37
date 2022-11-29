@@ -12,6 +12,12 @@ jobs:
       #  uses: actions/checkout@v2
 
       - name: Build
-        uses: andstor/jsdoc-action@v4
+        uses: andstor/jsdoc-action@v1.2.1
         with:
           source_dir: ./admin/testingCI
+      
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{SHA256:S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}}
+          publish_dir: ./out
