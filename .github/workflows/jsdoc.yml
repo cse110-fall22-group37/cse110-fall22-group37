@@ -19,5 +19,5 @@ jobs:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
-          deploy_key: ${{SHA256:S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}}
+          deploy_key: ${SHA256:S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM}
           publish_dir: ./out
