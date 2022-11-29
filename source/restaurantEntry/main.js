@@ -148,56 +148,22 @@ function initFormHandler(entry) {
     }
     // Read image from file input
     const imgPath = document.querySelector('input[type=file]').files[0];
-    const reader = new FileReader();
-    reader.addEventListener("load", function () {
-        entryObject['img'] = reader.result;
-    
-    // Create a new <restaurant-entry> element
-      let restaurantEntry = document.createElement('restaurant-entry');
-
-    // Add the entryObject data to <restaurant-entry> using element.data
-      restaurantEntry.data = entryObject;
-
-    //  Add this new <restaurant-entry> to <main>
-      document.querySelector('#list').appendChild(restaurantEntry);
-
-    // Get the entries array from localStorage, add this new entry to it, and
-    //            then save the entries array back to localStorage
-      let allEntries = JSON.parse(window.localStorage.getItem('entries'));
-      if (allEntries != null && allEntries.length > 0) {
-        let exists = false;
-        for (let i = 0; i < allEntries.length; i++) {
-          if (allEntries[i].name == entryObject.name) {
-            alert('Failed to add new entry. An entry with the same title already exists.');
-            exists = true;
-            break;
-          }
-        } 
-        if (!exists) {
-          let entryCount = allEntries.length + 1;
-          // Default sort by rating, descending order
-          for (let j = 0; j < allEntries.length; j++) {
-            if (allEntries[j].rating < entryObject.rating) {
-              for (let k = allEntries.length; k > j; k--) {
-                allEntries[k] = allEntries[k - 1];
-              }
-              allEntries[j] = entryObject;
-              break;
-            }
-          }
-          if (allEntries.length < entryCount) {
-            allEntries[allEntries.length] = entryObject;
-          }
-        }
+    if (imgPath != null) {
+      const reader = new FileReader();
+      reader.addEventListener("load", function () {
+          entryObject['img'] = reader.result;
+          processFormData(entryObject);
+      });
+      if (imgPath) {
+          reader.readAsDataURL(imgPath);
+      }
+    } else {
+      if (newEntry) {
+        entryObject['img'] = '';
       } else {
-        allEntries = [];
-        allEntries[0] = entryObject;
-      };
-      saveEntriesToStorage(allEntries);
-    });
-
-    if (imgPath) {
-        reader.readAsDataURL(imgPath);
+        entryObject['img'] = entry.img;
+      }
+      processFormData(entryObject);
     }
   });
 
@@ -211,6 +177,56 @@ function initFormHandler(entry) {
    //Delete the contents of <main>
     document.querySelector('#list').innerHTML = '';
   });
+}
+
+/**
+ * Adds the new/updated restaurant entry to the entry list 
+ * and store it to localStorage
+ * @param entryObject, data of the entry to be processed
+ */
+function processFormData(entryObject) {
+  // Create a new <restaurant-entry> element
+  let restaurantEntry = document.createElement('restaurant-entry');
+
+  // Add the entryObject data to <restaurant-entry> using element.data
+    restaurantEntry.data = entryObject;
+
+  //  Add this new <restaurant-entry> to <main>
+    document.querySelector('#list').appendChild(restaurantEntry);
+
+  // Get the entries array from localStorage, add this new entry to it, and
+  //            then save the entries array back to localStorage
+    let allEntries = JSON.parse(window.localStorage.getItem('entries'));
+    if (allEntries != null && allEntries.length > 0) {
+      let exists = false;
+      for (let i = 0; i < allEntries.length; i++) {
+        if (allEntries[i].name == entryObject.name) {
+          alert('Failed to add new entry. An entry with the same title already exists.');
+          exists = true;
+          break;
+        }
+      } 
+      if (!exists) {
+        let entryCount = allEntries.length + 1;
+        // Default sort by rating, descending order
+        for (let j = 0; j < allEntries.length; j++) {
+          if (allEntries[j].rating < entryObject.rating) {
+            for (let k = allEntries.length; k > j; k--) {
+              allEntries[k] = allEntries[k - 1];
+            }
+            allEntries[j] = entryObject;
+            break;
+          }
+        }
+        if (allEntries.length < entryCount) {
+          allEntries[allEntries.length] = entryObject;
+        }
+      }
+    } else {
+      allEntries = [];
+      allEntries[0] = entryObject;
+    };
+    saveEntriesToStorage(allEntries);
 }
 
 /**
