@@ -1,9 +1,19 @@
-- name: JSDoc Action
-  uses: andstor/jsdoc-action@v1.2.1
-    with:
-    # Source directory to build documentation from
-    source_dir: ./admin/testingCI/
-    # Output folder for the generated documentation
-    output_dir: ./admin/testingCI/documentation
-    # Recurse into subdirectories when scanning for source files
-    recurse: true
+name: GitHub pages
+
+on:
+  push:
+    branches:
+      - jsdoc-testing
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./admin/testingCI
+          output_dir: ./admin/testingCI/documentation
+          config_file: conf.json
