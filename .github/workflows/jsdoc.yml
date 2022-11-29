@@ -40,7 +40,7 @@ jobs:
         # Source directory to build documentation from
           source_dir: ./admin/testingCI
         # Output folder for the generated documentation
-          output_dir: ./admin/testingCI
+          output_dir: ./admin/testingCI/
         #node version  
       #- name: Build
       #  uses: andstor/jsdoc-action@v1.2.1
