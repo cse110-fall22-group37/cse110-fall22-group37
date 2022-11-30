@@ -41,8 +41,7 @@ function initFormHandler(entry) {
       imgAlt: ""
     };
     entry = nullEntry;
-  }
-  //initialize the form content replace with current entry data
+
     form.innerHTML = `
     <h2 class="form-title">Add/Edit a Restaurant</h2>
     <label for="restaurant-name"> Name:
@@ -109,6 +108,74 @@ function initFormHandler(entry) {
   <br>
 <button type="add">Save Restaurant</button>
 <button type="deleteAll" class="danger">Delete all restaurants</button>`;
+  } else {
+    form.innerHTML = `
+    <h2 class="form-title">Add/Edit a Restaurant</h2>
+    <label for="restaurant-name"> Name:
+      <input type="text" id="name" name="name" value="${entry.name}" required>
+    </label>
+    <br>
+    <legend>Rating:</legend>
+    <label for="rating-1">
+      1<input type="radio" id="rating-1" value="1" name="rating">
+    </label>
+    <label for="rating-2">
+      2<input type="radio" id="rating-2" value="2" name="rating">
+    </label>
+    <label for="rating-3">
+      3<input type="radio" id="rating-3" value="3" name="rating">
+    </label>
+    <label for="rating-4">
+      4<input type="radio" id="rating-4" value="4" name="rating">
+    </label>
+    <label for="rating-5">
+      5<input type="radio" id="rating-5" value="5" name="rating">
+    </label>
+    <br>
+    <legend>Price:</legend>
+    <label for="price-1">
+      $<input type="radio" id="price-1" value="1" name="price">
+    </label>
+    <label for="price-2">
+      $$<input type="radio" id="price-2" value="2" name="price">
+    </label>
+    <label for="price-3">
+      $$$<input type="radio" id="price-3" value="3" name="price">
+    </label>
+    <br>
+    <label for="description">
+      Describe your experience (favorite dishes, wait times, etc):
+      <br>
+      <textarea name="description" id="description" cols="38" rows="5">${entry.description}</textarea>
+    </label>
+    <br>
+    <legend>Tags:</legend>
+    <label for="${TAGS[0]}">
+      ${TAGS[0]}<input type="checkbox" id="${TAGS[0]}" value="yes" name="${TAGS[0]}">
+    </label>
+    <label for="${TAGS[1]}">
+      ${TAGS[1]}<input type="checkbox" id="${TAGS[1]}" value="yes" name="${TAGS[1]}">
+    </label>
+    <label for="${TAGS[2]}">
+      ${TAGS[2]}<input type="checkbox" id="${TAGS[2]}" value="yes" name="${TAGS[2]}">
+    </label>
+    <label for="${TAGS[3]}">
+      ${TAGS[3]}<input type="checkbox" id="${TAGS[3]}" value="yes" name="${TAGS[3]}">
+    </label>
+    <label for="${TAGS[4]}">
+      ${TAGS[4]}<input type="checkbox" id="${TAGS[4]}" value="yes" name="${TAGS[4]}">
+    </label>
+    <label for="${TAGS[5]}">
+      ${TAGS[5]}<input type="checkbox" id="${TAGS[5]}" value="yes" name="${TAGS[5]}">
+    </label>
+    <br>
+    <label for="img">Add an image (if left blank, previous image will be saved):</label>
+    <input type="file" id="img" name="img" accept="image/*">
+    <br>
+  <br>
+<button type="add">Save Restaurant</button>
+<button type="deleteAll" class="danger">Delete all restaurants</button>`;
+  }
 
   //check the rating and price of the entry if not empty mark as checked
     if (entry.rating != "" && entry.price != "") {
@@ -158,7 +225,12 @@ function initFormHandler(entry) {
           reader.readAsDataURL(imgPath);
       }
     } else {
-        entryObject['img'] = '';
+        if (entry.img != null) {
+          // if user did not update the image when editing form, keep old image
+          entryObject['img'] = entry.img;
+        } else {
+          entryObject['img'] = '';
+        }
       processFormData(entryObject);
     }
   });
