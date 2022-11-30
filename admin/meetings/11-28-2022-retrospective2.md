@@ -21,7 +21,7 @@
 <br>
 
 # JS Docs
- - Works locally but the workflow is incomplete
+ - Works
 
 <br>
 
