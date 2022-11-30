@@ -33,7 +33,6 @@
 
 
 # JS Documentation
- - Works Locally
  - Creates a file where we can click which function we want to expect
  - The File also helps us see what is the parameter, return as well as comments for each function.
- - It is still being added to the workflow.
+ - Works perfectly fine in workflow
