@@ -158,11 +158,7 @@ function initFormHandler(entry) {
           reader.readAsDataURL(imgPath);
       }
     } else {
-      if (newEntry) {
         entryObject['img'] = '';
-      } else {
-        entryObject['img'] = entry.img;
-      }
       processFormData(entryObject);
     }
   });
