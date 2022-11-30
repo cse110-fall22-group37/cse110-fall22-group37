@@ -2,7 +2,6 @@
 
 const functions = require('../../source/restaurantEntry/restaurantEntryRepo.js');
 
-// TODO - Part 2
 class LocalStorageMock {
     constructor() {
       this.store = {};
