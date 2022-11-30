@@ -17,6 +17,10 @@ jobs:
           config_file: jsdoc.json
           template: minami
           recurse: true
+      - name: Installation
+        run: npm install
+      - name: JSDOC
+        run: npm doc
 
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v4
