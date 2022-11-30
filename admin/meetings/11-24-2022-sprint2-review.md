@@ -10,7 +10,7 @@
 - linting is working
 - Codacy is working
 - Unit tests work
-- Js docs is working locally but we still need to fix the workflow
+- JSDOCS works
 <br>
 
 ### Main changes
