@@ -1,7 +1,8 @@
-// exportBtn.js
+// main.js
 
+// main.js
 
-//import {getEntriesFromStorage} from "../restaurantEntry/restaurantEntryRepo.js";
+import {getEntriesFromStorage} from "../restaurantEntry/restaurantEntryRepo.js";
 
 
  //Run the init() function when the page has loaded so the DOM content has loaded

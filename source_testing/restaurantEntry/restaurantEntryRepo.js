@@ -1,3 +1,5 @@
+module.exports = { getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage};
+
 /**
  * Reads 'entries' from localStorage and returns an array of
  * all of the entries found (parsed, not in string form). If
@@ -5,7 +7,7 @@
  * is returned.
  * @returns {Array<Object>} An array of entries found in localStorage
  */
-export function getEntriesFromStorage() {
+function getEntriesFromStorage() {
   return JSON.parse(window.localStorage.getItem('entries'));
 }
 
@@ -14,7 +16,7 @@ export function getEntriesFromStorage() {
  * saves that string to 'entries' in localStorage
  * @param {Array<Object>} entries An array of entries
  */
-export function saveEntriesToStorage(entries) {
+function saveEntriesToStorage(entries) {
   window.localStorage.setItem('entries', JSON.stringify(entries));
 }
 
@@ -24,7 +26,7 @@ export function saveEntriesToStorage(entries) {
  * Remove the given entry idx from the storage and update the array
  * @returns the deleted entry from storage
  */
- export function removeEntryFromLocalStorage(idx) {
+ function removeEntryFromLocalStorage(idx) {
   let entries = getEntriesFromStorage();
   let updatedEntries = [];
   let j = 0;

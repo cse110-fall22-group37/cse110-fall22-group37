@@ -2,6 +2,7 @@
 
 
 //import {getEntriesFromStorage} from "../restaurantEntry/restaurantEntryRepo.js";
+module.exports = { init, exportToPDF, initExportBtnHandler};
 
 
  //Run the init() function when the page has loaded so the DOM content has loaded
