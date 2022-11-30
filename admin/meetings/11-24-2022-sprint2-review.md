@@ -1,5 +1,17 @@
 # Sprint 2 Review
 
+#### Attendance
+- Jingxin(Finch) Shi
+- Eustacia Sukarto
+- Alan Sun
+- James Cole
+- Lauren Chen
+- Sofie Gmerek
+- Pethaperumal Natarajan
+- Jungwoon Ko
+- Satvik Singh
+- Raiaan Mortuja - RaiaanM
+
 ### Learning what can and cannot or should or should not:
 - Should test while we implement things
 - Documentation needs to be clear to communicate
