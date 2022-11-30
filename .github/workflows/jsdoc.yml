@@ -1,9 +1,6 @@
 name: JSDOC
 
-on:
-  push:
-    branches:
-      - master
+on: [pull_request, push]
 
 jobs:
   deploy:
@@ -20,8 +17,8 @@ jobs:
           config_file: jsdoc.json
           template: minami
 
-      # - name: Deploy
-      #   uses: peaceiris/actions-gh-pages@v4
-      #   with:
-      #     deploy_key: SHA256:S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM
-      #     publish_dir: ./out
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          deploy_key: SHA256:S6KrXtaPgLC1L4KB7tkPcEcEDzWRWO2hVKNIcmmaygM
+          publish_dir: ./out
