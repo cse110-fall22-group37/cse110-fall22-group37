@@ -10,7 +10,7 @@
 - Pethaperumal Natarajan
 - Jungwoon Ko
 - Satvik Singh
-- Raiaan Mortuja - RaiaanM
+- Raiaan Mortuja
 
 ### Learning what can and cannot or should or should not:
 - Should test while we implement things
