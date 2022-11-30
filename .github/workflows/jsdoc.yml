@@ -13,7 +13,6 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-<<<<<<< HEAD
           node-version: 18.x
       - name: jsDocs
         run: |
@@ -30,10 +29,4 @@ jobs:
       #   with:
       #     deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
       #     publish_dir: ./admin/testingCI/documentations/
-=======
-          source_dir: ./source/
-          output_dir: ./documentations/
-          config_file: jsdoc.json
-          template: minami
-          recurse: true
->>>>>>> 80726e8e594d551c95a33263250757b1e61eaa6c
+
