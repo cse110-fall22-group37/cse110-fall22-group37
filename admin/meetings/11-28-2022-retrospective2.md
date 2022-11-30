@@ -1,5 +1,6 @@
 # Search bar
  - Final part of the code that is incomplete in terms of development
+ - We plan to implement this as well as test the rest of our files at the same time.
 <br>
 
 # Edit and Delete Functionality
@@ -17,11 +18,11 @@
 <br>
 
 # Unit Tests
- - These tests are being added
+ - The tests are being added
 <br>
 
 # JS Docs
- - Works
+ - The workflow is working, we have yet to create documents for every file that we code.
 
 <br>
 
