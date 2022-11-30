@@ -20,7 +20,7 @@ jobs:
       - name: Installation
         run: npm install
       - name: JSDOC
-        run: npm doc
+        run: npm run doc
 
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v4
