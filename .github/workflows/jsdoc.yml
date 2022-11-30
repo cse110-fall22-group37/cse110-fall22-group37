@@ -9,6 +9,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Installation
+        run: npm install
+      - name: JSDOC
+        run: npm run doc
+
       - name: Build
         uses: andstor/jsdoc-action@v1
         with:
@@ -17,10 +22,6 @@ jobs:
           config_file: jsdoc.json
           template: minami
           recurse: true
-      - name: Installation
-        run: npm install
-      - name: JSDOC
-        run: npm run doc
 
       # - name: Deploy
       #   uses: peaceiris/actions-gh-pages@v4
