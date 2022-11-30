@@ -32,5 +32,8 @@
   "jest": {
     "preset": "jest-puppeteer",
     "verbose": true
+  },
+  "dependencies": {
+    "minami": "^1.2.3"
   }
 }

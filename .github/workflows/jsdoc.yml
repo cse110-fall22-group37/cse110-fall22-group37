@@ -18,6 +18,7 @@ jobs:
           source_dir: ./admin/testingCI/
           output_dir: ./admin/testingCI/documentations/
           config_file: jsdoc.json
+          template: minami
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
