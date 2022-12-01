@@ -1,6 +1,12 @@
+
+
 describe('Basic user flow for Website', () => {
     // visit website
-    beforeAll(async () => {
+    
+    beforeAll(async () = > {
+      await page.goto('');
+    })
+    /* beforeAll(async () => {
       await page.goto('https://cse110-f2021.github.io/Lab8_Website');
     });
   
@@ -172,4 +178,5 @@ describe('Basic user flow for Website', () => {
       });
       expect(cart).toBe('[]');
     });
+    */
   });
