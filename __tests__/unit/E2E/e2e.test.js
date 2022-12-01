@@ -4,9 +4,23 @@ describe('Basic user flow for Website', () => {
     // visit website
     
     beforeAll(async () => {
-      await page.goto('http');
+      await page.goto('https://www.google.com');
+    });
+
+    it('Initial', async () => {
+      expect(true).toBe(true);
     })
-    /* beforeAll(async () => {
+/*
+    it('Initial Home Page - Add 1 entry', async () => {
+      console.log('Checking for adding feature...');
+      const form = await page.$('form');
+      const name = await form.getElementByID('name');
+      name.innerHTML = 'Jungwoon Ko';
+
+      expect(name.innerHTML).toBe('Jungwoon Ko');
+    })*/
+    /*
+     beforeAll(async () => {
       await page.goto('https://cse110-f2021.github.io/Lab8_Website');
     });
   
