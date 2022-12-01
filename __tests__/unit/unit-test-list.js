@@ -1,5 +1,8 @@
 const { TestEnvironment } = require('jest-environment-jsdom');
 const functions = require('../../source/list/list.js');
+const function2 = require('../../source/restaurantEntry/restaurantEntry.js');
+import {addEntriesToDocument} from '../../source/list/list.js'
+import {jest} from '@jest/globals';
 
 class LocalStorageMock {
     constructor() {
@@ -96,6 +99,7 @@ class LocalStorageMock {
     entries.push('Mcdonalds');
     entries.push('Burger king');
     global.localStorage.setItem('entries', JSON.stringify(entries));
-    functions.addEntriesToDocument(entries);
-    expect(document.querySelector('restaurant-entry')).not.toBeNull();
+    //expect(document.querySelector('restaurant-entry')).not.toBeNull();
+    addEntriesToDocument(entries);
+
   })
