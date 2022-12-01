@@ -1,6 +1,7 @@
 // unit.test.js
-
 const functions = require('../../source/restaurantEntry/restaurantEntryRepo.js');
+import {getEntriesFromStorage} from '../../source/restaurantEntry/restaurantEntryRepo.js'
+import {jest} from '@jest/globals';
 
 class LocalStorageMock {
     constructor() {
@@ -23,10 +24,10 @@ class LocalStorageMock {
       delete this.store[key];
     }
   }
-  
   global.localStorage = new LocalStorageMock;
 
 test('testing getEntriesFromStorage typical',()=>{
+  //getEntriesFromStorage()
     let entries = new Array();
     entries.push('Mcdonalds');
     entries.push('Burger king');

@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', init);
  * Starts the program, all function calls trace back to init()
  * Calls the initExportBtnHandler function
  */
-function init() {
+export function init() {
   initExportBtnHandler();
 }
 
@@ -19,7 +19,7 @@ function init() {
  * Exports the current list of elements in the order shown on screen
  * Invokes a window to save as pdf, to save the current list
  */
-function exportToPDF() {
+export function exportToPDF() {
 // TODO: fix css
 /////////////////////////////////////////////////////////////////////////   
 /////////////////////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@ function exportToPDF() {
  * Add an event listener to the export button so when it is clicked, 
  * it calls exportToPDF();
  */
-function initExportBtnHandler() {
+export function initExportBtnHandler() {
   let button = document.createElement('export-button');
   document.body.appendChild(button);
   button.addEventListener('click', (event) =>{

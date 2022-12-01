@@ -20,6 +20,7 @@
   "homepage": "https://github.com/cse110-fall22-group37/cse110-fall22-group37#readme",
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.19.6",
     "@babel/preset-env": "^7.20.2",
     "babel-jest": "^29.3.1",
     "eslint": "^8.27.0",
@@ -31,7 +32,10 @@
   "jest": {
     "preset": "jest-puppeteer",
     "verbose": true,
-    "testEnvironment": "jsdom"
+    "testEnvironment": "jsdom",
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
   },
   "dependencies": {
     "jest-environment-jsdom": "^29.3.1",

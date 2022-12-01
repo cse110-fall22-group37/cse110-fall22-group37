@@ -5,7 +5,7 @@ const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
  * Class restuarantEntry creates the restaurant entry objects and attaches the shadowDOM
  * @extends HTMLElement
  */
-class RestaurantEntry extends HTMLElement {
+export class RestaurantEntry extends HTMLElement {
     /**
      * @constructor Creates the restaurant entry element, attaches the shadowDOM
      * Called once when document.createElement('restaurant-entry') is called or
