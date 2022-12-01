@@ -13,6 +13,8 @@ jobs:
         
       - name: JsDoc Action
         uses: andstor/jsdoc-action@v1.2.1
+        with: 
+          output_dir: ./out
           
       #- name: JSDoc Action
         #You may pin to the exact commit or the version.
