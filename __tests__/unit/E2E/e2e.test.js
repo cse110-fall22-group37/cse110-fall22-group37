@@ -1,10 +1,14 @@
+const puppeteer = require('puppeteer');
 
 
 describe('Basic user flow for Website', () => {
     // visit website
     
     beforeAll(async () => {
-      await page.goto('https://www.google.com');
+      const browser = await puppeteer.launch();
+      const page = await browser.newPage();
+      await page.goto('http://127.0.0.1:5501/source/index.html');
+      await browser.close();
     });
 
     it('Initial', async () => {
