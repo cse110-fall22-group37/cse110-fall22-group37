@@ -43,7 +43,6 @@ function initFormHandler(entry) {
     entry = nullEntry;
 
     form.innerHTML = `
-    <h2 class="form-title">Add/Edit a Restaurant</h2>
     <label for="restaurant-name"> Name:
       <input type="text" id="name" name="name" value="${entry.name}" required>
     </label>
@@ -110,7 +109,6 @@ function initFormHandler(entry) {
 <button type="deleteAll" class="danger">Delete all restaurants</button>`;
   } else {
     form.innerHTML = `
-    <h2 class="form-title">Add/Edit a Restaurant</h2>
     <label for="restaurant-name"> Name:
       <input type="text" id="name" name="name" value="${entry.name}" required>
     </label>
