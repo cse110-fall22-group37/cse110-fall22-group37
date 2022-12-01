@@ -20,7 +20,7 @@ function loadFilters() {
     filter.innerHTML = '';
     for (let i = 0; i < TAGS.length; i++) {
         filter.innerHTML += `<label for="by-${TAGS[i]}">
-                                ${TAGS[i]} <input type="checkbox" id="by-${TAGS[i]}" value="yes" name="by-${TAGS[i]}">
+                                <a>${TAGS[i]}<a> <input type="checkbox" id="by-${TAGS[i]}" value="yes" name="by-${TAGS[i]}">
                             </label>`;
     }
 }

@@ -15,12 +15,11 @@ function init() {
 
 function loadParams() {
     let filter = document.getElementById('sort-by');
-    filter.innerHTML = `Sort by: <br>
-                        <label for="priceAsc">
-                            Price + <input type="radio" id="priceAsc" value="1" name="price">
+    filter.innerHTML = `<label for="priceAsc">
+                            <a>Price Low<a><input type="radio" id="priceAsc" value="1" name="price">
                         </label>
                         <label for="priceDesc">
-                            Price - <input type="radio" id="priceDesc" value="-1" name="price">
+                            <a>Price High<a><input type="radio" id="priceDesc" value="-1" name="price">
                         </label>`;
 }
 
