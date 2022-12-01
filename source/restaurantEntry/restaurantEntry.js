@@ -34,9 +34,9 @@ export class RestaurantEntry extends HTMLElement {
         display: -webkit-box;
         font-size: 50px;
         height: 70px;
-        width: 300px;
+        width: 235px;
         position:relative; 
-        left:-130px; 
+        left:-180px; 
         top:-90px;
         overflow: auto;
         word-wrap: break-word;
