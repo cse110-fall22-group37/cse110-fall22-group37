@@ -64,7 +64,7 @@ jobs:
       - name: jsDocs
         run: |
           npm install
-          npm run doc
+          jsdoc ./admin/testingCI/.js
       - name: Add & Commit
         uses: EndBug/add-and-commit@v9.1.1
         with:
