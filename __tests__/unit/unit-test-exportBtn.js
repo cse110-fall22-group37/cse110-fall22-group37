@@ -3,7 +3,7 @@
  */
 import {jest} from '@jest/globals';
 const { ConsoleMessage } = require('puppeteer');
-const functions = require('../../source/exportBtn/exportBtn.js');
+const functions = require('../../source/exportBtn/main.js');
 import {exportToPDF} from '../../source/exportBtn/exportBtn.js'
 /**
 * This test tests for if the initExportBtnHandler creates the export button and sets the html for the document
