@@ -1,19 +1,71 @@
 const puppeteer = require('puppeteer');
 
-
 describe('Basic user flow for Website', () => {
     // visit website
-    
+    let browser
+    let page
+
     beforeAll(async () => {
-      const browser = await puppeteer.launch();
-      const page = await browser.newPage();
-      await page.goto('http://127.0.0.1:5501/source/index.html');
-      await browser.close();
+      browser = await puppeteer.launch();
+      page = await browser.newPage();
+      await page.goto('https://wheretwoeat.netlify.app');
     });
 
-    it('Initial', async () => {
+    it('Adding an entry', async () => {
+      // get form's elements
+      let form = await page.$('form');
+      let name = await form.$('input[id="name"]');
+      let rating = await form.$('input[id="rating-1"]');
+      let price = await form.$('input[id="price-1"]');
+      let textArea = await form.$('textarea');
+      let tag = await form.$('input[id="western"]');
+      let img = await form.$('input[id="img"]');
+      let button = await form.$('button[type="add"]');
+
+      // add information
+      name.innerHTML = 'name';
+      await rating.click();
+      await price.click();
+      textArea.innerHTML = 'good';
+      await tag.click();
+      img.src = './food_image/test1.jpeg';
+      await button.click();
+
+      console.log(name.innerHTML);
+      console.log(textArea.innerHTML);
+      console.log(img.src);
+
+      // get the entry info
+      let entry = await page.$('div[id="list"]');
+      let storage = localStorage.getItem('entries');
+
+      console.log(storage);
+
+      /*
+      let entryImg = (await entry.$('img')).src;
+      let entryName = (await entry.$('p[class="name"]')).innerHTML;
+      let entryRating = (await (await entry.$('div[class="rating"]')).$('img')).src;
+      let entryPrice = (await entry.$('p[class="price"]')).innerHTML;
+      let entryTag = (await entry.$('p[class="tag"]')).innerHTML;
+      let entryDescription = (await entry.$('p[class="description"]')).innerHTML;
+
+      // test
+      console.log(entryImg);
+      console.log(entryName);
+      console.log(entryRating);
+      console.log(entryPrice);
+      console.log(entryTag);
+      console.log(entryDescription);
+      */
+
+      
       expect(true).toBe(true);
     })
+
+    it('close', async() => {
+      await browser.close();
+    })
+
 /*
     it('Initial Home Page - Add 1 entry', async () => {
       console.log('Checking for adding feature...');
