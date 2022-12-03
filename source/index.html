@@ -26,10 +26,13 @@
   <link rel="stylesheet" href="restaurantEntry/main.css" />
   <link rel="stylesheet" href="list/main.css" />
   <link rel="stylesheet" href="sortAndFilter/main.css" />
+  <link rel="stylesheet" href="search-bar/search-bar.css" />
   <link rel="stylesheet" href="main.css" />
 
   <script src="restaurantEntry/restaurantEntryRepo.js" type="module"></script>
   <script src="restaurantEntry/main.js" type="module"></script>
+  <script src="search-bar/search-bar.js" type="module"></script>
+
 </head>
 <body>
     <main>
@@ -38,12 +41,13 @@
   <div class='row'>
     <div class='column' id='left'>
       <div class='left-column' style="overflow-y:auto">
+        <input type="text" id="search-bar" placeholder="Search">
 
-        <iframe id="searchBar" src="./search-bar/search-bar.html"></iframe>
-  
+
         <div id="list">
           <!-- Add Restaurant Entries Here -->
         </div>
+
         
         </div>
     </div>
