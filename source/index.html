@@ -21,14 +21,18 @@
   <!-- Restaurant Entry Custom Element -->
   <script src="restaurantEntry/restaurantEntry.js" type="module"></script>
   
+  
   <!-- Main Stylesheets & Scripts -->
   <link rel="stylesheet" href="restaurantEntry/main.css" />
   <link rel="stylesheet" href="list/main.css" />
   <link rel="stylesheet" href="sortAndFilter/main.css" />
   <link rel="stylesheet" href="main.css" />
+  <link rel="stylesheet" href="search-bar/search-bar.css">
 
   <script src="restaurantEntry/restaurantEntryRepo.js" type="module"></script>
   <script src="restaurantEntry/main.js" type="module"></script>
+  <script src="search-bar/search-bar.js"></script>
+
 </head>
 <body>
     <main>
@@ -38,8 +42,9 @@
     <div class='column' id='left'>
       <div class='left-column'>
 
-        <iframe id="searchBar" src="./search-bar/search-bar.html"></iframe>
-  
+        <!-- Search Bar -->
+        <input type="text" id="myInput" onkeyup="search() " placeholder="Search">
+
         <div id="list">
           <!-- Add Restaurant Entries Here -->
         </div>
