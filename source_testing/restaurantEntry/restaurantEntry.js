@@ -1,11 +1,13 @@
 // RestaurantEntry.js
 const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
 
+
+
 /**
  * Class restuarantEntry creates the restaurant entry objects and attaches the shadowDOM
  * @extends HTMLElement
  */
-export class RestaurantEntry extends HTMLElement {
+class RestaurantEntry extends HTMLElement {
     /**
      * @constructor Creates the restaurant entry element, attaches the shadowDOM
      * Called once when document.createElement('restaurant-entry') is called or
@@ -34,9 +36,9 @@ export class RestaurantEntry extends HTMLElement {
         display: -webkit-box;
         font-size: 50px;
         height: 70px;
-        width: 235px;
+        width: 300px;
         position:relative; 
-        left:-180px; 
+        left:-130px; 
         top:-90px;
         overflow: auto;
         word-wrap: break-word;
@@ -241,3 +243,6 @@ export class RestaurantEntry extends HTMLElement {
   // Define the Class as a customElement so that you can create
   //           'restaurant-entry' elements
   customElements.define('restaurant-entry', RestaurantEntry);
+
+
+  module.exports = { RestaurantEntry};
