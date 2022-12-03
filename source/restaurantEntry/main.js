@@ -305,12 +305,12 @@ export function deletePostHandler() {
 	let buttons = []
 	for (let i = 0; i < entries.length; i++) {
 		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
-		// if (buttons[i] != null)
+		if (buttons[i] != null)
 		buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"delete\"]")
 	}
 
 	for (let i = 0; i < entries.length; i++) {
-		// if (buttons[i] != null)
+	 if (buttons[i] != null)
 		buttons[i].addEventListener("click", function() {
 			removeEntryFromLocalStorage(i)
 			document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
@@ -328,12 +328,12 @@ export function editPostHandler() {
 	let buttons = []
 	for (let i = 0; i < entries.length; i++) {
 		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
-		// if (buttons[i] != null)
+		if (buttons[i] != null)
 		buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"edit\"]")
 	}
 
 	for (let i = 0; i < entries.length; i++) {
-		// if (buttons[i] != null)
+		if (buttons[i] != null)
 		buttons[i].addEventListener("click", function() {
 			let entry = removeEntryFromLocalStorage(i)
 			document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
