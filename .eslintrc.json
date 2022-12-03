@@ -32,6 +32,18 @@
         ],
         "no-unused-vars": [
             "off"
+        ],
+        "no-redeclare": [
+            "warn"
+        ],
+        "no-cond-assign": [
+            "warn"
+        ],
+        "no-useless-escape": [
+            "warn"
+        ],
+        "no-prototype-builtins": [
+            "warn"
         ]
     }
 }
