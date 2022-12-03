@@ -40,14 +40,33 @@
 7. Verify entry edit
    - Verify if changes has been saved in list entry
    - Verify if form is empty
-8.  Delete
+8. Delete
    - Delete panda express
-9. Verify if panda express is deleted
-    - Verify if only one item on list
-    - Verify only item available is Plumeria
+9.  Verify if panda express is deleted
+   - Verify if only one item on list
+   - Verify only item available is Plumeria
 
 ## Filter
 ## Search
 ## Sort
 ## Export
 ## Delete all
+1. Add new entry
+   - Name: Panda Express
+   - Rating: 3/5
+   - Price: $
+   - Describe: Orange chicken is really good.
+   - Tags: Chinese
+   - Image: Download image and add it
+   - Click "Save Restaurant"
+   - Verify if form is empty
+2. Add another entry
+   - Name: Plumeria
+   - Rating: 4/5
+   - Price: $$
+   - Describe: Really good vegan food with cool vibes.
+   - Tags: Vegan, Kids
+   - Image: Download image and add it
+   - Click "Save Restaurant"
+3. Click Delete all
+4. Verify if all entries have been deleted
