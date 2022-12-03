@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest --verbose",
     "lint": "eslint ./",
+    "fixLint": "eslint ./ --fix",
     "doc": "./node_modules/.bin/jsdoc -c jsdoc.json"
   },
   "repository": {
