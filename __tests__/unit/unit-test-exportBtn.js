@@ -2,7 +2,6 @@
  * @jest-environment jsdom
  */
 import {jest} from "@jest/globals"
-const { ConsoleMessage } = require("puppeteer")
 const functions = require("../../source/exportBtn/main.js")
 import {exportToPDF} from "../../source/exportBtn/exportBtn.js"
 /**
