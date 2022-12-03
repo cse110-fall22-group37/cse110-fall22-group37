@@ -1,14 +1,11 @@
 const { default: JSDOMEnvironment } = require('jest-environment-jsdom');
 const puppeteer = require('puppeteer');
 
-describe('Basic user flow for Website', () => {
-    // visit website
-    let browser
-    let page
+describe('Add, Edit, Delete', () => {
+    let browser;
+    let page;
 
     beforeAll(async () => {
-      //browser = await puppeteer.launch();
-      //page = await browser.newPage();
       browser = await puppeteer.launch( { headless: false});
       page = await browser.newPage();
       await page.goto('https://wheretwoeat.netlify.app');
@@ -16,12 +13,25 @@ describe('Basic user flow for Website', () => {
     },10000);
 
     afterAll(async () => {
-      //await page.close();
-      //await browser.close();
+      await page.close();
+      await browser.close();
     })
     
 
-    it('Adding an entry', async () => {
+    it('Add new entry', async () => {
+      await page.$eval('input[id="name"]', el => el.value = 'Panda Express');
+      await page.click('input[id="rating-3"]');
+      await page.click('input[id="price-1"]');
+      await page.$eval('textarea', el => el.value = 'Orange chicken is really good. ');
+      await page.click('input[id="chinese"]');
+      // TODO: Figure out image upload
+      // await page.$eval('input[type="file"]', async el => await el.uploadFile('__tests__/E2E/images/pandaExpress.png'));
+      // const filePath = path.relative(process.cwd(), __dirname + '/images/pandaExpress.png');
+      // const imgInput = await page.$("input[type=file]");
+      // await imgInput.uploadFile(filePath);
+      // await imgInput.uploadFile('/Users/petha/Desktop/Data/Class Material/FA22/CSE110/Project Repo/cse110-fall22-group37/__tests__/E2E/images/pandaExpress.png');
+      await page.click('button[type="add"]');
+      /*
       // get form's elements
       let form = await page.$('form');
       let name = await form.$('input[id="name"]');
@@ -44,7 +54,7 @@ describe('Basic user flow for Website', () => {
       // get the entry info
       //let entry = await page.$$('p[class="name"]');
       //console.log(entry[0]);
-      /*
+
       let entryImg = (await entry.$('img')).src;
       let entryName = (await entry.$('p[class="name"]')).innerHTML;
       let entryRating = (await (await entry.$('div[class="rating"]')).$('img')).src;
