@@ -1,6 +1,7 @@
 // list.js
 
 import {getEntriesFromStorage} from "../restaurantEntry/restaurantEntryRepo.js";
+import {editPostHandler, deletePostHandler} from "../restaurantEntry/main.js";
 
 window.addEventListener('DOMContentLoaded', init);
 
@@ -33,4 +34,7 @@ export function addEntriesToDocument(entries) {
             list.appendChild(restaurantEntry);
         }
     }
+    editPostHandler();
+    deletePostHandler();
+
 }

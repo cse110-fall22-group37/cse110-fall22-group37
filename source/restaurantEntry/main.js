@@ -299,7 +299,7 @@ function processFormData(entryObject) {
  * Gets the button of every element, when one delete button is clicked, find the element 
  * whose delete button was clicked, then delete that element
  */
-function deletePostHandler() {
+export function deletePostHandler() {
   let entries = getEntriesFromStorage();
   if (entries == null || entries.length == 0) return;
   let buttons = [];
@@ -322,7 +322,7 @@ function deletePostHandler() {
  * Gets the button of every element, when one edit button is clicked, bring the entry to the form, 
  * remove the entry, add it to the form, call init form handler
  */
-function editPostHandler() {
+export function editPostHandler() {
   let entries = getEntriesFromStorage();
   if (entries == null || entries.length == 0) return;
   let buttons = [];
