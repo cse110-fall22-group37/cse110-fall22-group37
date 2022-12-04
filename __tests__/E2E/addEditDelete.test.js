@@ -13,8 +13,8 @@ describe('Add, Edit, Delete', () => {
     },10000);
 
     afterAll(async () => {
-      await page.close();
-      await browser.close();
+      //await page.close();
+      //await browser.close();
     })
     
 
@@ -24,12 +24,6 @@ describe('Add, Edit, Delete', () => {
       await page.click('input[id="price-1"]');
       await page.$eval('textarea', el => el.value = 'Orange chicken is really good. ');
       await page.click('input[id="chinese"]');
-      // TODO: Figure out image upload
-      // await page.$eval('input[type="file"]', async el => await el.uploadFile('__tests__/E2E/images/pandaExpress.png'));
-      // const filePath = path.relative(process.cwd(), __dirname + '/images/pandaExpress.png');
-      // const imgInput = await page.$("input[type=file]");
-      // await imgInput.uploadFile(filePath);
-      // await imgInput.uploadFile('/Users/petha/Desktop/Data/Class Material/FA22/CSE110/Project Repo/cse110-fall22-group37/__tests__/E2E/images/pandaExpress.png');
       await page.click('button[type="add"]');
       /*
       // get form's elements
