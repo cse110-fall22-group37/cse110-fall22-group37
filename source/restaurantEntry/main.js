@@ -243,7 +243,22 @@ function initFormHandler(entry) {
 		document.querySelector("#list").innerHTML = ""
 	})
 
+	// Prevent double editing when the form's name is under edit
+	let nameBtn = form.querySelector("#name")
+	nameBtn.addEventListener("input", function () {
+		if (nameBtn.value != "") changeEditBtnsColor("gray")
+		else changeEditBtnsColor("#ef8354")  // orange
+	})
 }
+
+// Helper function to change the color of the edit buttons ^
+function changeEditBtnsColor(color) {
+	let restaurants = document.querySelectorAll("restaurant-entry")
+	for (let i = 0; i < restaurants.length; i++) {
+		restaurants[i].shadowRoot.querySelector("button[type=\"edit\"]").style.backgroundColor = color
+	}
+}
+
 
 /**
  * Adds the new/updated restaurant entry to the entry list 
