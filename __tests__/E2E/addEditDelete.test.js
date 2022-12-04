@@ -13,38 +13,39 @@ describe('Add, Edit, Delete', () => {
     },10000);
 
     afterAll(async () => {
-      //await page.close();
-      //await browser.close();
+      await page.close();
+      await browser.close();
     })
     
 
-    it('Add new entry', async () => {
+    it('initialize page', async () => {
       await page.$eval('input[id="name"]', el => el.value = 'Panda Express');
       await page.click('input[id="rating-3"]');
       await page.click('input[id="price-1"]');
       await page.$eval('textarea', el => el.value = 'Orange chicken is really good.');
       await page.click('input[id="chinese"]');
       await page.click('button[type="add"]');
-    })
+    }, 10000)
 
-    it('Verify new entry added', async () => {
-      await page.$eval('input[id="name"]', el => el.value = 'The new name');
-      // const names = await page.$$('input[id="name"]');
-      // const names = await page.$$('a');
-      // console.log(names)
-      // const text = await names[0].getProperty('innerText');
-      // const text = await page.$eval('a',  el => el.getProperty('innerText'));
-      // expect(await text.jsonValue()).toBe('Panda Express');
-    });
+    it('check if an entry is added', async() => {
+      await page.reload();
+      const entry = await page.$$('restaurant-entry');
+      let shadowRoot = await entry[0].getProperty('shadowRoot');
+      let article = await shadowRoot.$('article');
+      let name = await (await (await article.$('p[class="name"] > a')).getProperty('innerText')).jsonValue();
+      let rate = await article.$$('img');
+      let rateAlt = await (await rate[1].getProperty('alt')).jsonValue();
+      let price = await (await (await article.$('p[class="price"]')).getProperty('innerText')).jsonValue();
+      let textArea = await (await (await article.$('p[class="description"]')).getProperty('innerText')).jsonValue();
+      let tag = await (await (await article.$('p[class="tags"]')).getProperty('innerText')).jsonValue();
 
-    it('Add second entry', async () => {
-      await page.$eval('input[id="name"]', el => el.value = 'Plumeria');
-      await page.click('input[id="rating-4"]');
-      await page.click('input[id="price-2"]');
-      await page.$eval('textarea', el => el.value = 'Really good vegan food with cool vibes.');
-      await page.click('input[id="vegan"]');
-      await page.click('input[id="kids"]');
-      // TODO: Figure out image upload
-      await page.click('button[type="add"]');
-    })
+      expect(name).toBe("Panda Express");
+      expect(rateAlt).toBe("3 stars");
+      expect(price).toBe("Price: $");
+      expect(textArea).toBe("Description:\n" + "Orange chicken is really good.");
+      expect(tag).toBe("Tags: chinese");
+      expect(entry.length).toBe(1);
+    }, 10000)
+
+    
   });
