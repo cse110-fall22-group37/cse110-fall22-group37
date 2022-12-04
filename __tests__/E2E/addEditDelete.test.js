@@ -13,8 +13,8 @@ describe('Add, Edit, Delete', () => {
     },10000);
 
     afterAll(async () => {
-      await page.close();
-      await browser.close();
+      // await page.close();
+      // await browser.close();
     })
     
 
@@ -22,7 +22,7 @@ describe('Add, Edit, Delete', () => {
       await page.$eval('input[id="name"]', el => el.value = 'Panda Express');
       await page.click('input[id="rating-3"]');
       await page.click('input[id="price-1"]');
-      await page.$eval('textarea', el => el.value = 'Orange chicken is really good. ');
+      await page.$eval('textarea', el => el.value = 'Orange chicken is really good.');
       await page.click('input[id="chinese"]');
       // TODO: Figure out image upload
       // await page.$eval('input[type="file"]', async el => await el.uploadFile('__tests__/E2E/images/pandaExpress.png'));
@@ -31,47 +31,26 @@ describe('Add, Edit, Delete', () => {
       // await imgInput.uploadFile(filePath);
       // await imgInput.uploadFile('/Users/petha/Desktop/Data/Class Material/FA22/CSE110/Project Repo/cse110-fall22-group37/__tests__/E2E/images/pandaExpress.png');
       await page.click('button[type="add"]');
-      /*
-      // get form's elements
-      let form = await page.$('form');
-      let name = await form.$('input[id="name"]');
-      let rating = await form.$('input[id="rating-1"]');
-      let price = await form.$('input[id="price-1"]');
-      let textArea = await form.$('textarea');
-      let tag = await form.$('input[id="western"]');
-      let img = await form.$('input[id="img"]');
-      let button = await form.$('button[type="add"]');
+    })
 
-      // add information
-      name.value = 'name';
-      await rating.click();
-      await price.click();
-      textArea.value = 'good';
-      await tag.click();
-      img.src = './food_image/test1.jpeg';
-      await button.click();
+    xit('Verify new entry added', async () => {
+      await page.$eval('input[id="name"]', el => el.value = 'The new name');
+      // const names = await page.$$('input[id="name"]');
+      // const names = await page.$$('a');
+      // console.log(names)
+      // const text = await names[0].getProperty('innerText');
+      // const text = await page.$eval('a',  el => el.getProperty('innerText'));
+      // expect(await text.jsonValue()).toBe('Panda Express');
+    });
 
-      // get the entry info
-      //let entry = await page.$$('p[class="name"]');
-      //console.log(entry[0]);
-
-      let entryImg = (await entry.$('img')).src;
-      let entryName = (await entry.$('p[class="name"]')).innerHTML;
-      let entryRating = (await (await entry.$('div[class="rating"]')).$('img')).src;
-      let entryPrice = (await entry.$('p[class="price"]')).innerHTML;
-      let entryTag = (await entry.$('p[class="tag"]')).innerHTML;
-      let entryDescription = (await entry.$('p[class="description"]')).innerHTML;
-
-      // test
-      console.log(entryImg);
-      console.log(entryName);
-      console.log(entryRating);
-      console.log(entryPrice);
-      console.log(entryTag);
-      console.log(entryDescription);
-      */
-      expect(true).toBe(true);
-    }, 10000)
-
-    
+    it('Add second entry', async () => {
+      await page.$eval('input[id="name"]', el => el.value = 'Plumeria');
+      await page.click('input[id="rating-4"]');
+      await page.click('input[id="price-2"]');
+      await page.$eval('textarea', el => el.value = 'Really good vegan food with cool vibes.');
+      await page.click('input[id="vegan"]');
+      await page.click('input[id="kids"]');
+      // TODO: Figure out image upload
+      await page.click('button[type="add"]');
+    })
   });
