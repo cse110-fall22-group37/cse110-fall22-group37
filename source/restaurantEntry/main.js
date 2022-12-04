@@ -1,5 +1,5 @@
 // main.js
-import {getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage} from "./restaurantEntryRepo.js"
+import { getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage } from "./restaurantEntryRepo.js"
 
 //current preset tags which entries can be given
 const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"]
@@ -177,8 +177,8 @@ function initFormHandler(entry) {
 
 	//check the rating and price of the entry if not empty mark as checked
 	if (entry.rating != "" && entry.price != "") {
-		document.getElementById("rating-"+entry.rating).checked = true
-		document.getElementById("price-"+entry.price).checked = true
+		document.getElementById("rating-" + entry.rating).checked = true
+		document.getElementById("price-" + entry.price).checked = true
 	}
 	//check the tags of the entry if not empty check selected tags
 	if (entry.tags != "") {
@@ -187,21 +187,21 @@ function initFormHandler(entry) {
 			document.getElementById(id).checked = true
 		}
 	}
-  
+
 	// Add an event listener for the 'click' event, which fires when the 
 	// add button is clicked
-	document.querySelector("button[type=\"add\"]").addEventListener("click", function() {
+	document.querySelector("button[type=\"add\"]").addEventListener("click", function () {
 		//if the form is not valid return
 		if (!form.checkValidity()) return
 
 		//create a new form for the data
 		let newForm = new FormData(form)
-  
+
 		//create a new object to extract the tags from
 		let entryObject = new Object()
 		entryObject.tags = []
 		let tagCount = 0
-		for(let [name, value] of newForm) {
+		for (let [name, value] of newForm) {
 			for (let i = 0; i < TAGS.length; i++) {
 				if (name == TAGS[i]) {
 					entryObject.tags[tagCount] = " " + TAGS[i]
@@ -235,14 +235,14 @@ function initFormHandler(entry) {
 
 	// Get a reference to the "Clear Local Storage" button
 	let clearLocalStorage = document.querySelector("button[type=\"deleteAll\"]")
-
 	// Add a click event listener to clear local storage button
-	clearLocalStorage.addEventListener("click", function() {
+	clearLocalStorage.addEventListener("click", function () {
 		//Clear the local storage
 		window.localStorage.clear()
 		//Delete the contents of <main>
 		document.querySelector("#list").innerHTML = ""
 	})
+
 }
 
 /**
@@ -271,7 +271,7 @@ function processFormData(entryObject) {
 				exists = true
 				break
 			}
-		} 
+		}
 		if (!exists) {
 			let entryCount = allEntries.length + 1
 			// Default sort by rating, descending order
@@ -306,15 +306,15 @@ export function deletePostHandler() {
 	for (let i = 0; i < entries.length; i++) {
 		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
 		if (buttons[i] != null)
-		buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"delete\"]")
+			buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"delete\"]")
 	}
 
 	for (let i = 0; i < entries.length; i++) {
-	 if (buttons[i] != null)
-		buttons[i].addEventListener("click", function() {
-			removeEntryFromLocalStorage(i)
-			document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
-		})
+		if (buttons[i] != null)
+			buttons[i].addEventListener("click", function () {
+				removeEntryFromLocalStorage(i)
+				document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
+			})
 	}
 }
 
@@ -329,15 +329,22 @@ export function editPostHandler() {
 	for (let i = 0; i < entries.length; i++) {
 		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
 		if (buttons[i] != null)
-		buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"edit\"]")
+			buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"edit\"]")
 	}
 
 	for (let i = 0; i < entries.length; i++) {
 		if (buttons[i] != null)
-		buttons[i].addEventListener("click", function() {
-			let entry = removeEntryFromLocalStorage(i)
-			document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
-			initFormHandler(entry)
-		})
+			buttons[i].addEventListener("click", function () {
+				// check if editing is allowed 
+				// (when one entry is being edited, no other entry can be edited->gray out the edit button)
+				if (document.getElementById("name").value != "") {
+					console.log('New Editing is not allowed, dude!')
+					return
+				}
+				// bring the entry to the form
+				let entry = removeEntryFromLocalStorage(i)
+				document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
+				initFormHandler(entry)
+			})
 	}
 }
