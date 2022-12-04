@@ -27,7 +27,7 @@ describe('Add, Edit, Delete', () => {
       await page.click('button[type="add"]');
     })
 
-    xit('Verify new entry added', async () => {
+    it('Verify new entry added', async () => {
       await page.$eval('input[id="name"]', el => el.value = 'The new name');
       // const names = await page.$$('input[id="name"]');
       // const names = await page.$$('a');
