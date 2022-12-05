@@ -69,9 +69,10 @@
    - Describe: A nice vegan place for vagan food.
    - Tags: Vegan, Chinese
    - Click "Save Restaurant"
-4. Sort and verify by vegan
-5. Sort and verify by vegan and chinese
-6. Sort and verify by vegan, chinese and kids
+4. Verify all three entries visible
+5. Sort and verify by vegan
+6. Sort and verify by vegan and chinese
+7. Sort and verify by vegan, chinese and kids
 
 ## Search
 ## Sort
