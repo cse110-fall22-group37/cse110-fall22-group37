@@ -30,17 +30,17 @@ function init() {
  * are hidden
  */
 function search(){
-	let entries = getEntriesFromStorage();
-	var input, filter;
+	let entries = getEntriesFromStorage()
+	var input, filter
 	input = document.getElementById("search-bar")
 	filter = input.value.toUpperCase()
 	for (let i = 0; i < entries.length; i++){
-    if(entries[i].name.toUpperCase().indexOf(filter) > -1){
-			entries[i].display = "block";
+		if(entries[i].name.toUpperCase().indexOf(filter) > -1){
+			entries[i].display = "block"
 		}else{
-      entries[i].display = "none";
-    }
+			entries[i].display = "none"
+		}
 	}
-	addEntriesToDocument(entries);
+	addEntriesToDocument(entries)
 }
 

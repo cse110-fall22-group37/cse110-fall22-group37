@@ -353,7 +353,7 @@ export function editPostHandler() {
 				// check if editing is allowed 
 				// (when one entry is being edited, no other entry can be edited->gray out the edit button)
 				if (document.getElementById("name").value != "") {
-					console.log('New Editing is not allowed, dude!')
+					console.log("New Editing is not allowed, dude!")
 					return
 				}
 				// bring the entry to the form

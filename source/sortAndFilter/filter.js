@@ -41,19 +41,19 @@ function getFilters() {
 }
 
 function filterEntries(filters) {
-	let entries = getEntriesFromStorage();
+	let entries = getEntriesFromStorage()
     
 	for (let i = 0; i < entries.length; i++) {
-		let taken = true;
+		let taken = true
 		for (let j = 0; j < TAGS.length; j++) {
 			if (filters[TAGS[j]] && !entries[i].tags.includes(" " + TAGS[j])) {
-				entries[i].display = "none";
-				taken = false;
-				break;
+				entries[i].display = "none"
+				taken = false
+				break
 			}
 		}
 		if (taken) {
-			entries[i].display= "block";
+			entries[i].display= "block"
 		}
 	}
 	addEntriesToDocument(entries)
