@@ -47,6 +47,31 @@
    - Verify only item available is Plumeria
 
 ## Filter
+1. Add first entry
+   - Name: Panda
+   - Rating: 3/5
+   - Price: $
+   - Describe: Orange chicken is really good.
+   - Tags: Chinese
+   - Click "Save Restaurant"
+   - Verify if form is empty
+2. Add second entry
+   - Name: Plumeria
+   - Rating: 4/5
+   - Price: $$
+   - Describe: Really good vegan food with cool vibes.
+   - Tags: Vegan, Kids
+   - Click "Save Restaurant"
+3. Add third entry
+   - Name: VeganDTF
+   - Rating: 4/5
+   - Price: $$$
+   - Describe: A nice vegan place for vagan food.
+   - Tags: Vegan, Chinese
+   - Click "Save Restaurant"
+4. Sort and verify by vegan
+5. Sort and verify by vegan and chinese
+6. Sort and verify by vegan, chinese and kids
 ## Search
 ## Sort
 ## Export
@@ -68,5 +93,6 @@
    - Tags: Vegan, Kids
    - Image: Download image and add it
    - Click "Save Restaurant"
-3. Click Delete all
-4. Verify if all entries have been deleted
+3. Verify there are 2 entries
+4. Click Delete all
+5. Verify if all entries have been deleted
