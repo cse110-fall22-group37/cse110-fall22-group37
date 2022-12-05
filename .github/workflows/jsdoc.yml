@@ -1,28 +1,27 @@
-name: JSDOC
+name: JSDoc
 
-on: [pull_request, push]
-
+on:
+  push:
+    branches:
+      - main
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Build
-        uses: andstor/jsdoc-action@v1
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          source_dir: ./admin/testingCI/
-          output_dir: ./admin/testingCI/documentations/
-          config_file: jsdoc.json
+          ref: ${{ github.head_ref }}
+        
+      - name: run properties
+        run: |
+          npm i -g jsdoc
+          npm fund
+          jsdoc ./source/testingCI/*
+          
+      - name: Add & Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
 
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./admin/testingCI/documentations/
-
-      # - name: Installation
-      #   run: npm install
-      # - name: JSDOC
-      #   run: npm run doc
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Changes!"
