@@ -72,8 +72,35 @@
 4. Sort and verify by vegan
 5. Sort and verify by vegan and chinese
 6. Sort and verify by vegan, chinese and kids
+
 ## Search
 ## Sort
+1. Add first entry
+   - Name: Panda
+   - Rating: 3/5
+   - Price: $
+   - Describe: Orange chicken is really good.
+   - Tags: Chinese
+   - Click "Save Restaurant"
+   - Verify if form is empty
+2. Add second entry
+   - Name: Plumeria
+   - Rating: 4/5
+   - Price: $$
+   - Describe: Really good vegan food with cool vibes.
+   - Tags: Vegan, Kids
+   - Click "Save Restaurant"
+3. Add third entry
+   - Name: VeganDTF
+   - Rating: 4/5
+   - Price: $$$
+   - Describe: A nice vegan place for vagan food.
+   - Tags: Vegan, Chinese
+   - Click "Save Restaurant"
+4. Verify default sorting (Plumeria, VeganDTF, Panda)
+5. Verify price low (Panda, Plumeria, VeganDTF)
+6. Verify price high (VeganDTF, Plumeria, Panda)
+
 ## Export
 ## Delete all
 1. Add new entry
