@@ -17,9 +17,12 @@ describe('Add, Edit, Delete', () => {
       //await browser.close();
     })
     
+    beforeEach(async () => {
+      await page.reload();
+    })
 
-    it('initialize page', async () => {
-      await page.$eval('input[id="name"]', el => el.value = 'Panda Express');
+    it('Add first entry', async () => {
+      await page.$eval('input[id="name"]', el => el.value = 'Panda');
       await page.click('input[id="rating-3"]');
       await page.click('input[id="price-1"]');
       await page.$eval('textarea', el => el.value = 'Orange chicken is really good.');
@@ -27,9 +30,6 @@ describe('Add, Edit, Delete', () => {
       await page.click('button[type="add"]');
     }, 10000)
 
-    beforeEach(async () => {
-      await page.reload();
-    })
     it('check if an entry is added', async() => {
       const entry = await page.$$('restaurant-entry');
       let shadowRoot = await entry[0].getProperty('shadowRoot');
@@ -49,7 +49,7 @@ describe('Add, Edit, Delete', () => {
       expect(entry.length).toBe(1);
     }, 10000)
 
-    it('initialize page', async () => {
+    it('Add second entry', async () => {
       await page.$eval('input[id="name"]', el => el.value = 'Plumeria');
       await page.click('input[id="rating-4"]');
       await page.click('input[id="price-2"]');
@@ -79,8 +79,12 @@ describe('Add, Edit, Delete', () => {
     }, 10000)
 
     it('Search', async() => {
-      const searchBar = await page.$('input[id="search-bar"]');
-      let shadowRoot= await searchBar.getProperty('shadowRoot');
-      let contentEditable = await shadowRoot.$('div[contenteditable="plaintext-only"]');
+      await page.$eval('input[id="search-bar"]', el => el.value = 'Plumeria');
+      
+      const entry1 = await page.$('#PandaExpress');
+      expect(await entry1.boundingBox()).toBe(null);
+
+      const entry2 = await page.$('#Plumeria');
+      expect(await entry2.boundingBox()).not.toBe(null);
     })
   });
