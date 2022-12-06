@@ -8,7 +8,7 @@
 5. [Export](#export)
 6. [Delete all](#delete-all)
 
-## Add, edit, delete
+## Add, edit, serach, delete
 1. Add new entry
    - Name: Panda Express
    - Rating: 3/5
@@ -32,6 +32,10 @@
    - Verify if there are 2 entries in the list
 5. Verify Second entry
    Verify if all values in new list entry matches
+7. Search the second entry
+   - Verify if seachred result is the second entry
+   - Delete string on search bar
+   - Check left column shows all entries
 6. Edit entry
    - Click edit button on Panda Express Entry
    - Verify if form is prefilled with correct values(look at step 1 for values)
@@ -74,7 +78,6 @@
 6. Sort and verify by vegan and chinese
 7. Sort and verify by vegan, chinese and kids
 
-## Search
 ## Sort
 1. Add first entry
    - Name: Panda
