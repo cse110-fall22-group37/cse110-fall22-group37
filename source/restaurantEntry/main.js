@@ -49,7 +49,7 @@ function initFormHandler(entry) {
     <br>
     <legend>Rating:</legend>
     <label for="rating-1">
-      1<input type="radio" id="rating-1" value="1" name="rating">
+      1<input type="radio" id="rating-1" value="1" name="rating" required>
     </label>
     <label for="rating-2">
       2<input type="radio" id="rating-2" value="2" name="rating">
@@ -66,7 +66,7 @@ function initFormHandler(entry) {
     <br>
     <legend>Price:</legend>
     <label for="price-1">
-      $<input type="radio" id="price-1" value="1" name="price">
+      $<input type="radio" id="price-1" value="1" name="price" required>
     </label>
     <label for="price-2">
       $$<input type="radio" id="price-2" value="2" name="price">
