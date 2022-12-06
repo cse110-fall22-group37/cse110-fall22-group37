@@ -3,7 +3,7 @@
   font-size: 33px;
   position:relative; 
   left:200px; 
-  top:200px;
+  top:10px;
   height: 100px;
   width: 500px;
 }
@@ -23,7 +23,7 @@
   line-height: 23pt;
   position:relative; 
   left:120px; 
-  top:120px;
+  top:-80px;
 }
 
 label {
