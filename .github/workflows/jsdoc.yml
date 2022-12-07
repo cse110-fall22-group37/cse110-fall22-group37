@@ -19,6 +19,7 @@ jobs:
         with:
         # Source directory to build documentation from
             source_dir: ./source/
+            output_dir: ./docs
       #- name: run properties
       #  run: |
       #    npm i -g jsdoc
