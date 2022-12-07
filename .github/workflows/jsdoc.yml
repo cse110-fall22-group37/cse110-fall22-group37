@@ -12,18 +12,18 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
-      - name: JSDoc Action
+      #- name: JSDoc Action
       # You may pin to the exact commit or the version.
       # uses: andstor/jsdoc-action@06eafccd94e3fedcbf4ff0a8f23d775c169efdf2
-        uses: andstor/jsdoc-action@v1.2.1
-        with:
+      #  uses: andstor/jsdoc-action@v1.2.1
+      #  with:
         # Source directory to build documentation from
-            source_dir: ./source/
-      #- name: run properties
-      #  run: |
-      #    npm i -g jsdoc
-      #    npm fund
-      #    jsdoc ./source/*
+      #      source_dir: ./source/
+      - name: run properties
+        run: |
+          npm i -g jsdoc
+          npm fund
+          jsdoc -r ./source/*
           
       - name: Add & Commit
         uses: stefanzweifel/git-auto-commit-action@v4
