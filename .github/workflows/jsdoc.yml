@@ -19,6 +19,7 @@ jobs:
         with:
         # Source directory to build documentation from
             source_dir: ./source/
+            recurse: true
             output_dir: docs
       #- name: run properties
       #  run: |
@@ -26,16 +27,5 @@ jobs:
       #    npm fund
       #    jsdoc -r ./source/*
           
-      #- name: Add & Commit
-      #  uses: stefanzweifel/git-auto-commit-action@v4
-      - name: GIT commit and push docs
-        env: 
-          CI_COMMIT_MESSAGE: Continuous Integration Build Artifacts
-          CI_COMMIT_AUTHOR: Continuous Integration
-        run: |
-          git config --global user.name "${{ env.CI_COMMIT_AUTHOR }}"
-          git config --global user.email "happyface@github.com"
-          git add docs
-          git commit -m "${{ env.CI_COMMIT_MESSAGE }}"
-          git push
- 
+      - name: Add & Commit
+        uses: stefanzweifel/git-auto-commit-action@v4
