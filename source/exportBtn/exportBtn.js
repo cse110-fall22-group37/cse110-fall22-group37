@@ -1,24 +1,58 @@
 // exportBtn.js
 
+
+//import {getEntriesFromStorage} from "../restaurantEntry/restaurantEntryRepo.js";
+
+
+ //Run the init() function when the page has loaded so the DOM content has loaded
+window.addEventListener('DOMContentLoaded', init);
+
 /**
- * ExportBtn is a class representing the export button
- * @extends HTMLElement
+ * Starts the program, all function calls trace back to init()
+ * Calls the initExportBtnHandler function
  */
-class ExportBtn extends HTMLElement {
-	/**
-     * @constructor constructs the exportBtn element
-     * Called once when document.createElement('export-button') is called, or
-     * the element is written into the DOM directly as <export-button>
-     * Attaches the ShadowDOM to the element
-     */
-	constructor() {
-		super()
-		let shadow = this.attachShadow({mode:"open"})
-	}
+export function init() {
+  initExportBtnHandler();
 }
-  
+
 /**
-   * Define the ExportBtn Class as customElement 'export-button'
-   */
-customElements.define("export-button", ExportBtn)
-  
+ * Exports the current list of elements in the order shown on screen
+ * Invokes a window to save as pdf, to save the current list
+ */
+export function exportToPDF() {
+// TODO: fix css
+/////////////////////////////////////////////////////////////////////////   
+/////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////// 
+  let css = '@page { size: 790px 940px; margin: 10px;}';
+  let head = document.head || document.getElementsByTagName('head')[0];
+  let style = document.createElement('style');
+
+  style.type = 'text/css';
+  style.media = 'print';
+  if (style.styleSheet){
+    style.styleSheet.cssText = css;
+  } else {
+    style.appendChild(document.createTextNode(css));
+  }
+  head.appendChild(style);
+
+  document.getElementById('right').style.display = "none";
+
+  window.print();
+  setTimeout(() => {
+    document.getElementById('right').style.display = "block";
+  }, 0.0000000001)
+}
+
+/**
+ * Add an event listener to the export button so when it is clicked, 
+ * it calls exportToPDF();
+ */
+export function initExportBtnHandler() {
+  let button = document.createElement('export-button');
+  document.body.appendChild(button);
+  button.addEventListener('click', (event) =>{
+    exportToPDF();
+  });
+}
