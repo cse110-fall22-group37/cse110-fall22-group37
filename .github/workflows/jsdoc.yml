@@ -14,18 +14,18 @@ jobs:
           ref: ${{ github.head_ref }}
           
           
-      - name: JSDoc Action
-        uses: andstor/jsdoc-action@v1.2.1
-        with:
+      #- name: JSDoc Action
+      # uses: andstor/jsdoc-action@v1.2.1
+      #  with:
         # Source directory to build documentation from
-            source_dir: ./source/
-            recurse: true
-            output_dir: docs
-      #- name: run properties
-      #  run: |
-      #    npm i -g jsdoc
-      #    npm fund
-      #    jsdoc -r ./source/*
+      #      source_dir: ./source/
+      #      recurse: true
+      #      output_dir: docs
+      - name: run properties
+        run: |
+          npm i -g jsdoc
+          npm fund
+          jsdoc ./source/ -r -d ./docs
           
       - name: Add & Commit
         uses: stefanzweifel/git-auto-commit-action@v4
