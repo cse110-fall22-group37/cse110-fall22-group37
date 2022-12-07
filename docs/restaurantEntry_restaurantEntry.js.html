@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: restaurantEntry/restaurantEntry.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: restaurantEntry/restaurantEntry.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// RestaurantEntry.js
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"]
+
+/**
+ * Class restuarantEntry creates the restaurant entry objects and attaches the shadowDOM
+ * @extends HTMLElement
+ */
+export class RestaurantEntry extends HTMLElement {
+	/**
+     * @constructor 
+     * @description Creates the restaurant entry element, attaches the shadowDOM
+     * Called once when document.createElement('restaurant-entry') is called or
+     * the element is written into the DOM directly as &lt;restaurant-entry>
+     */
+	constructor() {
+		super() // Inheirit everything from HTMLElement
+		//Attach the shadow DOM to this Web Component (leave the mode open)
+		this.shadowRC = this.attachShadow({mode: "open"})
+
+		//Create an &lt;article> element to hold our data
+		this.elementArticle = document.createElement("article")
+  
+		//Create a style element to style our restaurant entry
+		this.elementStyle = document.createElement("style")
+  
+		//Insert all of the styles into the &lt;style> element you just made
+		this.elementStyle.textContent = 
+      `* {
+        font-family: sans-serif;
+        margin: auto;
+        padding: 0;
+      }
+
+      a {
+        display: -webkit-box;
+        font-size: 50px;
+        height: 70px;
+        width: 235px;
+        position:relative; 
+        left:-180px; 
+        top:-90px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+                                  
+      article {
+        margin-top: 10px;
+        margin-bottom: 18px;
+        box-sizing: border-box;
+        border-radius: 100px;
+        display: grid;
+        row-gap: 10px;
+        grid-template-rows: 118px 56px 14px 18px 15px 36px;
+        height: auto;
+        padding: 16px 16px 16px 16px;
+        width: 650px;
+        outline: solid;
+        outline-width: 4px; 
+        background: #ffff
+      }
+
+      button:first-of-type {
+        position:relative; 
+        left:208px; 
+        top:1px;
+        width:85px;
+        height:25px;
+      }
+      
+      button:last-of-type {
+        position:relative; 
+        left:110px; 
+        top:-34px;
+        width:85px;
+        height:25px;
+      }
+
+      button[type="delete"] {
+        color: black;
+        height: 35px;
+        width: 80px;
+        background-color: #ff4a53;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: black;
+        font-size: 20px;
+      }
+       
+      button[type="edit"] {
+        color: black;
+        height: 35px;
+        width: 80px;
+        background-color: #ef8354;
+        border-radius: 100px;
+        border-style: solid;
+        border-color: black;
+        font-size: 20px;
+        position: relative;
+        top: 11px;
+        left: 200px;
+      }
+
+      div.rating {
+        align-items: center;
+        column-gap: 5px;
+        display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-45px;
+      }
+                                  
+      div.rating>img {
+        height: auto;
+        display: inline-block;
+        object-fit: scale-down;
+        width: 78px;
+      }
+
+      .price {
+        align-items: center;
+        column-gap: 5px;
+        display: flex;
+        position:relative; 
+        left:-190px; 
+        top:-100px;
+      }
+
+      .price>img {
+        height: auto;
+        display: inline-block;
+        object-fit: scale-down;
+        width: 78px;
+      }
+      
+      article>img {
+        border-top-left-radius: 80px;
+        border-top-right-radius: 80px;
+        border-bottom-left-radius: 80px;
+        border-bottom-right-radius: 80px;
+        height: 150px;
+        object-fit: cover;
+        margin-right: 15px;
+        margin-top: 15px;
+        width: 340px;
+        height: 200px;
+      }
+                                  
+      p.description {
+        height: 100px;
+        width:500px;
+        line-height: 26px;
+        padding-top: 4px;
+        position:relative; 
+        left:-30px; 
+        top:-80px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      p.tags {
+        display: -webkit-box;
+        font-size: 50px;
+        height: 50px;
+        width: 300px;
+        position:relative; 
+        left:-100px; 
+        top:75px;
+        overflow: auto;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+                                  
+      p:not(.title),
+      span,
+      time {
+        color: black;
+        font-size: 18px;
+      }`
+  
+		//Append the &lt;style> and &lt;article> elements to the Shadow DOM
+		this.shadowRC.appendChild(this.elementStyle)
+		this.shadowRC.appendChild(this.elementArticle)
+	}
+  
+	/**
+     * Called when the .data property is set on this element.
+     *
+     * For Example:
+     * let recipeCard = document.createElement('recipe-card'); // Calls constructor()
+     * recipeCard.data = { foo: 'bar' } // Calls set data({ foo: 'bar' })
+     *
+     * @param {Object} data - The data to pass into the &lt;recipe-card>, must be of the
+     *                        following format:
+     *                        {
+     *                          "img": "image upload",
+     *                          "imgAlt": "string",
+     *                          "name": "string",
+     *                          "rating": number,
+     *                          "price": number,
+     *                          "tags": "strings",
+     *                          "description": "string"
+     *                        }
+     */
+	set data(data) {
+		// If nothing was passed in, return
+		if (!data) return
+  
+		// Select the &lt;article> we added to the Shadow DOM in the constructor
+		let elementArticle = this.elementArticle
+  
+		/**
+       * Set the contents of the &lt;article> with the data given 
+       */
+		let $ = ""
+		for (let i = 0; i &lt; data.price; i++) {
+			$ += "$"
+		}
+
+		elementArticle.innerHTML = `&lt;img src= "${data.img}"
+                            alt="${data.name} image">
+                          &lt;p class="name">
+                            &lt;a>${data.name}&lt;/a>
+                          &lt;/p>
+                          &lt;div class="rating">
+                            &lt;span>Rating: &lt;/span>
+                            &lt;img src="https://eustaciasukarto.github.io/fa22-cse110-lab6/assets/images/icons/${data.rating}-star.svg" alt="${data.rating} stars">
+                          &lt;/div>
+                          &lt;p class="price">Price: ${$}&lt;/p>
+                          &lt;p class="tags">Tags: ${data.tags}&lt;/p>
+                          &lt;p class="description">
+                            Description:
+                            &lt;br>
+                            ${data.description}
+                          &lt;/p>
+                          &lt;button type="edit">Edit&lt;/button>
+                          &lt;button type="delete">Delete&lt;/button>`
+	}
+}
+  
+// Define the Class as a customElement so that you can create
+//           'restaurant-entry' elements
+customElements.define("restaurant-entry", RestaurantEntry)
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ExportBtn.html">ExportBtn</a></li><li><a href="RestaurantEntry.html">RestaurantEntry</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addEntriesToDocument">addEntriesToDocument</a></li><li><a href="global.html#deletePostHandler">deletePostHandler</a></li><li><a href="global.html#editPostHandler">editPostHandler</a></li><li><a href="global.html#exportToPDF">exportToPDF</a></li><li><a href="global.html#getEntriesFromStorage">getEntriesFromStorage</a></li><li><a href="global.html#getRestaurantsFromStorage">getRestaurantsFromStorage</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initExportBtnHandler">initExportBtnHandler</a></li><li><a href="global.html#initFormHandler">initFormHandler</a></li><li><a href="global.html#processFormData">processFormData</a></li><li><a href="global.html#removeEntryFromLocalStorage">removeEntryFromLocalStorage</a></li><li><a href="global.html#saveEntriesToStorage">saveEntriesToStorage</a></li><li><a href="global.html#search">search</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Dec 07 2022 07:08:15 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
