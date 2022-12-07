@@ -112,17 +112,6 @@ describe('Add, Edit, Delete', () => {
         expect(tag).toBe("Tags: other");
       }, 1000)
     },10000)
-    
-
-    it('Search', async() => {
-      await page.$eval('input[id="search-bar"]', el => el.value = 'Plumeria');
-      
-      const entry1 = await page.$('#PandaExpress');
-      expect(await entry1.boundingBox()).toBe(null);
-
-      const entry2 = await page.$('#Plumeria');
-      expect(await entry2.boundingBox()).not.toBe(null);
-    })
 
     it('delete an entry', async() => {
       const entry = await page.$$('restaurant-entry');
