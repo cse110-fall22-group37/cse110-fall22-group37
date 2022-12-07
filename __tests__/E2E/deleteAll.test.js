@@ -7,7 +7,7 @@ describe("Delete All", () => {
 
 	beforeAll(async () => {
 		browser = await puppeteer.launch( { 
-			headless: false
+			headless: true
 		})
 		page = await browser.newPage()
 		await page.goto("https://wheretwoeat.netlify.app")
