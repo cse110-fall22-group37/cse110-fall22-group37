@@ -6,11 +6,9 @@
  */
 class ExportBtn extends HTMLElement {
 	/**
-     * Called once when document.createElement('export-button') is called, or
-     * the element is written into the DOM directly as <export-button>
-     * Attaches the ShadowDOM to the element
-     * @constructor
-     */
+   	 * generates a export btn element
+   	 * @constructor
+     	 */
 	constructor() {
 		super()
 		let shadow = this.attachShadow({mode:"open"})
