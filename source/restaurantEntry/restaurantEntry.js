@@ -7,7 +7,8 @@ const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"]
  */
 export class RestaurantEntry extends HTMLElement {
 	/**
-     * @constructor Creates the restaurant entry element, attaches the shadowDOM
+     * @constructor 
+     * @description Creates the restaurant entry element, attaches the shadowDOM
      * Called once when document.createElement('restaurant-entry') is called or
      * the element is written into the DOM directly as <restaurant-entry>
      */
