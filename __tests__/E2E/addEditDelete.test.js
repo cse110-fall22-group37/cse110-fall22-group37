@@ -22,7 +22,7 @@ describe('Add, Edit, Delete', () => {
     })
     
 
-    it('initialize page', async () => {
+    it('Add first entry', async () => {
       await page.$eval('input[id="name"]', el => el.value = 'Panda Express');
       await page.$eval('input[id="rating-3"]', el => el.click());
       await page.$eval('input[id="price-1"]', el => el.click());
@@ -33,7 +33,7 @@ describe('Add, Edit, Delete', () => {
 
     
 
-    it('check if an entry is added', async() => {
+    it('Check if first entry is added', async() => {
       const entry = await page.$$('restaurant-entry');
       let shadowRoot = await entry[0].getProperty('shadowRoot');
       let article = await shadowRoot.$('article');
@@ -52,7 +52,7 @@ describe('Add, Edit, Delete', () => {
       expect(entry.length).toBe(1);
     }, 10000)
 
-    it('initialize page', async () => {
+    it('Add second entry', async () => {
       await page.$eval('input[id="name"]', el => el.value = 'Plumeria');
       await page.$eval('input[id="rating-4"]', el => el.click());
       await page.$eval('input[id="price-2"]', el => el.click());
@@ -62,7 +62,7 @@ describe('Add, Edit, Delete', () => {
       await page.$eval('button[type="add"]', el => el.click());
     }, 10000)
 
-    it('check if an entry is added', async() => {
+    it('Check if second entry is added', async() => {
       const entry = await page.$$('restaurant-entry');
       let shadowRoot = await entry[0].getProperty('shadowRoot');
       let article = await shadowRoot.$('article');
@@ -94,24 +94,26 @@ describe('Add, Edit, Delete', () => {
       await page.$eval('input[id="kids"]', el => el.click());
       await page.$eval('input[id="other"]', el => el.click());
       await page.$eval('button[type="add"]', el => el.click());
-
-
-      setTimeout(async function(){
-        let article = await shadowRoot.$('article');
-        let name = await (await (await article.$('p[class="name"] > a')).getProperty('innerText')).jsonValue();
-        let rate = await article.$$('img');
-        let rateAlt = await (await rate[1].getProperty('alt')).jsonValue();
-        let price = await (await (await article.$('p[class="price"]')).getProperty('innerText')).jsonValue();
-        let textArea = await (await (await article.$('p[class="description"]')).getProperty('innerText')).jsonValue();
-        let tag = await (await (await article.$('p[class="tags"]')).getProperty('innerText')).jsonValue();
-
-        expect(name).toBe("Tapioca Express");
-        expect(rateAlt).toBe("5 stars");
-        expect(price).toBe("Price: $");
-        expect(textArea).toBe("Description:\n" + "Combo 8 for the best.");
-        expect(tag).toBe("Tags: other");
-      }, 1000)
     },10000)
+
+    it('Check if entry is editted', async() => {
+      const entry = await page.$$('restaurant-entry');
+      let shadowRoot = await entry[0].getProperty('shadowRoot');
+      let article = await shadowRoot.$('article');
+      let name = await (await (await article.$('p[class="name"] > a')).getProperty('innerText')).jsonValue();
+      let rate = await article.$$('img');
+      let rateAlt = await (await rate[1].getProperty('alt')).jsonValue();
+      let price = await (await (await article.$('p[class="price"]')).getProperty('innerText')).jsonValue();
+      let textArea = await (await (await article.$('p[class="description"]')).getProperty('innerText')).jsonValue();
+      let tag = await (await (await article.$('p[class="tags"]')).getProperty('innerText')).jsonValue();
+
+      expect(name).toBe("Tapioca Express");
+      expect(rateAlt).toBe("5 stars");
+      expect(price).toBe("Price: $");
+      expect(textArea).toBe("Description:\n" + "Combo 8 for the best");
+      expect(tag).toBe("Tags: other");
+      expect(entry.length).toBe(2);
+    }, 10000)
 
     it('delete an entry', async() => {
       const entry = await page.$$('restaurant-entry');
