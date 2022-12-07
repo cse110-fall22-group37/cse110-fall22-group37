@@ -1,29 +1,29 @@
 // RestaurantEntry.js
-const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"];
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"]
 
 /**
  * Class restuarantEntry creates the restaurant entry objects and attaches the shadowDOM
  * @extends HTMLElement
  */
 export class RestaurantEntry extends HTMLElement {
-    /**
+	/**
      * @constructor Creates the restaurant entry element, attaches the shadowDOM
      * Called once when document.createElement('restaurant-entry') is called or
      * the element is written into the DOM directly as <restaurant-entry>
      */
-    constructor() {
-      super(); // Inheirit everything from HTMLElement
-      //Attach the shadow DOM to this Web Component (leave the mode open)
-      this.shadowRC = this.attachShadow({mode: 'open'});
+	constructor() {
+		super() // Inheirit everything from HTMLElement
+		//Attach the shadow DOM to this Web Component (leave the mode open)
+		this.shadowRC = this.attachShadow({mode: "open"})
 
-     //Create an <article> element to hold our data
-      this.elementArticle = document.createElement('article');
+		//Create an <article> element to hold our data
+		this.elementArticle = document.createElement("article")
   
-      //Create a style element to style our restaurant entry
-      this.elementStyle = document.createElement('style');
+		//Create a style element to style our restaurant entry
+		this.elementStyle = document.createElement("style")
   
-      //Insert all of the styles into the <style> element you just made
-      this.elementStyle.textContent = 
+		//Insert all of the styles into the <style> element you just made
+		this.elementStyle.textContent = 
       `* {
         font-family: sans-serif;
         margin: auto;
@@ -176,14 +176,14 @@ export class RestaurantEntry extends HTMLElement {
       time {
         color: black;
         font-size: 18px;
-      }`;
+      }`
   
-      //Append the <style> and <article> elements to the Shadow DOM
-      this.shadowRC.appendChild(this.elementStyle);
-      this.shadowRC.appendChild(this.elementArticle);
-    }
+		//Append the <style> and <article> elements to the Shadow DOM
+		this.shadowRC.appendChild(this.elementStyle)
+		this.shadowRC.appendChild(this.elementArticle)
+	}
   
-    /**
+	/**
      * Called when the .data property is set on this element.
      *
      * For Example:
@@ -202,22 +202,22 @@ export class RestaurantEntry extends HTMLElement {
      *                          "description": "string"
      *                        }
      */
-    set data(data) {
-      // If nothing was passed in, return
-      if (!data) return;
+	set data(data) {
+		// If nothing was passed in, return
+		if (!data) return
   
-      // Select the <article> we added to the Shadow DOM in the constructor
-      let elementArticle = this.elementArticle;
+		// Select the <article> we added to the Shadow DOM in the constructor
+		let elementArticle = this.elementArticle
   
-      /**
+		/**
        * Set the contents of the <article> with the data given 
        */
-      let $ = '';
-      for (let i = 0; i < data.price; i++) {
-        $ += '$';
-      }
+		let $ = ""
+		for (let i = 0; i < data.price; i++) {
+			$ += "$"
+		}
 
-      elementArticle.innerHTML = `<img src= "${data.img}"
+		elementArticle.innerHTML = `<img src= "${data.img}"
                             alt="${data.name} image">
                           <p class="name">
                             <a>${data.name}</a>
@@ -234,10 +234,10 @@ export class RestaurantEntry extends HTMLElement {
                             ${data.description}
                           </p>
                           <button type="edit">Edit</button>
-                          <button type="delete">Delete</button>`;
-    }
-  }
+                          <button type="delete">Delete</button>`
+	}
+}
   
-  // Define the Class as a customElement so that you can create
-  //           'restaurant-entry' elements
-  customElements.define('restaurant-entry', RestaurantEntry);
+// Define the Class as a customElement so that you can create
+//           'restaurant-entry' elements
+customElements.define("restaurant-entry", RestaurantEntry)

@@ -1,15 +1,14 @@
 /**
  * @jest-environment jsdom
  */
-import {jest} from '@jest/globals';
-const { ConsoleMessage } = require('puppeteer');
-const functions = require('../../source/exportBtn/exportBtn.js');
-import {exportToPDF} from '../../source/exportBtn/exportBtn.js'
+import {jest} from "@jest/globals"
+const functions = require("../../source/exportBtn/main.js")
+import {exportToPDF} from "../../source/exportBtn/exportBtn.js"
 /**
 * This test tests for if the initExportBtnHandler creates the export button and sets the html for the document
 */
-test('test initExportBtnHandler ', () => {
-    document.body.innerHTML =
+test("test initExportBtnHandler ", () => {
+	document.body.innerHTML =
     ` <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -60,29 +59,29 @@ test('test initExportBtnHandler ', () => {
   </body>
   </html>
   `    
-    functions.initExportBtnHandler();
-    expect(document.querySelector('export-button')).not.toBeNull();    
-  });
+	functions.initExportBtnHandler()
+	expect(document.querySelector("export-button")).not.toBeNull()    
+})
 
-  /**
+/**
    * This test tests for if the exportToPDF changes the style of the right side correctly
    */
-  test('test exportToPDF changes right side style', () => {
-    functions.exportToPDF();
-    expect(document.getElementById('right').style.display).toBe("none");
-    setTimeout(() => {
-        expect(document.getElementById('right').style.display).toBe("block");
-      }, 0.0000000001);
-  });
+test("test exportToPDF changes right side style", () => {
+	functions.exportToPDF()
+	expect(document.getElementById("right").style.display).toBe("none")
+	setTimeout(() => {
+		expect(document.getElementById("right").style.display).toBe("block")
+	}, 0.0000000001)
+})
 
-  /**
+/**
    * This test tests for if the ExportToPDF() function calls window.print()
    */
-  jest.spyOn(window, 'alert').mockReturnValue();
-  jest.spyOn(window, 'print').mockReturnValue();
-    describe("", () => {
-    it('test that print is called', function () {
-    functions.exportToPDF();
-    expect(window.print).toHaveBeenCalled();
-    });
- });
+jest.spyOn(window, "alert").mockReturnValue()
+jest.spyOn(window, "print").mockReturnValue()
+describe("", () => {
+	it("test that print is called", function () {
+		functions.exportToPDF()
+		expect(window.print).toHaveBeenCalled()
+	})
+})

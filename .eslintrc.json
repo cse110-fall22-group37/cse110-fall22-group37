@@ -1,7 +1,9 @@
 {
     "env": {
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true,
+        "browser": true
     },
     "extends": "eslint:recommended",
     "overrides": [
@@ -26,6 +28,24 @@
         "semi": [
             "error",
             "never"
+        ],
+        "no-undef": [
+            "off"
+        ],
+        "no-unused-vars": [
+            "off"
+        ],
+        "no-redeclare": [
+            "warn"
+        ],
+        "no-cond-assign": [
+            "warn"
+        ],
+        "no-useless-escape": [
+            "warn"
+        ],
+        "no-prototype-builtins": [
+            "warn"
         ]
     }
 }
