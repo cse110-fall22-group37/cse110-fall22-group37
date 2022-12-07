@@ -7,7 +7,7 @@
 class ExportBtn extends HTMLElement {
 	/**
      * @constructor constructs the exportBtn element
-     * Called once when document.createElement('export-button') is called, or
+     * @description Called once when document.createElement('export-button') is called, or
      * the element is written into the DOM directly as <export-button>
      * Attaches the ShadowDOM to the element
      */
