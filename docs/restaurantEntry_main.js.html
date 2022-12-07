@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: restaurantEntry/main.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: restaurantEntry/main.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// main.js
+import { getEntriesFromStorage, saveEntriesToStorage, removeEntryFromLocalStorage } from "./restaurantEntryRepo.js"
+
+//current preset tags which entries can be given
+const TAGS = ["vegan", "western", "chinese", "japanese", "kids", "other"]
+
+//run the init function once the page has loaded
+window.addEventListener("DOMContentLoaded", init)
+
+/**
+ * Starts the program, all function calls trace back to init()
+ * Gets the entries from storage, adds them to document, run the form handler, 
+ * run the delete handler, run the edit post handler
+ */
+function init() {
+	// Get the entries from localStorage
+	let entries = getEntriesFromStorage()
+	// Add each entry to the &lt;main> element
+	// Add the event listeners to the form elements
+	initFormHandler(null)
+	deletePostHandler()
+	editPostHandler()
+}
+
+/**
+ * Adds the necesarry event handlers to &lt;form> and the clear storage
+ * &lt;button>.
+ * @param entry, an entry to the form
+ */
+function initFormHandler(entry) {
+	let form = document.getElementById("restaurant-entry")
+	//handle an empty entry to the work
+	if (entry == null) {
+		let nullEntry = {
+			name: "",
+			rating: "",
+			price: "",
+			description: "",
+			tags: "",
+			img: "",
+			imgAlt: ""
+		}
+		entry = nullEntry
+
+		form.innerHTML = `
+    &lt;label for="restaurant-name"> Name:
+      &lt;input type="text" id="name" name="name" value="${entry.name}" required>
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Rating:&lt;/legend>
+    &lt;label for="rating-1">
+      1&lt;input type="radio" id="rating-1" value="1" name="rating" required>
+    &lt;/label>
+    &lt;label for="rating-2">
+      2&lt;input type="radio" id="rating-2" value="2" name="rating">
+    &lt;/label>
+    &lt;label for="rating-3">
+      3&lt;input type="radio" id="rating-3" value="3" name="rating">
+    &lt;/label>
+    &lt;label for="rating-4">
+      4&lt;input type="radio" id="rating-4" value="4" name="rating">
+    &lt;/label>
+    &lt;label for="rating-5">
+      5&lt;input type="radio" id="rating-5" value="5" name="rating">
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Price:&lt;/legend>
+    &lt;label for="price-1">
+      $&lt;input type="radio" id="price-1" value="1" name="price" required>
+    &lt;/label>
+    &lt;label for="price-2">
+      $$&lt;input type="radio" id="price-2" value="2" name="price">
+    &lt;/label>
+    &lt;label for="price-3">
+      $$$&lt;input type="radio" id="price-3" value="3" name="price">
+    &lt;/label>
+    &lt;br>
+    &lt;label for="description">
+      Describe your experience (favorite dishes, wait times, etc):
+      &lt;br>
+      &lt;textarea name="description" id="description" cols="38" rows="5">${entry.description}&lt;/textarea>
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Tags:&lt;/legend>
+    &lt;label for="${TAGS[0]}">
+      ${TAGS[0]}&lt;input type="checkbox" id="${TAGS[0]}" value="yes" name="${TAGS[0]}">
+    &lt;/label>
+    &lt;label for="${TAGS[1]}">
+      ${TAGS[1]}&lt;input type="checkbox" id="${TAGS[1]}" value="yes" name="${TAGS[1]}">
+    &lt;/label>
+    &lt;label for="${TAGS[2]}">
+      ${TAGS[2]}&lt;input type="checkbox" id="${TAGS[2]}" value="yes" name="${TAGS[2]}">
+    &lt;/label>
+    &lt;label for="${TAGS[3]}">
+      ${TAGS[3]}&lt;input type="checkbox" id="${TAGS[3]}" value="yes" name="${TAGS[3]}">
+    &lt;/label>
+    &lt;label for="${TAGS[4]}">
+      ${TAGS[4]}&lt;input type="checkbox" id="${TAGS[4]}" value="yes" name="${TAGS[4]}">
+    &lt;/label>
+    &lt;label for="${TAGS[5]}">
+      ${TAGS[5]}&lt;input type="checkbox" id="${TAGS[5]}" value="yes" name="${TAGS[5]}">
+    &lt;/label>
+    &lt;br>
+    &lt;label for="img">Add an image:&lt;/label>
+      &lt;input type="file" id="img" name="img" accept="image/*">
+    &lt;br>
+  &lt;br>
+&lt;button type="add">Save Restaurant&lt;/button>
+&lt;button type="deleteAll" class="danger">Delete all restaurants&lt;/button>`
+	} else {
+		form.innerHTML = `
+    &lt;label for="restaurant-name"> Name:
+      &lt;input type="text" id="name" name="name" value="${entry.name}" required>
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Rating:&lt;/legend>
+    &lt;label for="rating-1">
+      1&lt;input type="radio" id="rating-1" value="1" name="rating">
+    &lt;/label>
+    &lt;label for="rating-2">
+      2&lt;input type="radio" id="rating-2" value="2" name="rating">
+    &lt;/label>
+    &lt;label for="rating-3">
+      3&lt;input type="radio" id="rating-3" value="3" name="rating">
+    &lt;/label>
+    &lt;label for="rating-4">
+      4&lt;input type="radio" id="rating-4" value="4" name="rating">
+    &lt;/label>
+    &lt;label for="rating-5">
+      5&lt;input type="radio" id="rating-5" value="5" name="rating">
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Price:&lt;/legend>
+    &lt;label for="price-1">
+      $&lt;input type="radio" id="price-1" value="1" name="price">
+    &lt;/label>
+    &lt;label for="price-2">
+      $$&lt;input type="radio" id="price-2" value="2" name="price">
+    &lt;/label>
+    &lt;label for="price-3">
+      $$$&lt;input type="radio" id="price-3" value="3" name="price">
+    &lt;/label>
+    &lt;br>
+    &lt;label for="description">
+      Describe your experience (favorite dishes, wait times, etc):
+      &lt;br>
+      &lt;textarea name="description" id="description" cols="38" rows="5">${entry.description}&lt;/textarea>
+    &lt;/label>
+    &lt;br>
+    &lt;legend>Tags:&lt;/legend>
+    &lt;label for="${TAGS[0]}">
+      ${TAGS[0]}&lt;input type="checkbox" id="${TAGS[0]}" value="yes" name="${TAGS[0]}">
+    &lt;/label>
+    &lt;label for="${TAGS[1]}">
+      ${TAGS[1]}&lt;input type="checkbox" id="${TAGS[1]}" value="yes" name="${TAGS[1]}">
+    &lt;/label>
+    &lt;label for="${TAGS[2]}">
+      ${TAGS[2]}&lt;input type="checkbox" id="${TAGS[2]}" value="yes" name="${TAGS[2]}">
+    &lt;/label>
+    &lt;label for="${TAGS[3]}">
+      ${TAGS[3]}&lt;input type="checkbox" id="${TAGS[3]}" value="yes" name="${TAGS[3]}">
+    &lt;/label>
+    &lt;label for="${TAGS[4]}">
+      ${TAGS[4]}&lt;input type="checkbox" id="${TAGS[4]}" value="yes" name="${TAGS[4]}">
+    &lt;/label>
+    &lt;label for="${TAGS[5]}">
+      ${TAGS[5]}&lt;input type="checkbox" id="${TAGS[5]}" value="yes" name="${TAGS[5]}">
+    &lt;/label>
+    &lt;br>
+    &lt;label for="img">Add an image (if left blank, previous image will be saved):&lt;/label>
+    &lt;input type="file" id="img" name="img" accept="image/*">
+    &lt;br>
+  &lt;br>
+&lt;button type="add">Save Restaurant&lt;/button>
+&lt;button type="deleteAll" class="danger">Delete all restaurants&lt;/button>`
+	}
+
+	//check the rating and price of the entry if not empty mark as checked
+	if (entry.rating != "" &amp;&amp; entry.price != "") {
+		document.getElementById("rating-" + entry.rating).checked = true
+		document.getElementById("price-" + entry.price).checked = true
+	}
+	//check the tags of the entry if not empty check selected tags
+	if (entry.tags != "") {
+		for (let i = 0; i &lt; entry.tags.length; i++) {
+			let id = entry.tags[i].split(" ").join("")
+			document.getElementById(id).checked = true
+		}
+	}
+
+	// Add an event listener for the 'click' event, which fires when the 
+	// add button is clicked
+	document.querySelector("button[type=\"add\"]").addEventListener("click", function () {
+		//if the form is not valid return
+		if (!form.checkValidity()) return
+
+		//create a new form for the data
+		let newForm = new FormData(form)
+
+		//create a new object to extract the tags from
+		let entryObject = new Object()
+		entryObject.tags = []
+		let tagCount = 0
+		for (let [name, value] of newForm) {
+			for (let i = 0; i &lt; TAGS.length; i++) {
+				if (name == TAGS[i]) {
+					entryObject.tags[tagCount] = " " + TAGS[i]
+					tagCount++
+					break
+				}
+			}
+			entryObject[name] = value
+		}
+		// Read image from file input
+		const imgPath = document.querySelector("input[type=file]").files[0]
+		if (imgPath != null) {
+			const reader = new FileReader()
+			reader.addEventListener("load", function () {
+				entryObject["img"] = reader.result
+				processFormData(entryObject)
+			})
+			if (imgPath) {
+				reader.readAsDataURL(imgPath)
+			}
+		} else {
+			if (entry.img != null) {
+				// if user did not update the image when editing form, keep old image
+				entryObject["img"] = entry.img
+			} else {
+				entryObject["img"] = ""
+			}
+			processFormData(entryObject)
+		}
+	})
+
+	// Get a reference to the "Clear Local Storage" button
+	let clearLocalStorage = document.querySelector("button[type=\"deleteAll\"]")
+	// Add a click event listener to clear local storage button
+	clearLocalStorage.addEventListener("click", function () {
+		//Clear the local storage
+		window.localStorage.clear()
+		//Delete the contents of &lt;main>
+		document.querySelector("#list").innerHTML = ""
+	})
+
+	// Prevent double editing when the form's name is under edit
+	let nameBtn = form.querySelector("#name")
+	nameBtn.addEventListener("input", function () {
+		if (nameBtn.value != "") changeEditBtnsColor("gray")
+		else changeEditBtnsColor("#ef8354")  // orange
+	})
+}
+
+// Helper function to change the color of the edit buttons ^
+function changeEditBtnsColor(color) {
+	let restaurants = document.querySelectorAll("restaurant-entry")
+	for (let i = 0; i &lt; restaurants.length; i++) {
+		restaurants[i].shadowRoot.querySelector("button[type=\"edit\"]").style.backgroundColor = color
+	}
+}
+
+
+/**
+ * Adds the new/updated restaurant entry to the entry list 
+ * and store it to localStorage
+ * @param entryObject, data of the entry to be processed
+ */
+function processFormData(entryObject) {
+	// Create a new &lt;restaurant-entry> element
+	let restaurantEntry = document.createElement("restaurant-entry")
+
+	// Add the entryObject data to &lt;restaurant-entry> using element.data
+	restaurantEntry.data = entryObject
+
+	//  Add this new &lt;restaurant-entry> to &lt;main>
+	document.querySelector("#list").appendChild(restaurantEntry)
+
+	// Get the entries array from localStorage, add this new entry to it, and
+	//            then save the entries array back to localStorage
+	let allEntries = JSON.parse(window.localStorage.getItem("entries"))
+	if (allEntries != null &amp;&amp; allEntries.length > 0) {
+		let exists = false
+		for (let i = 0; i &lt; allEntries.length; i++) {
+			if (allEntries[i].name == entryObject.name) {
+				alert("Failed to add new entry. An entry with the same title already exists.")
+				exists = true
+				break
+			}
+		}
+		if (!exists) {
+			let entryCount = allEntries.length + 1
+			// Default sort by rating, descending order
+			for (let j = 0; j &lt; allEntries.length; j++) {
+				if (allEntries[j].rating &lt; entryObject.rating) {
+					for (let k = allEntries.length; k > j; k--) {
+						allEntries[k] = allEntries[k - 1]
+					}
+					allEntries[j] = entryObject
+					break
+				}
+			}
+			if (allEntries.length &lt; entryCount) {
+				allEntries[allEntries.length] = entryObject
+			}
+		}
+	} else {
+		allEntries = []
+		allEntries[0] = entryObject
+	}
+	saveEntriesToStorage(allEntries)
+}
+
+/**
+ * Gets the button of every element, when one delete button is clicked, find the element 
+ * whose delete button was clicked, then delete that element
+ */
+export function deletePostHandler() {
+	let entries = getEntriesFromStorage()
+	if (entries == null || entries.length == 0) return
+	let buttons = []
+	for (let i = 0; i &lt; entries.length; i++) {
+		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
+		if (buttons[i] != null)
+			buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"delete\"]")
+	}
+
+	for (let i = 0; i &lt; entries.length; i++) {
+		if (buttons[i] != null)
+			buttons[i].addEventListener("click", function () {
+				removeEntryFromLocalStorage(i)
+				document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
+			})
+	}
+}
+
+/**
+ * Gets the button of every element, when one edit button is clicked, bring the entry to the form, 
+ * remove the entry, add it to the form, call init form handler
+ */
+export function editPostHandler() {
+	let entries = getEntriesFromStorage()
+	if (entries == null || entries.length == 0) return
+	let buttons = []
+	for (let i = 0; i &lt; entries.length; i++) {
+		buttons[i] = document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, ""))
+		if (buttons[i] != null)
+			buttons[i] = buttons[i].shadowRoot.querySelector("button[type=\"edit\"]")
+	}
+
+	for (let i = 0; i &lt; entries.length; i++) {
+		if (buttons[i] != null)
+			buttons[i].addEventListener("click", function () {
+				// check if editing is allowed 
+				// (when one entry is being edited, no other entry can be edited->gray out the edit button)
+				if (document.getElementById("name").value != "") {
+					console.log("New Editing is not allowed, dude!")
+					return
+				}
+				// bring the entry to the form
+				let entry = removeEntryFromLocalStorage(i)
+				document.querySelector("#" + entries[i].name.replace(/[^a-zA-Z0-9]/g, "")).remove()
+				initFormHandler(entry)
+			})
+	}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Creates%2520the%2520restaurant%2520entry%2520element,%2520attaches%2520the%2520shadowDOM%250ACalled%2520once%2520when%2520document.createElement(_restaurant-entry_)%2520is%2520called%2520or%250Athe%2520element%2520is%2520written%2520into%2520the%2520DOM%2520directly%2520as%2520_restaurant-entry_.html">Creates the restaurant entry element, attaches the shadowDOM
+Called once when document.createElement('restaurant-entry') is called or
+the element is written into the DOM directly as <restaurant-entry></a></li><li><a href="ExportBtn.html">ExportBtn</a></li><li><a href="RestaurantEntry.html">RestaurantEntry</a></li><li><a href="constructs%2520the%2520exportBtn%2520element.html">constructs the exportBtn element</a></li></ul><h3>Global</h3><ul><li><a href="global.html#addEntriesToDocument">addEntriesToDocument</a></li><li><a href="global.html#deletePostHandler">deletePostHandler</a></li><li><a href="global.html#editPostHandler">editPostHandler</a></li><li><a href="global.html#exportToPDF">exportToPDF</a></li><li><a href="global.html#getEntriesFromStorage">getEntriesFromStorage</a></li><li><a href="global.html#getRestaurantsFromStorage">getRestaurantsFromStorage</a></li><li><a href="global.html#init">init</a></li><li><a href="global.html#initExportBtnHandler">initExportBtnHandler</a></li><li><a href="global.html#initFormHandler">initFormHandler</a></li><li><a href="global.html#processFormData">processFormData</a></li><li><a href="global.html#removeEntryFromLocalStorage">removeEntryFromLocalStorage</a></li><li><a href="global.html#saveEntriesToStorage">saveEntriesToStorage</a></li><li><a href="global.html#search">search</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Dec 07 2022 06:50:56 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
