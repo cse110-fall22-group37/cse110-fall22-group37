@@ -17,6 +17,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Installation
-        run: npm install --save-dev jest babel-jest @babel/core @babel/preset-env puppeteer jest-puppeteer
+        run: npm install
       - name: Jest Unit Tests
         run: npm test
