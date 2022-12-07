@@ -7,7 +7,6 @@ describe("Add, Edit, Delete", () => {
 
 	beforeAll(async () => {
 		browser = await puppeteer.launch( { 
-			args: ['--no-sandbox'],
 			headless: false
 		})
 		page = await browser.newPage()
