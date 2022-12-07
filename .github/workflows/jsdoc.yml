@@ -18,7 +18,7 @@ jobs:
         uses: andstor/jsdoc-action@v1.2.1
         with:
         # Source directory to build documentation from
-            source_dir: ./source/*
+            source_dir: ./source/
       #- name: run properties
       #  run: |
       #    npm i -g jsdoc
