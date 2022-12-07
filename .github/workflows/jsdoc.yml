@@ -17,7 +17,7 @@ jobs:
         run: |
           npm i -g jsdoc
           npm fund
-          jsdoc ./source/testingCI/*
+          jsdoc ./source/*
           
       - name: Add & Commit
         uses: stefanzweifel/git-auto-commit-action@v4
