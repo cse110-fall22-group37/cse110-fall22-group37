@@ -18,28 +18,19 @@ function init() {
  * Exports the current list of elements in the order shown on screen
  * Invokes a window to save as pdf, to save the current list
  */
-export function exportToPDF() {
-/////////////////////////////////////////////////////////////////////////   
-/////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////// 
-	let css = "@page { size: 790px 940px; margin: 10px;}"
-	let head = document.head || document.getElementsByTagName("head")[0]
-	let style = document.createElement("style")
-
-	style.type = "text/css"
-	style.media = "print"
-	if (style.styleSheet){
-		style.styleSheet.cssText = css
-	} else {
-		style.appendChild(document.createTextNode(css))
-	}
-	head.appendChild(style)
-
-	document.getElementById("right").style.display = "none"
+export function exportToPDF(entries) {
+  let list = document.getElementById("export")
+  list.innerHTML += `<h1> WHERE2EAT </h1>`
+  for (let i = 0; i < entries.length; i++) {
+    list.innerHTML += `<h3> ${i + 1}. ${entries[i].name}</h3>
+                      <img src= "${entries[i].img}">
+                      <p> Rating: ${entries[i].rating}; Price: ${entries[i].price}; Tags: ${entries[i].tags}; Description: ${entries[i].description} </p>
+                      <br>`
+  }
 
 	window.print()
 	setTimeout(() => {
-		document.getElementById("right").style.display = "block"
+    list.innerHTML = ''
 	}, 0.0000000001)
 }
 
@@ -47,10 +38,10 @@ export function exportToPDF() {
  * Add an event listener to the export button so when it is clicked, 
  * it calls exportToPDF();
  */
-export function initExportBtnHandler() {
+export function initExportBtnHandler(entries) {
 	let button = document.createElement("export-button")
 	document.body.appendChild(button)
 	button.addEventListener("click", (event) =>{
-		exportToPDF()
+		exportToPDF(entries)
 	})
 }
