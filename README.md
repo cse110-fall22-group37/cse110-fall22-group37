@@ -6,7 +6,7 @@ This is a group repo for group 37, Powell's Goons
 
 Link to public project video: https://www.youtube.com/watch?v=-ZMlUiDZhhY
 
-Link to private project video: https://www.youtube.com/watch?v=zYHNA0CBzX8
+Link to private project video: https://youtu.be/B1W0s_Ryr0I
 
 ### group members: (real name - github username)
 
