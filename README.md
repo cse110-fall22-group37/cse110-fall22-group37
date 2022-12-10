@@ -6,6 +6,8 @@ This is a group repo for group 37, Powell's Goons
 
 Link to public project video: https://www.youtube.com/watch?v=-ZMlUiDZhhY
 
+Link to private project video: https://www.youtube.com/watch?v=zYHNA0CBzX8
+
 ### group members: (real name - github username)
 
 Jingxin(Finch) Shi - FinchShi
